@@ -1,0 +1,23 @@
+<?php
+/**
+ Configuration du site
+ */
+  
+  $dev = true;
+  $timezone_identifier = "Europe/Paris";
+
+/**
+  Configuration des liens des pages
+*/
+  $base   = "http://gestab.local/";
+  $head   = false;
+
+/**
+  Configuration de la connexion à la bdd
+*/
+  $driver  = "mysql";
+  $host    = "localhost";
+  $bddname = "gestab";
+  $user    = "root";
+  $pass    = "";
+?>
