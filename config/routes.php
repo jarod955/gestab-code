@@ -21,6 +21,11 @@
       "action"     => "achat",
     ), 
     array(
+      "name"       => "modifierEvenement",
+      "controller" => "evenement",
+      "action"     => "modifier",
+    ),
+    array(
       "name"       => "connexion",
       "controller" => "connexion",
       "action"     => "connexion",

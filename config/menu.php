@@ -33,9 +33,9 @@
         "condition" => isset($_SESSION['user']),
       ),
       array(
-        "libelle"   => "Evenements",
-        "route"     => "listEvenement",
-        "condition" => isset($_SESSION['user']),
+        "libelle"   => "Modifier evenements",
+        "route"     => "modifierEvenement",
+        "condition" => isset($_SESSION['user']) && ($_SESSION['user']['inter_stat_id'] == 2 || $_SESSION['user']['inter_stat_id'] == 3),
       ),
       array(
         "libelle"   => "Factures",
