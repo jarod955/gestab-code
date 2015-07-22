@@ -90,5 +90,10 @@
       "controller" => "promo",
       "action"     => "supr",
     ),
+    array(
+      "name"       => "createMail",
+      "controller" => "mail",
+      "action"     => "create",
+   ),
 );
 ?>
