@@ -1,18 +1,31 @@
 <?php
-
-  if (isset($_POST['inc']))
+ if (isset($_POST['inc']))
   {
-      $_SESSION['ajout']++;
+      $_SESSION['ajoutcat']++;
   }
   elseif (isset($_POST['dec']))
   {
-      if ($_SESSION['ajout'] > 1)
+      if ($_SESSION['ajoutcat'] > 1)
       {
-          $_SESSION['ajout']--;
+          $_SESSION['ajoutcat']--;
       }
   }
-  elseif (isset($_POST['send']))
+
+  if (isset($_POST['plus']))
   {
+      $_SESSION['ajoutcode']++;
+  }
+  elseif (isset($_POST['moins']))
+  {
+      if ($_SESSION['ajoutcode'] > 1)
+      {
+          $_SESSION['ajoutcode']--;
+      }
+  }
+  
+if (isset($_POST['send']))
+  {
+
       $interid    = $_SESSION['user']['inter_id'];
       $nom        = $_POST["nom"];
       $numrue     = htmlspecialchars(trim($_POST["numerorue"]));
@@ -20,9 +33,7 @@
       $codepostal = htmlspecialchars(trim($_POST["codepostal"]));
       $ville      = htmlspecialchars(trim($_POST["ville"]));
       $salle      = htmlspecialchars(trim($_POST["salle"]));
-      $date1      = $_POST["date_event"].' '.str_replace ('-',':', $_POST['heure_event']);
-
-
+      $date1      = $_POST['annee'].'-'.$_POST['mois'].'-'.$_POST['jour'].'-'.$_POST['heure'].'-'.$_POST['minute'];   
 
       // Met ici tes requetes SQL
       // Tu te souviens que ton nom va ressembler par exemple à nom_categorie1 / nom_categorie2... bah ici il suffit de faire pareil quand tu récupère. Tu récupère nom_categorie + la valeur $i de ta boucle
@@ -32,10 +43,6 @@
       // $places = $_POST['cat'][$i]['nombre_places'];
       if(!empty($_POST['code']))
       {
-
-      $code = ($_POST['code']);
-      $reduc = ($_POST['reduc']);
-      $place = ($_POST['place']);
 
           foreach ($_POST['cat'] as $categorie)
           {
@@ -61,7 +68,7 @@
           $evlieuid = $bdd->lastInsertId();
           
 
-          $sth = $bdd->prepare('INSERT INTO evenement(ev_date, ev_libelle, ev_inter_id, ev_lieux_id, ev_datecre)VALUES(:dateev, :nom, :interid, :evlieuid, NOW())');
+          $sth = $bdd->prepare('INSERT INTO evenement(ev_date, ev_libelle, ev_inter_id, ev_lieux_id, ev_datcre)VALUES(:dateev, :nom, :interid, :evlieuid, NOW())');
           $sth->bindValue(':dateev', $date1, PDO::PARAM_STR);
           $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
           $sth->bindValue(':interid', $interid, PDO::PARAM_INT);
@@ -69,13 +76,16 @@
           $sth->execute();
           $evid = $bdd->lastInsertId();
           
+          foreach ($_POST['code'] as $codepromo)
+          {
           $sth = $bdd->prepare('INSERT INTO codepromo(code_nom, code_taux_reduc, code_nb, code_ev_id)VALUES(:code, :reduc, :place, :evid)');
-          $sth->bindValue(':code', $code, PDO::PARAM_STR);
-          $sth->bindValue(':reduc', $reduc, PDO::PARAM_INT);
-          $sth->bindValue(':place', $place, PDO::PARAM_INT);
+          $sth->bindValue(':code', $codepromo['nom_code'], PDO::PARAM_STR);
+          $sth->bindValue(':reduc', $codepromo['reduc'], PDO::PARAM_INT);
+          $sth->bindValue(':place', $codepromo['place'], PDO::PARAM_INT);
           $sth->bindValue(':evid', $evid, PDO::PARAM_INT);
           $sth->execute();
-          
+          }
+
           foreach ($categories as $cat_id => $cat_nb_place)
           {   
           $sth = $bdd->prepare('INSERT INTO evcat(evcat_ev_id, evcat_cat_id, evcat_nb_place)VALUES(:evid, :catid, :places)');
@@ -154,8 +164,10 @@
   }
 
   // Déclaration de variables
-  if (!isset($_SESSION['ajout']))
-      $_SESSION['ajout'] = 1;
+  if (!isset($_SESSION['ajoutcat']))
+      $_SESSION['ajoutcat'] = 1;
+  if (!isset($_SESSION['ajoutcode']))
+      $_SESSION['ajoutcode'] = 1;
 
   $lead        = (isset($_SESSION['user'])) ? $_SESSION['user']['inter_nom'] : "";
   $tagline     = "Ici vous pouvez creer des events";

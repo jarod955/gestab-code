@@ -8,7 +8,7 @@ if (isset($_SESSION['user']))
 {
   if (isset($_POST['modifier']))
   {
-      if(!empty($_POST['modifier']))
+      if(!empty($_POST['mdp']) AND (!empty($_POST['mdp2'])))
        {
           $idInternaute = $_SESSION['user']['inter_id'];
           $idAdresse    = $_SESSION['user']['adresse']['adr_id'];
@@ -21,11 +21,20 @@ if (isset($_SESSION['user']))
           $vil          = $_POST['ville'];
           $cp           = $_POST['codepostal'];
           $mdp          = sha1($_POST['mdp']);
-          
-          //Les modifications dans la bdd
-          updateInternautemdp($bdd, $idInternaute, $no, $pre, $mail, $tel, $mdp);
-          updateAdresse($bdd, $idAdresse, $numru, $ru, $vil, $cp);
-        }
+          $mdp2         = sha1($_POST['mdp2']);
+            if ($mdp != $mdp2)
+            {
+            //$erreur = 'le mot de passe et le mot de passe de confirmation ne correspondent pas ';
+              error("le mot de passe et le mot de passe de confirmation ne correspondent pas!");
+            } 
+             else
+            {
+              //Les modifications dans la bdd
+              updateInternautemdp($bdd, $idInternaute, $no, $pre, $mail, $tel, $mdp);
+              updateAdresse($bdd, $idAdresse, $numru, $ru, $vil, $cp);
+              success("<strong>Félicitation!</strong> Le mot de passe a bien été changé .");
+            }
+       }
         else
         {
           $idInternaute = $_SESSION['user']['inter_id'];

@@ -11,13 +11,13 @@
   $evenement        = showModel($bdd, $id);
 
 function listByFacture($bdd, $id_inter, $id_ev)
-	{
-		$query = 'SELECT * FROM facture WHERE fac_ev_id = :fac_ev_id and fac_inter_id = :fac_inter_id';
+  {
+    $query = 'SELECT * FROM facture WHERE fac_ev_id = :fac_ev_id and fac_inter_id = :fac_inter_id';
     $sth   = $bdd->prepare($query);
     $sth->execute(array(':fac_inter_id' => $id_inter, ':fac_ev_id' => $id_ev));
     return $sth->fetch(PDO::FETCH_ASSOC);
-	}
-$evenemennt		= listByFacture($bdd, $_SESSION['user']['inter_id'], $evenement['ev_id']);
+  }
+$evenemennt   = listByFacture($bdd, $_SESSION['user']['inter_id'], $evenement['ev_id']);
 function listModel($bdd, $id_cat, $id_ev)
   {
     $query = "SELECT *
@@ -29,7 +29,7 @@ function listModel($bdd, $id_cat, $id_ev)
 
     return $sth->fetch(PDO::FETCH_ASSOC);
   }
-$facture		= listModel($bdd, $evenemennt['fac_cat_id'], $evenemennt['fac_ev_id']);
+$facture    = listModel($bdd, $evenemennt['fac_cat_id'], $evenemennt['fac_ev_id']);
 
 
 require 'pdf/mpdf.php';
@@ -64,14 +64,22 @@ $mpdf->SetHTMLFooter($footerE,'E');
 
 $html = '
 
-
-<h1>Facture évènement ' . $facture['ev_libelle'] . '</h1>
+<h1>Facture évènement ' . $facture['ev_libelle'] . ' </h1>
 <h2>Ma facture évènement n° ' . $facture['ev_id'] . '</h2>
-<h3>A présenter le jour venu.</h3>
+<h3>Cette facture fera office de place le jour venu.</h3>
 <p>Vous trouverez ci-dessous toutes les informations de votre évènement "' . $facture['ev_libelle'] . '", merci de la présenter à notre organisateur le jour venu. </p>
 <style type="text/css">
-      h1 { color: navy; }  
-      h2 { color: blue; }  
+      h1 { color: orange;
+           font-family: helvetica;
+           background: #0066CC none;
+           border: 6px #9999FF; 
+           padding: 0.3em;
+           text-align: center;
+          letter-spacing: 0.3em;
+
+          }  
+      h2 { color: orange; font-family: helvetica; background: #0066CC none; border: 6px #9999FF; padding: 0.3em; text-align: center; letter-spacing: 0.3em;}
+      h3 { color : black; font-family: helvetica; background: #FFFFFF none; border: 3px dotted #0066CC; padding: 0.3em; text-align: center;}  
       table
 
 {
@@ -83,7 +91,7 @@ $html = '
 td, th /* Mettre une bordure sur les td ET les th */
 
 {
-
+    background-color: #D3E2ED;
     border: 1px solid black;
 
 }
@@ -99,9 +107,8 @@ td, th /* Mettre une bordure sur les td ET les th */
 
    <tr>
 
-       <th>Informations évènement</th>
-
-       <td width=80%> <b>Date</b> : ' . $facture['ev_date'] . ' <br></br> <b>Lieux </b> : ' . $facture['ev_lieux_id'] . ' <br></br> <b> Catégorie </b> : ' . $facture['cat_nom'] . ' <br></br> <b> Prix </b> : ' . $facture['cat_prix'] . ' <br></br>  </td>
+       <th>Informations évènement </th>
+       <td width=80%> <b>Date</b> : ' . $facture['ev_date'] . ' <br></br> <b>Lieux </b> : ' . $facture['ev_lieux_id'] . '<br></br> <b> Catégorie </b> : ' . $facture['cat_nom'] . ' <br></br> <b> Prix </b> : ' . $facture['cat_prix'] . ' <br></br>  </td>
 
        
 
@@ -111,7 +118,7 @@ td, th /* Mettre une bordure sur les td ET les th */
 
        <th>Informations utilisateur</th>
 
-       <td>Prenom NOM <br> Adresse </br> <br> Ville </br> <br> entite_nom </br> </td>
+       <td><b>Prenom :</b> ' . $_SESSION['user']['inter_prenom'] . ' <br></br> <b>NOM</b> : ' . $_SESSION['user']['inter_nom'] . ' <br> <b>Adresse :</b> ' . $_SESSION['user']['adresse']['adr_num_rue'] . ' ' . $_SESSION['user']['adresse']['adr_rue'] . ' </br> <br> <b>Ville :</b> ' . $_SESSION['user']['adresse']['adr_ville'] . ' </br> <br> <b>Mail :</b> ' . $_SESSION['user']['inter_mail'] . '  </br> </td>
 
        
 

@@ -27,7 +27,7 @@ function getInternaute($bdd, $id)
 }
 function intEvenement($bdd, $id_ev)
 {
-  $query = "SELECT inter_nom, inter_prenom
+  $query = "SELECT inter_nom, inter_prenom, inter_mail
             FROM facture, internaute
             WHERE fac_inter_id = inter_id
             AND fac_ev_id = ?";

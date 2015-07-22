@@ -6,6 +6,11 @@
       "action"     => "list",
     ),
     array(
+      "name"       => "listadminEvenement",
+      "controller" => "evenement",
+      "action"     => "listadmin",
+    ),
+    array(
       "name"       => "showEvenement",
       "controller" => "evenement",
       "action"     => "show",
@@ -20,6 +25,11 @@
       "controller" => "evenement",
       "action"     => "achat",
     ), 
+    array(
+      "name"       => "modifierEvenement",
+      "controller" => "evenement",
+      "action"     => "modifier",
+    ),
     array(
       "name"       => "connexion",
       "controller" => "connexion",

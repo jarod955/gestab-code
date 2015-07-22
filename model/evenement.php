@@ -12,10 +12,10 @@ function listModel($bdd)
 function showEvenement($bdd, $id)
 {
   $query = 'SELECT * 
-            FROM internaute, evenement, lieu, adresse 
+            FROM internaute, evenement, lieu, adresse
             WHERE ev_inter_id = inter_id 
             AND ev_lieux_id = lieu_id 
-            AND lieu_adr_id = adr_id 
+            AND lieu_adr_id = adr_id
             AND ev_id = ?';
   $sth   = $bdd->prepare($query);
   $sth->execute(array($id));
