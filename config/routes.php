@@ -6,6 +6,11 @@
       "action"     => "list",
     ),
     array(
+      "name"       => "listadminEvenement",
+      "controller" => "evenement",
+      "action"     => "listadmin",
+    ),
+    array(
       "name"       => "showEvenement",
       "controller" => "evenement",
       "action"     => "show",

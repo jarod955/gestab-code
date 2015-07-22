@@ -34,7 +34,7 @@
       ),
       array(
         "libelle"   => "Modifier evenements",
-        "route"     => "modifierEvenement",
+        "route"     => "listadminEvenement",
         "condition" => isset($_SESSION['user']) && ($_SESSION['user']['inter_stat_id'] == 2 || $_SESSION['user']['inter_stat_id'] == 3),
       ),
       array(

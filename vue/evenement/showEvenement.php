@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
       <div class="well">
         <h2>Lieu</h2>
         <hr>
@@ -22,24 +22,13 @@
         </address>
       </div>
     </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
       <div class="well">
         <h2>Organisateur</h2>
         <hr>
         <strong><?= $evenement['inter_nom']?> <?= $evenement['inter_prenom']?></strong><br>
         <p>Courriel : <?= $evenement['inter_mail']?></a></p>
         <p>Site web : <a href="www.centrifugeusedeprojets.org">www.centrifugeusedeprojets.org</a></p>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <div class="well">
-        <h2>Participants</h2>
-        <hr>
-        <?php foreach ($participants as $participant): ?>
-        <?= $participant['inter_nom']; ?>
-        <?= $participant['inter_prenom']; ?></br>
-        </tr>
-        <?php endforeach ?>
       </div>
     </div>
   </div>
