@@ -56,7 +56,13 @@
           <div class="form-group">
               <label for="email" class="col-sm-4 control-label">Mot de passe :</label>
               <div class="col-sm-8">
-                  <input type="text" name="mdp" id="mdp" class="form-control" value=""/>
+                  <input type="password" name="mdp" id="mdp" class="form-control" value=""/>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="email" class="col-sm-4 control-label">Retappez votre mot de passe :</label>
+              <div class="col-sm-8">
+                  <input type="password" name="mdp2" id="mdp" class="form-control" value=""/>
               </div>
           </div>
         </div>
