@@ -8,7 +8,7 @@ if (isset($_SESSION['user']))
 {
   if (isset($_POST['modifier']))
   {
-      if(!empty($_POST['mdp']) AND !empty($_POST['mdp2']))
+      if(!empty($_POST['mdp']) AND (!empty($_POST['mdp2'])))
        {
           $idInternaute = $_SESSION['user']['inter_id'];
           $idAdresse    = $_SESSION['user']['adresse']['adr_id'];

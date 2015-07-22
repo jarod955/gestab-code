@@ -1,27 +1,29 @@
 <?php
  if (isset($_POST['inc']))
   {
-      $_SESSION['ajout']++;
+      $_SESSION['ajoutcat']++;
   }
   elseif (isset($_POST['dec']))
   {
-      if ($_SESSION['ajout'] > 1)
+      if ($_SESSION['ajoutcat'] > 1)
       {
-          $_SESSION['ajout']--;
+          $_SESSION['ajoutcat']--;
       }
   }
-  if (isset($_POST['incr']))
+
+  if (isset($_POST['plus']))
   {
-      $_SESSION['ajoute']++;
+      $_SESSION['ajoutcode']++;
   }
-  elseif (isset($_POST['decr']))
+  elseif (isset($_POST['moins']))
   {
-      if ($_SESSION['ajoute'] > 1)
+      if ($_SESSION['ajoutcode'] > 1)
       {
-          $_SESSION['ajoute']--;
+          $_SESSION['ajoutcode']--;
       }
   }
-  elseif (isset($_POST['send']))
+  
+  if (isset($_POST['send']))
   {
 
       $interid    = $_SESSION['user']['inter_id'];

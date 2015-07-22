@@ -5,7 +5,7 @@
                 <form class="form-horizontal" action="index.php?route=newEvenement" method="post">
                     <!-- Une petite astuce, si tu veux qu'un utilisateur remplisse obligatoirement un champ, indique le mot clé "required" dans le champ, ainsi pas besoin de pitite * pour lui dire attention c'est obligatoire 
 
-                    ici on va vérifier si une variable post nom existe et si oui on met sa valeur. En réalité quand ton utilisateur va ajouter un event avec le + ou - tout va se réinitialiser et c'est assez pénible, non ?
+              
                     -->
                     <fieldset>
                         <legend>Evenement</legend>
@@ -127,7 +127,7 @@
                         
                         <?php
                         // Boucle allant de 0 à ta variable de session où chaque tour de boucle incrémentera une variable $i de 1.
-                        for ($i=0; $i < $_SESSION['ajout']; $i++) { ?>
+                        for ($i=0; $i < $_SESSION['ajoutcat']; $i++) { ?>
                             <!-- Ici l'attribut name de tes inputs va varier en fonction de la valeu de la variable $i
                                 EX: Pour ton input de nom de catégorie son attribut name vaudra nom_categorie1 et au prochain tour de boucle vaudra nom_categorie2 puis nom_categorie3...
                             -->
@@ -171,8 +171,8 @@
                         <div class="form-group">
                             <label for="cat" class="col-sm-2 control-label">Ajouter / Supprimer des codes promo :</label>
                             <div class="col-sm-10">
-                                <input class="btn btn-default btn-xs" type="submit" name="incr" value="+" />
-                                <input class="btn btn-default btn-xs" type="submit" name="decr" value="-" />
+                                <input class="btn btn-default btn-xs" type="submit" name="plus" value="+" />
+                                <input class="btn btn-default btn-xs" type="submit" name="moins" value="-" />
                             </div>
                         </div>
                     </fieldset>
@@ -181,7 +181,7 @@
                         
                         <?php
                         // Boucle allant de 0 à ta variable de session où chaque tour de boucle incrémentera une variable $i de 1.
-                        for ($i=0; $i < $_SESSION['ajoute']; $i++) { ?>
+                        for ($i=0; $i < $_SESSION['ajoutcode']; $i++) { ?>
                             <!-- Ici l'attribut name de tes inputs va varier en fonction de la valeu de la variable $i
                                 EX: Pour ton input de nom de catégorie son attribut name vaudra nom_categorie1 et au prochain tour de boucle vaudra nom_categorie2 puis nom_categorie3...
                             -->
