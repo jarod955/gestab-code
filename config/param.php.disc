@@ -9,7 +9,7 @@
 /**
   Configuration des liens des pages
 */
-  $base   = "http://gestab.local/";
+  $base   = "http://localhost/gestab-code/";
   $head   = false;
 
 /**
