@@ -1,6 +1,5 @@
 <?php
-
-  if (isset($_POST['inc']))
+ if (isset($_POST['inc']))
   {
       $_SESSION['ajout']++;
   }
@@ -11,8 +10,20 @@
           $_SESSION['ajout']--;
       }
   }
+  if (isset($_POST['incr']))
+  {
+      $_SESSION['ajoute']++;
+  }
+  elseif (isset($_POST['decr']))
+  {
+      if ($_SESSION['ajoute'] > 1)
+      {
+          $_SESSION['ajoute']--;
+      }
+  }
   elseif (isset($_POST['send']))
   {
+
       $interid    = $_SESSION['user']['inter_id'];
       $nom        = $_POST["nom"];
       $numrue     = htmlspecialchars(trim($_POST["numerorue"]));
@@ -20,9 +31,7 @@
       $codepostal = htmlspecialchars(trim($_POST["codepostal"]));
       $ville      = htmlspecialchars(trim($_POST["ville"]));
       $salle      = htmlspecialchars(trim($_POST["salle"]));
-      $date1      = $_POST["date_event"].' '.str_replace ('-',':', $_POST['heure_event']);
-
-
+      $date1      = $_POST['annee'].'-'.$_POST['mois'].'-'.$_POST['jour'].'-'.$_POST['heure'].'-'.$_POST['minute'];   
 
       // Met ici tes requetes SQL
       // Tu te souviens que ton nom va ressembler par exemple à nom_categorie1 / nom_categorie2... bah ici il suffit de faire pareil quand tu récupère. Tu récupère nom_categorie + la valeur $i de ta boucle
@@ -32,10 +41,6 @@
       // $places = $_POST['cat'][$i]['nombre_places'];
       if(!empty($_POST['code']))
       {
-
-      $code = ($_POST['code']);
-      $reduc = ($_POST['reduc']);
-      $place = ($_POST['place']);
 
           foreach ($_POST['cat'] as $categorie)
           {
@@ -69,13 +74,16 @@
           $sth->execute();
           $evid = $bdd->lastInsertId();
           
+          foreach ($_POST['code'] as $codepromo)
+          {
           $sth = $bdd->prepare('INSERT INTO codepromo(code_nom, code_taux_reduc, code_nb, code_ev_id)VALUES(:code, :reduc, :place, :evid)');
-          $sth->bindValue(':code', $code, PDO::PARAM_STR);
-          $sth->bindValue(':reduc', $reduc, PDO::PARAM_INT);
-          $sth->bindValue(':place', $place, PDO::PARAM_INT);
+          $sth->bindValue(':code', $codepromo['nom_code'], PDO::PARAM_STR);
+          $sth->bindValue(':reduc', $codepromo['reduc'], PDO::PARAM_INT);
+          $sth->bindValue(':place', $codepromo['place'], PDO::PARAM_INT);
           $sth->bindValue(':evid', $evid, PDO::PARAM_INT);
           $sth->execute();
-          
+          }
+
           foreach ($categories as $cat_id => $cat_nb_place)
           {   
           $sth = $bdd->prepare('INSERT INTO evcat(evcat_ev_id, evcat_cat_id, evcat_nb_place)VALUES(:evid, :catid, :places)');
