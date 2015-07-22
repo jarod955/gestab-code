@@ -61,7 +61,7 @@
           $evlieuid = $bdd->lastInsertId();
           
 
-          $sth = $bdd->prepare('INSERT INTO evenement(ev_date, ev_libelle, ev_inter_id, ev_lieux_id, ev_datecre)VALUES(:dateev, :nom, :interid, :evlieuid, NOW())');
+          $sth = $bdd->prepare('INSERT INTO evenement(ev_date, ev_libelle, ev_inter_id, ev_lieux_id, ev_datcre)VALUES(:dateev, :nom, :interid, :evlieuid, NOW())');
           $sth->bindValue(':dateev', $date1, PDO::PARAM_STR);
           $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
           $sth->bindValue(':interid', $interid, PDO::PARAM_INT);
