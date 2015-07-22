@@ -19,7 +19,10 @@
                     <!-- Ici tu demande à l'utilisateur d'entrer une date, en allant voir le cours que je t'ai donné tu pourrais remarquer qu'il existe des moyens plus simple comme la balise que je vais te mettre ci-dessous -->
                     <fieldset>
                         <legend>Date</legend>
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                     <label for="nb_rue" class="col-sm-2 control-label">Jour</label>
                                     
                                         <select name="jour" id="jour" class="form-control">
@@ -29,7 +32,7 @@
                                         </select>
                                     
                         </div>
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                     <label for="nb_rue" class="col-sm-2 control-label">Mois</label>
                                     
                                         <select name="mois" id="mois" class="form-control">
@@ -39,7 +42,7 @@
                                         </select>
                                     
                         </div>
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                     <label for="nb_rue" class="col-sm-2 control-label">Annee</label>
                                     
                                         <select name="annee" id="annee" class="form-control">
@@ -50,7 +53,7 @@
                                     
 
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                     <label for="nb_rue" class="col-sm-2 control-label">Heure</label>
                                     
                                         <select name="heure" id="heure" class="form-control">
@@ -61,8 +64,7 @@
                                     
                                     
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                    <label for="Rue" class="col-sm-2 control-label">Minute</label>
+<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">                                    <label for="Rue" class="col-sm-2 control-label">Minute</label>
                                     
                                         <select name="minute" id="minute" class="form-control">
                                         <?php for ($minute = 00 ; $minute <= 59 ; $minute++): ?>
