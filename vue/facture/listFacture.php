@@ -47,10 +47,10 @@
    
     <td><?= $datetimfacture->format('d / m / Y') ?> à <?= $datetimfacture->format('H:i') ?></td>
     <!-- <td><?= $facture['code_nom']; ?></td> -->
-    <td>
+    <td><center>
       <a href="index.php?route=pdfFacture&id=<?= $facture['ev_id']; ?>" type="button" class="btn btn-primary">
      <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
-      </a>
+      </a></center>
     </td>
    </tr>
       
