@@ -41,8 +41,8 @@ while (isset($categories[$cpt]) && $check == false)
 {
   if(!empty($_POST['cat_'.$categories[$cpt]['cat_id']]))
   {
-    $categorieid  = $_POST['cat_'.$categories[$cpt]['cat_id']];
-    $check = true;
+    $categorie = $categories[$cpt];
+    $check     = true;
   }
   $cpt++;
 }
@@ -54,6 +54,7 @@ if ($check)
   $internauteid = $_POST["internauteid"];
   if (isset($_POST['achat']))
   {
+    $codepromoid = null;
     if(!empty($_POST["codepromoid"]))
     {
       $catprix     = $_POST["newprix"];
@@ -65,7 +66,7 @@ if ($check)
     }
     $catprix    = number_format($catprix ,1);
     $achatinfos = array (
-      'catid'   => $categorieid,
+      'catid'   => $categorie['cat_id'],
       'catprix' => $catprix,
       'evid'    => $evenementid,
       'intid'   => $internauteid,
