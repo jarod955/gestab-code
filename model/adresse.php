@@ -24,18 +24,31 @@
 
     return $sth->fetch(PDO::FETCH_ASSOC);
   }
-
-  function updateAdresse($bdd, $id, $rue, $adr, $vil, $cp)
+  function updateAdresse($bdd, $id, $numrue, $adr, $vil, $cp)
   {
     $query = "UPDATE adresse
-              SET adr_num_rue = :rue, adr_rue = :adr, adr_ville = :vil, adr_code_postal = :cp
+              SET adr_num_rue = :numrue, adr_rue = :adr, adr_ville = :vil, adr_code_postal = :cp, adr_datcre = NOW()
               WHERE adr_id = :id";
     $sth = $bdd->prepare($query);
-    $sth->bindValue(':rue', $rue, PDO::PARAM_STR);
+    $sth->bindValue(':id', $id, PDO::PARAM_INT);
+    $sth->bindValue(':numrue', $numrue, PDO::PARAM_INT);
     $sth->bindValue(':adr', $adr, PDO::PARAM_STR);
     $sth->bindValue(':vil', $vil, PDO::PARAM_STR);
     $sth->bindValue(':cp', $cp, PDO::PARAM_STR);
-    $sth->bindValue(':id', $id, PDO::PARAM_INT);
+    
     $sth->execute();
   }
+
+  function updateLieu($bdd, $id, $nom)
+  {
+    $query = "UPDATE lieu
+              SET lieu_nomSalle = :nom, lieu_datcre = NOW()
+              WHERE lieu_id = :id";
+    $sth = $bdd->prepare($query);
+    $sth->bindValue(':id', $id, PDO::PARAM_INT);
+    $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
+    $sth->execute();
+  }
+
+  
 ?>

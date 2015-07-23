@@ -20,7 +20,7 @@
           <div class="form-group">
               <label for="nom" class="col-sm-4 control-label">Nom evenement: </label>
               <div class="col-sm-8">
-                  <input type="text" name="nom_salle" id="nom" class="form-control" value="<?= $evenement['ev_libelle']?>" required />
+                  <input type="text" name="libelle" id="libelle" class="form-control" value="<?= $evenement['ev_libelle']?>" required />
               </div>
           </div>
           <div class="form-group">
@@ -32,25 +32,25 @@
           <div class="form-group">
               <label for="prenom" class="col-sm-4 control-label">Numero rue:</label>
               <div class="col-sm-8">
-                  <input type="text" name="adr_num_rue" id="prenom" class="form-control" value="<?= $evenement['adr_num_rue']?>" required />
+                  <input type="text" name="adr_num_rue" id="num" class="form-control" value="<?= $evenement['adr_num_rue']?>" required />
               </div>
           </div>
           <div class="form-group">
               <label for="rue" class="col-sm-4 control-label">Rue :</label>
               <div class="col-sm-8">
-                  <input type="text" name="adr_rue" id="numrue" class="form-control" value="<?= $evenement['adr_rue']?>" required />
+                  <input type="text" name="adr_rue" id="adrrue" class="form-control" value="<?= $evenement['adr_rue']?>" required />
               </div>
           </div>
           <div class="form-group">
               <label for="rue" class="col-sm-4 control-label">Ville :</label>
               <div class="col-sm-8">
-                  <input type="text" name="adr_ville" id="rue" class="form-control" value="<?= $evenement['adr_ville']?>" required />
+                  <input type="text" name="adr_ville" id="ville" class="form-control" value="<?= $evenement['adr_ville']?>" required />
               </div>
           </div>
           <div class="form-group">
               <label for="ville" class="col-sm-4 control-label">Code Postal:</label>
               <div class="col-sm-8">
-                  <input type="text" name="adr_code_postal" id="ville" class="form-control" value="<?= $evenement['adr_code_postal']?>" required />
+                  <input type="text" name="adr_code_postal" id="cp" class="form-control" value="<?= $evenement['adr_code_postal']?>" required />
               </div>
           </div>
           <div class="form-group">
@@ -132,7 +132,9 @@
       </div>
     </div>
   </div>
-  
+  <input type="hidden" name="lieuid" value="<?= $evenement['lieu_id']?>">
+  <input type="hidden" name="adrid" value="<?= $evenement['adr_id']?>">
+  <input type="hidden" name="evid" value="<?= $evenement['ev_id']?>">
 
   <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']['inter_stat_id'] > 1 && $_SESSION['user']['inter_stat_id'] < 4): ?>
     <div class="row">

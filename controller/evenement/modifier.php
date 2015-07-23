@@ -6,9 +6,17 @@ include('model/facture.php');
 //informations de l'evenement
 include('model/internaute.php');
 
-/*if(isset($_POST['modifier']))
+include('model/adresse.php');
+if (isset($_SESSION['user']))
+{
+	if(isset($_POST['modifier']))
   	
   	{
+  	  $evid = $_POST['evid'];
+      $lieuid = $_POST['lieuid'];
+  	  $adrid = $_POST['adrid'];
+
+  	  $libelle = $_POST['libelle'];
       $nomsalle = $_POST['nom_salle'];
       $numrue = $_POST['adr_num_rue'];
       $rue = $_POST['adr_rue'];
@@ -16,21 +24,24 @@ include('model/internaute.php');
       $codepostal = $_POST['adr_code_postal'];
       $date1      = $_POST['annee'].'-'.$_POST['mois'].'-'.$_POST['jour'].'-'.$_POST['heure'].'-'.$_POST['minute'];   
 
-            if(!empty($nomsalle) AND !empty($numrue)) AND (!empty($rue)) AND (!empty($ville)) AND (!empty($codepostal)) AND (!empty($date1)))
+      var_dump($evid, $lieuid, $adrid, $libelle, $nomsalle, $numrue, $rue, $ville, $codepostal, $date1);
+      
+
+            if(!empty($nomsalle) AND (!empty($libelle) AND (!empty($numrue)) AND (!empty($rue)) AND (!empty($ville)) AND (!empty($codepostal)) AND (!empty($date1))))
             {
             //$erreur = 'le mot de passe et le mot de passe de confirmation ne correspondent pas ';
-            updateInternautemdp($bdd, $idInternaute, $no, $pre, $mail, $tel, $mdp);
-            updateAdresse($bdd, $idAdresse, $numru, $ru, $vil, $cp);
+            updateEvenement($bdd, $evid, $libelle, $date1);
+            updateLieu($bdd, $lieuid, $nomsalle);
+            updateAdresse($bdd, $adrid, $numrue, $rue, $ville, $codepostal);
             success("<strong>Félicitation!</strong> Le mot de passe a bien été changé .");
-              
             } 
              else
             {
               //Les modifications dans la bdd
-              error("le mot de passe et le mot de passe de confirmation ne correspondent pas!");
+              error("Ca ne fonctionne pas");
               
             }
-    }*/
+	}
 
 $evenement   = showEvenement($bdd, $id);
 //liste des categories de l'evenement
@@ -53,8 +64,11 @@ foreach ($categories as $key => $categorie)
 
 	
 
+
+
 //pour le file d'ariane
 $breadcrumbs      = array("Evenement", "modifier");
 //la vue à afficher
 $pageInclude      = "evenement/modifierEvenement.php";
+}
 ?>

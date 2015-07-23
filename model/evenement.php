@@ -22,4 +22,15 @@ function showEvenement($bdd, $id)
   $sth->execute(array($id));
   return $sth->fetch(PDO::FETCH_ASSOC);
 }
+function updateEvenement($bdd, $id, $libelle, $date)
+{
+  $query = "UPDATE evenement
+            SET ev_libelle = :libelle, ev_date = :dat, ev_datmaj = NOW()
+            WHERE ev_id = :id";
+  $sth = $bdd->prepare($query);
+  $sth->bindValue(':id', $id, PDO::PARAM_INT);
+  $sth->bindValue(':libelle', $libelle, PDO::PARAM_STR);
+  $sth->bindValue(':dat', $date, PDO::PARAM_STR);
+  $sth->execute();
+}
 ?>
