@@ -52,8 +52,8 @@ $headerE = '
 </tr></table>
 ';
 
-$footer = '<div align="center">See <a href="http://mpdf1.com/manual/index.php">documentation manual</a></div>';
-$footerE = '<div align="center">See <a href="http://mpdf1.com/manual/index.php">documentation manual</a></div>';
+$footer = '<div align="center">Contact : danny.allaoui@luminances.com - +33(0) 608764040</div>';
+$footerE = '<div align="center">Contact : danny.allaoui@luminances.com - +33(0) 608764040</div>';
 
 
 $mpdf->SetHTMLHeader($header);
@@ -108,7 +108,7 @@ td, th /* Mettre une bordure sur les td ET les th */
    <tr>
 
        <th>Informations évènement </th>
-       <td width=80%> <b>Date</b> : ' . $facture['ev_date'] . ' <br></br> <b>Lieux </b> : ' . $facture['ev_lieux_id'] . '<br></br> <b> Catégorie </b> : ' . $facture['cat_nom'] . ' <br></br> <b> Prix </b> : ' . $facture['cat_prix'] . ' <br></br>  </td>
+       <td width=80%> <b>Date</b> : ' . $facture['ev_date'] . ' <br></br> <b>Salle </b> : ' . $facture['ev_lieux_id'] . '<br></br> <b> Catégorie </b> : ' . $facture['cat_nom'] . ' <br></br> <b> Prix </b> : ' . $facture['cat_prix'] . ' <br></br>  </td>
 
        
 
