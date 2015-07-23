@@ -50,9 +50,12 @@
               <label for="codepostal" class="col-sm-4 control-label">Jour :</label>
               <div class="col-sm-8">
                   <select name="jour" id="jour" class="form-control">
+                                        <option selected="selected"><?= $day ?></option>
                                         <?php for ($jour = 01 ; $jour <= 31 ; $jour++): ?>
-                                        <option><?= $day ?></option>
+                                        <option><?= $jour ?></option>
+                                        
                                         <?php endfor ?>
+                                        
                                         </select>
               </div>
           </div>
@@ -60,9 +63,11 @@
               <label for="telephone" class="col-sm-4 control-label">Mois :</label>
               <div class="col-sm-8">
                   <select name="mois" id="mois" class="form-control">
+                                        <option selected="selected"><?= $month ?></option>
                                         <?php for ($mois = 01 ; $mois <= 12 ; $mois++): ?>
-                                        <option><?= $month ?></option>
+                                        <option><?= $mois ?></option>
                                         <?php endfor ?>
+                                        
                                         </select>
               </div>
           </div>
@@ -70,9 +75,11 @@
               <label for="email" class="col-sm-4 control-label">Annee :</label>
               <div class="col-sm-8">
                   <select name="annee" id="annee" class="form-control">
+                                        <option selected="selected"><?= $year ?></option>
                                         <?php for ($annee = 2015 ; $annee <= 2050 ; $annee++): ?>
-                                        <option><?= $year ?></option>
+                                        <option><?= $annee ?></option>
                                         <?php endfor ?>
+                                        
                                         </select>
               </div>
           </div>
@@ -80,9 +87,11 @@
               <label for="email" class="col-sm-4 control-label">Heure :</label>
               <div class="col-sm-8">
                   <select name="heure" id="heure" class="form-control">
+                                       <option selected="selected"><?= $hour ?></option>
                                         <?php for ($heure = 00 ; $heure <= 23 ; $heure++): ?>
-                                        <option><?= $hour ?></option>
+                                        <option><?= $heure ?></option>
                                         <?php endfor ?>
+                                        
                                     </select>
               </div>
           </div>
@@ -90,9 +99,11 @@
               <label for="email" class="col-sm-4 control-label">Minute :</label>
               <div class="col-sm-8">
                   <select name="minute" id="minute" class="form-control">
+                                        <option selected="selected"><?= $minut ?></option>
                                         <?php for ($minute = 00 ; $minute <= 59 ; $minute++): ?>
-                                        <option><?= $minut ?></option>
+                                        <option><?= $minute ?></option>
                                         <?php endfor ?>
+                                        
                                         </select></br>
               </div>
           </div>

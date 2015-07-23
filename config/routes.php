@@ -86,9 +86,9 @@
       "action"     => "traitement",
     ),
     array(
-      "name"       => "suprCode",
+      "name"       => "supprCode",
       "controller" => "promo",
-      "action"     => "supr",
+      "action"     => "suppr",
     ),
     array(
       "name"       => "createMail",
