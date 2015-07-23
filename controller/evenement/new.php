@@ -169,7 +169,7 @@ if (isset($_POST['send']))
   if (!isset($_SESSION['ajoutcode']))
       $_SESSION['ajoutcode'] = 1;
 
-  $lead        = (isset($_SESSION['user'])) ? $_SESSION['user']['inter_nom'] : "";
+  $lead        = (isset($_SESSION['user'])) ? $_SESSION['user']['inter_prenom'] : "";
   $tagline     = "Ici vous pouvez creer des events";
   $breadcrumbs = array("Evenement", "Creation");
   // $evenements  = listModel($bdd);

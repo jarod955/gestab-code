@@ -11,7 +11,7 @@
         "condition" => !isset($_SESSION['user']),
       ),
       array(
-        "libelle"   => "Se deconnecter",
+        "libelle"   => "Se déconnecter",
         "route"     => "deconnexion",
         "condition" => isset($_SESSION['user']),
       ),
@@ -33,24 +33,24 @@
         "condition" => isset($_SESSION['user']),
       ),
       array(
-        "libelle"   => "Modifier evenements",
+        "libelle"   => "Creation évènement",
+        "route"     => "newEvenement",
+        "condition" => isset($_SESSION['user']) && ($_SESSION['user']['inter_stat_id'] == 2 || $_SESSION['user']['inter_stat_id'] == 3),
+      ),
+      array(
+        "libelle"   => "Modifier évènements",
         "route"     => "listadminEvenement",
+        "condition" => isset($_SESSION['user']) && ($_SESSION['user']['inter_stat_id'] == 2 || $_SESSION['user']['inter_stat_id'] == 3),
+      ),
+       array(
+        "libelle"   => "Gerer code promo",
+        "route"     => "codePromo",
         "condition" => isset($_SESSION['user']) && ($_SESSION['user']['inter_stat_id'] == 2 || $_SESSION['user']['inter_stat_id'] == 3),
       ),
       array(
         "libelle"   => "Factures",
         "route"     => "listFacture",
         "condition" => isset($_SESSION['user']),
-      ),
-      array(
-        "libelle"   => "Creation evenement",
-        "route"     => "newEvenement",
-        "condition" => isset($_SESSION['user']) && ($_SESSION['user']['inter_stat_id'] == 2 || $_SESSION['user']['inter_stat_id'] == 3),
-      ),
-      array(
-        "libelle"   => "Gerer code promo",
-        "route"     => "codePromo",
-        "condition" => isset($_SESSION['user']) && ($_SESSION['user']['inter_stat_id'] == 2 || $_SESSION['user']['inter_stat_id'] == 3),
       ),
        array(
         "libelle"   => "Créer un Administrateur",
@@ -59,7 +59,7 @@
       ),
        array(
         "libelle"   => "Gestion des utilisateurs",
-        "route"     => "gestionUsers",
+        "route"     => "gestionUtilisateurs",
         "condition" => isset($_SESSION['user']) && $_SESSION['user']['inter_stat_id'] == 3,
       ),
     )
