@@ -1,9 +1,11 @@
 <?php 
 function listModel($bdd)
 {
-  $query = 'SELECT ev_id, ev_libelle, ev_date, ev_lieux_id, lieu_nomSalle
-            FROM evenement, lieu
+  $query = 'SELECT ev_id, ev_libelle, ev_date, ev_lieux_id, lieu_nomSalle, count(evcat_cat_id) AS "nb_cat"
+            FROM evenement, lieu, evcat
             WHERE lieu_id = ev_lieux_id
+            AND ev_id = evcat_ev_id
+            GROUP BY ev_id
             ORDER BY ev_date DESC';
   $sth = $bdd->query($query);
 
