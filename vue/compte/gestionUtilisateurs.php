@@ -11,6 +11,7 @@
    <th>Reinitialiser Motdepasse</th>
   </tr>
     <?php foreach ($internautes as $internaute): ?>
+      <?php if($internaute['inter_datsup'] == null){ ?>
    <tr>
     <td><?= $internaute['inter_nom']; ?></td>
     <td><?= $internaute['inter_prenom']; ?></td>
@@ -21,15 +22,17 @@
     <?php $datetiminternaute = new DateTime($internaute['inter_datcre']); ?>
    
     <td><?= $datetiminternaute->format('d / m / Y') ?> à <?= $datetiminternaute->format('H:i') ?></td>
-     <td><center><a href="index.php?route=suprCode&idcode=<?= $internaute['inter_id']; ?>" type="button" class="btn btn-primary">
+     <td><center><a href="index.php?route=supprUtilisateurs&idinter=<?= $internaute['inter_id']; ?>" type="button" class="btn btn-primary">
      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
       </a></center>
     </td>
 
-     <td><center><a href="index.php?route=suprCode&idcode=<?= $internaute['inter_id']; ?>" type="button" class="btn btn-primary">
+     <td><center><a href="index.php?route=supprUtilisateursMdp&idinter=<?= $internaute['inter_id']; ?>" type="button" class="btn btn-primary">
      <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
       </a></center>
     </td>
+     <?php
+     } ?>
    </tr>
   <?php endforeach ?>
  </table>

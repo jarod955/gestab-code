@@ -61,6 +61,16 @@
       "action"     => "gestion",
     ),
     array(
+      "name"       => "supprUtilisateurs",
+      "controller" => "compte",
+      "action"     => "suppr",
+    ),
+    array(
+      "name"       => "supprUtilisateursMdp",
+      "controller" => "compte",
+      "action"     => "supprmdp",
+    ),
+    array(
       "name"       => "listFacture",
       "controller" => "facture",
       "action"     => "list",
