@@ -8,7 +8,7 @@
 
   return $sth->fetchAll(PDO::FETCH_ASSOC);
   }
-  function getCodePromot($bdd, $code, $evid)
+  function getCodePromotByCode($bdd, $code, $evid)
   {
     $query = "SELECT * 
               FROM codepromo 
@@ -19,6 +19,17 @@
       'nom'  => $code,
       'evid' => $evid
     ));
+
+    return $sth->fetch(PDO::FETCH_ASSOC);
+  }
+  function getCodePromot($bdd, $id)
+  {
+    $query = "SELECT *
+              FROM codepromo
+              WHERE code_id = :id";
+    $sth = $bdd->prepare($query);
+    $sth->bindValue(':id', $id, PDO::PARAM_INT);
+    $sth->execute();
 
     return $sth->fetch(PDO::FETCH_ASSOC);
   }

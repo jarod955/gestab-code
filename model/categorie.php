@@ -10,6 +10,17 @@ function listByEvenement($bdd, $id)
 
   return $sth->fetchAll(PDO::FETCH_ASSOC);
 }
+function getCategorie($bdd, $id)
+{
+  $query = "SELECT *
+            FROM categorie
+            WHERE cat_id = :id";
+  $sth = $bdd->prepare($query);
+  $sth->bindValue(':id', $id, PDO::PARAM_INT);
+  $sth->execute();
+
+  return $sth->fetch(PDO::FETCH_ASSOC);
+}
 function decrementCategorieModel($bdd)
 {
   $query = 'SELECT evcat_ev_id, evcat_cat_id, evcat_nb_pl 

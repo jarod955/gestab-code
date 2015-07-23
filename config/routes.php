@@ -24,7 +24,7 @@
       "name"       => "achatEvenement",
       "controller" => "evenement",
       "action"     => "achat",
-    ), 
+    ),
     array(
       "name"       => "modifierEvenement",
       "controller" => "evenement",
@@ -84,6 +84,11 @@
       "name"       => "pdfFacture",
       "controller" => "pdf",
       "action"     => "pdf",
+    ),
+    array(
+      "name"       => "achatCodePromo",
+      "controller" => "codePromot",
+      "action"     => "achat",
     ),
     array(
       "name"       => "codePromo",
