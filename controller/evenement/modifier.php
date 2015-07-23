@@ -24,7 +24,7 @@ if (isset($_SESSION['user']))
       $codepostal = $_POST['adr_code_postal'];
       $date1      = $_POST['annee'].'-'.$_POST['mois'].'-'.$_POST['jour'].'-'.$_POST['heure'].'-'.$_POST['minute'];   
 
-      var_dump($evid, $lieuid, $adrid, $libelle, $nomsalle, $numrue, $rue, $ville, $codepostal, $date1);
+      
       
 
             if(!empty($nomsalle))
