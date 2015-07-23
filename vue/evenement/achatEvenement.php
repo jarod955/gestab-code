@@ -22,9 +22,9 @@
                     <div class="panel-body">
                       <?php if (!empty($somme)): ?>
                         Reduction de : <?= $test = $categorie['cat_prix'] * $somme ?>
-                        Nouveau prix : <?= $categorie['cat_prix'] = $categorie['cat_prix'] - $test ?>
+                        Nouveau prix : <?= $newprix = $categorie['cat_prix'] - $test ?>
                         <input type="hidden" name="codepromoid" value="<?= $codepromo ?>">
-                        
+                        <input type="hidden" name="newprix" value="<?= $newprix ?>">
                       <?php else: ?>
                         <?= $categorie['cat_prix'] ?>
                       <?php endif ?>
