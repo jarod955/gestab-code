@@ -11,7 +11,7 @@
         "condition" => !isset($_SESSION['user']),
       ),
       array(
-        "libelle"   => "Se deconnecter",
+        "libelle"   => "Se déconnecter",
         "route"     => "deconnexion",
         "condition" => isset($_SESSION['user']),
       ),
@@ -33,12 +33,12 @@
         "condition" => isset($_SESSION['user']),
       ),
       array(
-        "libelle"   => "Creation evenement",
+        "libelle"   => "Creation évènement",
         "route"     => "newEvenement",
         "condition" => isset($_SESSION['user']) && ($_SESSION['user']['inter_stat_id'] == 2 || $_SESSION['user']['inter_stat_id'] == 3),
       ),
       array(
-        "libelle"   => "Modifier evenements",
+        "libelle"   => "Modifier évènements",
         "route"     => "listadminEvenement",
         "condition" => isset($_SESSION['user']) && ($_SESSION['user']['inter_stat_id'] == 2 || $_SESSION['user']['inter_stat_id'] == 3),
       ),
