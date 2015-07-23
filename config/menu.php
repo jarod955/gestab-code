@@ -59,7 +59,7 @@
       ),
        array(
         "libelle"   => "Gestion des utilisateurs",
-        "route"     => "gestionUsers",
+        "route"     => "gestionUtilisateurs",
         "condition" => isset($_SESSION['user']) && $_SESSION['user']['inter_stat_id'] == 3,
       ),
     )

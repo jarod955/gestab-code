@@ -14,6 +14,14 @@ function addInternaute($bdd, $nom, $prenom, $entiteid, $adrid, $pass_hache, $ema
   $sth->bindValue(':telephone', $telephone, PDO::PARAM_INT);
   $sth->execute();
 }
+function getInternautes($bdd)
+  {
+    $query = "SELECT *
+              FROM internaute";
+    $sth = $bdd->query($query);
+
+  return $sth->fetchAll(PDO::FETCH_ASSOC);
+  }
 function getInternaute($bdd, $id)
 {
   $query = "SELECT *
