@@ -43,7 +43,19 @@
               <div class="well" style="background-color: #FFF;">
                 <h3><?= ucfirst(lcfirst($categorie['cat_nom'])); ?></h3>
                 <p><strong>Prix:</strong> <?= $categorie['cat_prix']?> €</p>
-                <p><strong>Nombre de place restantes:</strong> <?= $categorie['place']['nb_place_restante']?> </p>
+                <p><strong>Nombre de place restantes:</strong></p> 
+                    <?php  
+                          if(!empty($categorie['place']['nb_total']))
+                          {
+                          ?>        <p> <?= $categorie['place']['nb_place_restante'] ?> </p> 
+                          <?php
+                          }
+                          else
+                          {
+                          ?>        <p> <?= $categorie['evcat_nb_place'] ?> </p>
+                          <?php
+                          }
+                    ?>
               </div>
             </div>
           <?php endforeach ?>
