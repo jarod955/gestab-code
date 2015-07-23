@@ -69,16 +69,16 @@ $html = '
 <h3>Cette facture fera office de place le jour venu.</h3>
 <p>Vous trouverez ci-dessous toutes les informations de votre évènement "' . $facture['ev_libelle'] . '", merci de la présenter à notre organisateur le jour venu. </p>
 <style type="text/css">
-      h1 { color: orange;
+      h1 { color: #0174DF;
            font-family: helvetica;
-           background: #0066CC none;
+           background: #A9E2F3 none;
            border: 6px #9999FF; 
            padding: 0.3em;
            text-align: center;
           letter-spacing: 0.3em;
 
           }  
-      h2 { color: orange; font-family: helvetica; background: #0066CC none; border: 6px #9999FF; padding: 0.3em; text-align: center; letter-spacing: 0.3em;}
+      h2 { color: #0174DF; font-family: helvetica; background: #A9E2F3 none; border: 6px #9999FF; padding: 0.3em; text-align: center; letter-spacing: 0.3em;}
       h3 { color : black; font-family: helvetica; background: #FFFFFF none; border: 3px dotted #0066CC; padding: 0.3em; text-align: center;}  
       table
 
