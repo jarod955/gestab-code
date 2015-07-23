@@ -27,13 +27,15 @@ if (isset($_SESSION['user']))
       var_dump($evid, $lieuid, $adrid, $libelle, $nomsalle, $numrue, $rue, $ville, $codepostal, $date1);
       
 
-            if(!empty($nomsalle) AND (!empty($libelle) AND (!empty($numrue)) AND (!empty($rue)) AND (!empty($ville)) AND (!empty($codepostal)) AND (!empty($date1))))
+            if(!empty($nomsalle))
             {
             //$erreur = 'le mot de passe et le mot de passe de confirmation ne correspondent pas ';
-            updateEvenement($bdd, $evid, $libelle, $date1);
-            updateLieu($bdd, $lieuid, $nomsalle);
             updateAdresse($bdd, $adrid, $numrue, $rue, $ville, $codepostal);
+            updateLieu($bdd, $lieuid, $nomsalle);
+            updateEvenement($bdd, $evid, $libelle, $date1);
             success("<strong>Félicitation!</strong> Le mot de passe a bien été changé .");
+            redirection($page = "index.php?route=listadminEvenement");
+
             } 
              else
             {
