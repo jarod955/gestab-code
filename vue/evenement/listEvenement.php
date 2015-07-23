@@ -12,6 +12,9 @@
             Catégories
           <?php endif ?>
           </span>
+          <?php if ($evenement['facture']): ?>
+            <span class="label label-warning">Deja inscrit</span>
+          <?php endif ?>
           <p>Séance du <?= $datetimEvenement->format('d / m / Y') ?> à <?= $datetimEvenement->format('H:i') ?><p>
           <p>Salle <?= $evenement['lieu_nomSalle']; ?></p>
           <a href="index.php?route=showEvenement&id=<?= $evenement['ev_id']; ?>" role="button">
