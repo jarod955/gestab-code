@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+  <form class="form-horizontal" action="index.php?route=modifierEvenement&id=<?= $evenement['ev_id']; ?>" method="post">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h2><?= ucfirst(lcfirst($evenement['ev_libelle'])); ?></h2>
       <h2>Séance du <?= $datetimEvenement->format('d / m / Y') ?> à <?= $datetimEvenement->format('H:i') ?></h2>
@@ -15,35 +16,41 @@
         <h2>Résumé de l'évenement</h2>
         <hr>
         <div class="row">
-          
+
+          <div class="form-group">
+              <label for="nom" class="col-sm-4 control-label">Nom evenement: </label>
+              <div class="col-sm-8">
+                  <input type="text" name="nom_salle" id="nom" class="form-control" value="<?= $evenement['ev_libelle']?>" required />
+              </div>
+          </div>
           <div class="form-group">
               <label for="nom" class="col-sm-4 control-label">Salle: </label>
               <div class="col-sm-8">
-                  <input type="text" name="nom" id="nom" class="form-control" value="<?= $evenement['lieu_nomSalle']?>" required />
+                  <input type="text" name="nom_salle" id="nom" class="form-control" value="<?= $evenement['lieu_nomSalle']?>" required />
               </div>
           </div>
           <div class="form-group">
               <label for="prenom" class="col-sm-4 control-label">Numero rue:</label>
               <div class="col-sm-8">
-                  <input type="text" name="prenom" id="prenom" class="form-control" value="<?= $evenement['adr_num_rue']?>" required />
+                  <input type="text" name="adr_num_rue" id="prenom" class="form-control" value="<?= $evenement['adr_num_rue']?>" required />
               </div>
           </div>
           <div class="form-group">
               <label for="rue" class="col-sm-4 control-label">Rue :</label>
               <div class="col-sm-8">
-                  <input type="text" name="numrue" id="numrue" class="form-control" value="<?= $evenement['adr_rue']?>" required />
+                  <input type="text" name="adr_rue" id="numrue" class="form-control" value="<?= $evenement['adr_rue']?>" required />
               </div>
           </div>
           <div class="form-group">
               <label for="rue" class="col-sm-4 control-label">Ville :</label>
               <div class="col-sm-8">
-                  <input type="text" name="rue" id="rue" class="form-control" value="<?= $evenement['adr_ville']?>" required />
+                  <input type="text" name="adr_ville" id="rue" class="form-control" value="<?= $evenement['adr_ville']?>" required />
               </div>
           </div>
           <div class="form-group">
               <label for="ville" class="col-sm-4 control-label">Code Postal:</label>
               <div class="col-sm-8">
-                  <input type="text" name="ville" id="ville" class="form-control" value="<?= $evenement['adr_code_postal']?>" required />
+                  <input type="text" name="adr_code_postal" id="ville" class="form-control" value="<?= $evenement['adr_code_postal']?>" required />
               </div>
           </div>
           <div class="form-group">
@@ -130,7 +137,7 @@
   <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']['inter_stat_id'] > 1 && $_SESSION['user']['inter_stat_id'] < 4): ?>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-        <p><a class="btn btn-primary btn-lg" href="index.php?route=listFacture" role="button">Modifier</a></p>
+        <input type="submit" class="btn btn-primary" name="modifier" value="Modifier" />
       </div>
     </div>
   <?php else: ?>

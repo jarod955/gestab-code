@@ -5,6 +5,33 @@ include('model/categorie.php');
 include('model/facture.php');
 //informations de l'evenement
 include('model/internaute.php');
+
+/*if(isset($_POST['modifier']))
+  	
+  	{
+      $nomsalle = $_POST['nom_salle'];
+      $numrue = $_POST['adr_num_rue'];
+      $rue = $_POST['adr_rue'];
+      $ville = $_POST['adr_ville'];
+      $codepostal = $_POST['adr_code_postal'];
+      $date1      = $_POST['annee'].'-'.$_POST['mois'].'-'.$_POST['jour'].'-'.$_POST['heure'].'-'.$_POST['minute'];   
+
+            if(!empty($nomsalle) AND !empty($numrue)) AND (!empty($rue)) AND (!empty($ville)) AND (!empty($codepostal)) AND (!empty($date1)))
+            {
+            //$erreur = 'le mot de passe et le mot de passe de confirmation ne correspondent pas ';
+            updateInternautemdp($bdd, $idInternaute, $no, $pre, $mail, $tel, $mdp);
+            updateAdresse($bdd, $idAdresse, $numru, $ru, $vil, $cp);
+            success("<strong>Félicitation!</strong> Le mot de passe a bien été changé .");
+              
+            } 
+             else
+            {
+              //Les modifications dans la bdd
+              error("le mot de passe et le mot de passe de confirmation ne correspondent pas!");
+              
+            }
+    }*/
+
 $evenement   = showEvenement($bdd, $id);
 //liste des categories de l'evenement
 $categories  = listByEvenement($bdd, $evenement['ev_id']);
