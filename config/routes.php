@@ -56,7 +56,7 @@
       "action"     => "new",
     ),
     array(
-      "name"       => "gestionUsers",
+      "name"       => "gestionUtilisateurs",
       "controller" => "compte",
       "action"     => "gestion",
     ),
