@@ -44,8 +44,7 @@
                               }
 
                               $codePromoNb = placesRestantesByCodePromo($bdd, $codepromovalide['code_id'], $codepromovalide['code_ev_id']);
-                              
-                              var_dump($codepromovalide);
+                             
                               if(empty($codePromoNb['code_pris'])) 
                               {
                                 

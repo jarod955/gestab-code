@@ -15,7 +15,7 @@ function placesRestantesByCodePromo($bdd, $idcod)
                 }
 
                 $codePromoNb = placesRestantesByCodePromo($bdd, $codepromovalide['code_id']);
-                var_dump($codePromoNb);
+                
                 exit;
 
     if (empty($codePromoNb['code_restant'])) {
