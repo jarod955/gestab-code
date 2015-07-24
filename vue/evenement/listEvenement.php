@@ -3,7 +3,7 @@
     <?php $datetimEvenement = new DateTime($evenement['ev_date']); ?>
     <div class="col-md-12">
       <div class="well">
-          <h2>Séance du <?= $datetimEvenement->format('d / m / Y') ?> à <?= $datetimEvenement->format('H:i') ?></h2>
+          <h2><?= ucfirst(lcfirst($evenement['ev_libelle'])); ?> <?= $datetimEvenement->format('d / m / Y') ?> à <?= $datetimEvenement->format('H:i') ?></h2>
           <span class="label label-info">
           <?= $evenement['nb_cat']; ?>
           <?php if ($evenement['nb_cat'] == 1): ?>

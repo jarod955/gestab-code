@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <h2><?= ucfirst(lcfirst($evenement['ev_libelle'])); ?></h2>
-      <h2>Séance du <?= $datetimEvenement->format('d / m / Y') ?> à <?= $datetimEvenement->format('H:i') ?></h2>
+      <h2><?= ucfirst(lcfirst($evenement['ev_libelle'])); ?> <?= $datetimEvenement->format('d / m / Y') ?> à <?= $datetimEvenement->format('H:i') ?></h2>
+     
       <p>
         Vous allez être Centrifugé ?
         Vous devez rencontrer l’animateur de la séance pour vous assurez que vous en tirerez un réel bénéfice.

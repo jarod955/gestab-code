@@ -2,8 +2,7 @@
   <div class="row">
   <form class="form-horizontal" action="index.php?route=modifierEvenement&id=<?= $evenement['ev_id']; ?>" method="post">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <h2><?= ucfirst(lcfirst($evenement['ev_libelle'])); ?></h2>
-      <h2>Séance du <?= $datetimEvenement->format('d / m / Y') ?> à <?= $datetimEvenement->format('H:i') ?></h2>
+      <h2><?= ucfirst(lcfirst($evenement['ev_libelle'])); ?> <?= $datetimEvenement->format('d / m / Y') ?> à <?= $datetimEvenement->format('H:i') ?></h2>
       <p>
         Afin de modifier l'évenement, il vous suffit de remplacer les champs souhaités par les nouveaux et de cliquer sur le bouton modifier.
       </p>
