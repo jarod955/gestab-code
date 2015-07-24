@@ -84,16 +84,6 @@ if (isset($_SESSION['user']))
 
       success("<strong>Félicitation!</strong> le compte a bien été modifié les changements seront pris en compte lors de la prochaine connexion.");
   }
-
-  if (isset($_POST['supprimer']))
-  {
-    $req = $bdd->prepare('UPDATE internaute SET inter_datsup = NOW() WHERE inter_id = :interid');
-    $req->execute(array(
-      'interid' => $interid,
-      ));
-    success("<strong>Félicitation!</strong> le compte a bien été supprimé.");
-  }
-
   $nom         = $_SESSION['user']['inter_nom'];
   $interid     = $_SESSION['user']['inter_id'];
   $email       = $_SESSION['user']['inter_mail'];
@@ -103,6 +93,16 @@ if (isset($_SESSION['user']))
   $rue         = $_SESSION['user']['adresse']['adr_rue'];
   $ville       = $_SESSION['user']['adresse']['adr_ville'];
   $codepostal  = $_SESSION['user']['adresse']['adr_code_postal'];
+  if (isset($_POST['supprimer']))
+  {
+    $req = $bdd->prepare('UPDATE internaute SET inter_datsup = NOW() WHERE inter_id = :interid');
+    $req->execute(array(
+      'interid' => $interid,
+      ));
+    success("<strong>Félicitation!</strong> le compte a bien été supprimé.");
+  }
+
+  
   if ($_SESSION['user']['entite'] != false)
   {
     $entite      = $_SESSION['user']['entite']['entite_nom'];
