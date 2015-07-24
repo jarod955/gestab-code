@@ -65,7 +65,7 @@
   </div>
   
 
-  <?php if ($facture != false): ?>
+  <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']['inter_stat_id'] > 0 && $_SESSION['user']['inter_stat_id'] < 4 && $facture != false): ?>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
         <p><a class="btn btn-primary btn-lg" href="index.php?route=listFacture" role="button">Deja inscrit</a></p>

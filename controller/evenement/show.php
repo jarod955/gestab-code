@@ -9,8 +9,10 @@ $evenement   = showEvenement($bdd, $id);
 //liste des categories de l'evenement
 $categories  = listByEvenement($bdd, $evenement['ev_id']);
 //recuperer la facture si elle existe, sinon null
-$facture     = getFacture($bdd, $_SESSION['user']['inter_id'], $evenement['ev_id']);
 
+if (isset($_SESSION['user'])){
+$facture     = getFacture($bdd, $_SESSION['user']['inter_id'], $evenement['ev_id']);
+}
 $participants = intEvenement($bdd, $evenement['ev_id']);
 //recuperation du nombre de place par categorie
 foreach ($categories as $key => $categorie)
