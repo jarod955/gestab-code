@@ -8,6 +8,8 @@ $lead             = "BIENVENUE SUR LA MAQUETTE DE RESERVATION";
 $tagline          = "Ici vous avez la possibilité de vous inscrire aux évenements.";
 $evenement        = showEvenement($bdd, $id);
 $categories       = listByEvenement($bdd, $evenement['ev_id']);
+foreach ($categories as $key => $categorie)
+  $categories[$key]['place'] = placesRestantesByCategorie($bdd, $evenement['ev_id'], $categorie['cat_id']);
 $breadcrumbs      = array("Billeterie");
 $pageInclude      = "evenement/achatEvenement.php";
 $datetimEvenement = new DateTime($evenement['ev_date']);
@@ -51,7 +53,7 @@ if (isset($_POST['categorieid']) && isset($_POST['evenementid']))
 
       $requete = construit_url_paypal();
       $requete = $requete."&METHOD=SetExpressCheckout".
-          "&CANCELURL=".urlencode("http://localhost/gestab-code/index.php?route=listEvenement").
+          "&CANCELURL=".urlencode("http://www.google.fr").
           "&RETURNURL=".urlencode("http://localhost/gestab-code/index.php?route=traitementPaypal"."&amt=".$_SESSION['achat']['catprix']."&catid=".$_SESSION['achat']['catid']."&evid=".$_SESSION['achat']['evid']."&intid=".$_SESSION['achat']['intid']."&codeid=".$_SESSION['achat']['codeid']).
           "&AMT=".$_SESSION['achat']['catprix'].
           "&CURRENCYCODE=EUR".

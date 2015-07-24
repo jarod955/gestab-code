@@ -59,7 +59,24 @@
                   <form class="form-horizontal" action="index.php?route=achatCodePromo" method="post">
                     <input type="hidden" name="categorieid" value="<?= $categorie['cat_id']?>">
                     <input type="hidden" name="evenementid" value="<?= $evenement['ev_id']?>">
-                    <input type="submit" class="btn btn-primary" value="Acheter" />
+                    <?php var_dump($categorie['place']) ?>
+                    <?php 
+                        if(empty($categorie['place']['nb_place_prise'])) 
+                        {
+                            ?><input type="submit" class="btn btn-primary" value="Acheter" /><?php 
+                             
+                        } 
+                        elseif($categorie['place']['nb_place_restante'] > 0)
+                        {
+                            
+                          ?><input type="submit" class="btn btn-primary" value="Acheter" />
+                        <?php
+                        } 
+                        else
+                          {
+                            ?><input class="btn btn-primary" value="Plus de place" /><?php
+                        } 
+                    ?>
                   </form>
                 </div>
               </div>

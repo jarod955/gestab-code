@@ -36,8 +36,8 @@ if (isset($_SESSION['user']))
             success("<strong>Félicitation!</strong> Le mot de passe a bien été changé .");
             redirection($page = "index.php?route=listadminEvenement");
 
-            } 
-             else
+            }             else 
+
             {
               //Les modifications dans la bdd
               error("Ca ne fonctionne pas");

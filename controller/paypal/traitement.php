@@ -46,7 +46,7 @@ else
 
     	addFacture($bdd, $evenementid, $internauteid, $categorieid, $codepromoid);
 
-    	redirection($page = "index.php?route=listEvenement");
+    	redirection($page = "http://localhost/gestab-code/index.php?route=listFacture");
 
 		}
     	else{// On affiche la page avec les remerciements, et tout le tralala...

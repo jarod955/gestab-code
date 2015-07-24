@@ -18,31 +18,17 @@
     <td><a href="index.php?route=showEvenement&id=<?= $facture['ev_id']; ?>"><?= $facture['ev_libelle']; ?></a></td>
     <td><?= $facture['cat_nom']; ?></td>
     
-    <?php 
+    <td><?php 
     
     if(!empty($facture['fac_code_id']))
-    {
-              function listCode($bdd, $id_code)
-              {
-              $query = "SELECT code_id, code_taux_reduc
-              FROM  codepromo, facture
-              WHERE code_id = :fac_code_id";
-              $sth   = $bdd->prepare($query);
-              $sth->execute(array(
-              ':fac_code_id' => $id_code
-              ));
-
-              return $sth->fetch(PDO::FETCH_ASSOC);
-            }
-              $test = listCode($bdd, $facture['fac_code_id']);
-            
-    ?><td><?= $facture['cat_prix'] - $reduction = $facture['cat_prix'] * $test['code_taux_reduc'] / 100; ?></td> <?php 
+    {        
+    ?><?= $facture['cat_prix'] - $reduction = $facture['cat_prix'] * $facture['code_taux_reduc'] / 100; ?> <?php 
     }
     else{
-    ?><td><?= $facture['cat_prix']; ?></td>  <?php 
+    ?><?= $facture['cat_prix']; ?> <?php 
     } 
     ?>
-    
+    </td> 
     <?php $datetimfacture = new DateTime($facture['fac_datcre']); ?>
    
     <td><?= $datetimfacture->format('d / m / Y') ?> à <?= $datetimfacture->format('H:i') ?></td>

@@ -4,9 +4,10 @@
   function listFacture($bdd, $id_inter)
   {
     $query = "SELECT *
-              FROM facture, categorie, evenement
+              FROM facture, categorie, evenement, codepromo
               WHERE fac_ev_id = ev_id
               AND fac_cat_id = cat_id
+              AND fac_code_id = code_id
               AND fac_inter_id = ?";
     $sth   = $bdd->prepare($query);
     $sth->execute(array($id_inter));
