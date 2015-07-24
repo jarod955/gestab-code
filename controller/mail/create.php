@@ -8,41 +8,74 @@ $pageInclude      = "mail/createMail.php";
 ?>
 
 <?php
-// TEST FONCTION MAIL() PHP
-// CREEZ UNE FICHIER email.php
 
-// *** A configurer
-$to = "thomas.jomeau@gmail.com";  
-$from  = "postmaster@humansurfer.com";  
+ //----------------------------------------------- 
+ //DECLARE LES VARIABLES 
+ //----------------------------------------------- 
 
-// *** Laisser tel quel
-$jour  = date("d-m-Y");
-$heure = date("H:i");
+ $destinataire='thomas.jomeau@gmail.com';
+ $email_expediteur='admin@gestab.fr'; 
+ $email_reply='admin@gestab.fr';
 
-$sujet = "Essai Mail - $jour $heure";
+ $message_texte='Bonjour,'."\n\n".'Voici un message au format texte'; 
+ $message_html='<html> 
+ <head> 
+ <t>Titre</title> 
+ </head> 
+ <body>Test de message</body> 
+ </html>'; 
+  //----------------------------------------------- 
+  //GENERE LA FRONTIERE DU MAIL ENTRE TEXTE ET HTML 
+  //----------------------------------------------- 
 
-$contenu = "";
-$contenu .= "<html> \n";
-$contenu .= "<head> \n";
-$contenu .= "<title> TEST </title> \n";
-$contenu .= "</head> \n";
-$contenu .= "<body> \n";
-$contenu .= "Mail au format HTML simple avec la fonction PHP mail().<br> <b>$sujet </b> <br> \n";
-$contenu .= "</body> \n";	
-$contenu .= "</HTML> \n";
+ $frontiere = '-----=' . md5(uniqid(mt_rand())); 
 
-$headers  = "MIME-Version: 1.0 \n";
-$headers .= "Content-Transfer-Encoding: 8bit \n";
-$headers .= "Content-type: text/html; charset=utf-8 \n";
-$headers .= "From: $from  \n";
-// $headers .= "Disposition-Notification-To: $from  \n"; // accuse de reception
-var_dump($to, $sujet, $contenu, $headers);
-exit;
+  //----------------------------------------------- 
+  //HEADERS DU MAIL 
+  //----------------------------------------------- 
+  $headers = 'From: "Nom" <'.$email_expediteur.'>'."\n"; 
+  $headers .= 'Return-Path: <'.$email_reply.'>'."\n"; 
+  $headers .= 'MIME-Version: 1.0'."\n"; 
+  $headers .= 'Content-Type: multipart/alternative; boundary="'.$frontiere.'"'; 
 
-$verif_envoi_mail = TRUE;
+ //----------------------------------------------- 
+ //MESSAGE TEXTE 
+ //----------------------------------------------- 
+ $message  = 'This is a multi-part message in MIME format.'."\n\n"; 
+ $message .= '--'.$frontiere."\n"; 
+ $message .= 'Content-Type: text/plain; charset="iso-8859-1"'."\n"; 
+ $message .= 'Content-Transfer-Encoding: 8bit'."\n\n"; 
+ $message .= $message_texte."\n\n"; 
+ //----------------------------------------------- 
+ //MESSAGE HTML 
+ //----------------------------------------------- 
+ $message .= '--'.$frontiere."\n";
+ $message .= 'Content-Type: text/html; charset="iso-8859-1"'."\n"; 
+ $message .= 'Content-Transfer-Encoding: 8bit'."\n\n"; 
+ $message .= $message_html."\n\n"; 
+
+ $message .= '--'.$frontiere."\n"; 
+
+     if(mail($destinataire,$sujet,$message,$headers)) 
+     { 
+          echo 'Le mail a été envoyé'; 
+     } 
+     else 
+     { 
+          echo 'Le mail n\'a pu être envoyé'; 
+     } 
+?>
+
+
+
+
+
+
+
+<!-- $verif_envoi_mail = TRUE;
 
 $verif_envoi_mail = @mail ($to, $sujet, $contenu, $headers);
  
 if ($verif_envoi_mail === FALSE) echo " ### Verification Envoi du Mail=$verif_envoi_mail - Erreur envoi mail <br> \n";
 else echo " *** Verification Envoi du Mail=$verif_envoi_mail - Mail envoy&eacute; avec succ&egrave;s de $to vers $from <br> avec comme sujet: $sujet \n"; 
-?>
+?> -->
