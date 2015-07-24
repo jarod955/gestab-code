@@ -52,8 +52,8 @@ $headerE = '
 </tr></table>
 ';
 
-$footer = '<div align="center">Contact : danny.allaoui@luminances.com - +33(0) 608764040</div>';
-$footerE = '<div align="center">Contact : danny.allaoui@luminances.com - +33(0) 608764040</div>';
+$footer = '<div align="center">Contact : danny.allaoui@luminances.com - +33(0) 6 08 76 40 40</div>';
+$footerE = '<div align="center">Contact : danny.allaoui@luminances.com - +33(0) 6 08 76 40 40</div>';
 
 
 $mpdf->SetHTMLHeader($header);
