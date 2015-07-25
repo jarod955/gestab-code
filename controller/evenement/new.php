@@ -46,51 +46,51 @@ if (isset($_POST['send']))
      if(!empty($_POST['code']))
       {
 
-      foreach ($_POST['code'] as $codepromo)
-      {
-      if(is_numeric($codepromo['place']) || is_numeric($codepromo['reduc']))
-      {
-                  foreach ($_POST['cat'] as $categorie)
-                  {
-                  addCategorie($bdd, $categorie['nom_categorie'], $categorie['prix']);
-                  $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
-                  }
-                  
-                  addAdresse($bdd, $numrue, $rue, $ville, $codepostal);
-                  $adrid = $bdd->lastInsertId();
-                  
-                  addLieu($bdd, $salle, $adrid);
-                  $evlieuid = $bdd->lastInsertId();
+          foreach ($_POST['code'] as $codepromo)
+          {
+              if ($codepromo['place'] >=1 && $codepromo['place'] <= 10 AND $codepromo['reduc'] >=1 && $codepromo['reduc'] <= 10)
+              //if(is_numeric($codepromo['place']) || is_numeric($codepromo['reduc']))
+              {
+                          foreach ($_POST['cat'] as $categorie)
+                          {
+                          addCategorie($bdd, $categorie['nom_categorie'], $categorie['prix']);
+                          $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
+                          }
+                          
+                          addAdresse($bdd, $numrue, $rue, $ville, $codepostal);
+                          $adrid = $bdd->lastInsertId();
+                          
+                          addLieu($bdd, $salle, $adrid);
+                          $evlieuid = $bdd->lastInsertId();
 
-                  addEvenement($bdd, $date1, $nom, $interid, $evlieuid);
-                  $evid = $bdd->lastInsertId();
+                          addEvenement($bdd, $date1, $nom, $interid, $evlieuid);
+                          $evid = $bdd->lastInsertId();
+           
+                          if ($codepromo['reduc'] || $codepromo['place'] < 0){
+                          $codepromo['reduc'] = abs($codepromo['reduc']); # code...
+                          $codepromo['place'] = abs($codepromo['place']);
 
-                  
-                           
-                  if ($codepromo['reduc'] || $codepromo['place'] < 0){
-                  $codepromo['reduc'] = abs($codepromo['reduc']); # code...
-                  $codepromo['place'] = abs($codepromo['place']);
-
-                  addCode($bdd, $codepromo['nom_code'], $codepromo['reduc'], $codepromo['place'], $evid);
-                  }
-                  else{
-                  addCode($bdd, $codepromo['nom_code'], $codepromo['reduc'], $codepromo['place'], $evid);
-                  }
-                  
-                  foreach ($categories as $cat_id => $cat_nb_place)
-                  {   
-                  addEvcat($bdd, $evid, $cat_id, $cat_nb_place);
-                  }
-                  
-                  success("L'événement à bien été enregistré.");
-      }
-      else{
-        error("La reduction ou le nombre de code promo doit etre de type numerique");
-      }
-      }
-
+                          addCode($bdd, $codepromo['nom_code'], $codepromo['reduc'], $codepromo['place'], $evid);
+                          }
+                          else{
+                          addCode($bdd, $codepromo['nom_code'], $codepromo['reduc'], $codepromo['place'], $evid);
+                          }
+                          
+                          foreach ($categories as $cat_id => $cat_nb_place)
+                          {   
+                          addEvcat($bdd, $evid, $cat_id, $cat_nb_place);
+                          }
+                          
+                          success("L'événement à bien été enregistré.");
+              }
+              else{
+              error("La reduction ou le nombre de code promo doit etre de type numerique");
+              }
           }
-          else{
+
+    }
+    else
+    {
 
           foreach ($_POST['cat'] as $categorie)
           {
@@ -113,11 +113,7 @@ if (isset($_POST['send']))
           }
 
           success("L'événement à bien été enregistré.");
-          }
-
-      
-
-    
+    }
             
   }
   else
