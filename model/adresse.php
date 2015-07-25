@@ -1,18 +1,4 @@
 <?php
-  function addAdresse($bdd, $numrue, $rue, $ville, $codepostal)
-  {
-    $query = "INSERT INTO adresse(adr_num_rue, adr_rue, adr_ville, adr_code_postal)
-              VALUES(:numrue, :rue, :ville, :codepostal)";
-    $sth = $bdd->prepare($query);
-    $sth->bindValue(':numrue', $numrue, PDO::PARAM_INT);
-    $sth->bindValue(':rue', $rue, PDO::PARAM_STR);
-    $sth->bindValue(':ville', $ville, PDO::PARAM_STR);
-    $sth->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
-    $sth->execute();
-
-    return $bdd->lastInsertId();
-  }
-
   function getAdresse($bdd, $id)
   {
     $query = "SELECT *
@@ -49,6 +35,5 @@
     $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
     $sth->execute();
   }
-
   
 ?>

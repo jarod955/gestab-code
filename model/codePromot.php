@@ -33,4 +33,16 @@
 
     return $sth->fetch(PDO::FETCH_ASSOC);
   }
+   $sth = $bdd->prepare('INSERT INTO codepromo(code_nom, code_taux_reduc, code_nb, code_ev_id, code_datcre)VALUES(:code, :reduc, :place, :evid, NOW())');
+  function addCode($bdd, $nom, $reduc, $place, $evid)
+  {
+    $query = "INSERT INTO codepromo(code_nom, code_taux_reduc, code_nb, code_ev_id, code_datcre)
+              VALUES(:code, :reduc, :place, :evid, NOW())";
+    $sth = $bdd->prepare($query);
+    $sth->bindValue(':dateev', $date, PDO::PARAM_INT);
+    $sth->bindValue(':nom', $libelle, PDO::PARAM_STR);
+    $sth->bindValue(':interid', $interid, PDO::PARAM_STR);
+    $sth->bindValue(':evlieuid', $lieuid, PDO::PARAM_STR);
+    $sth->execute();
+  }
  ?>

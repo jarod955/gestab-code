@@ -33,4 +33,5 @@ function updateEvenement($bdd, $id, $libelle, $date)
   $sth->bindValue(':dat', $date, PDO::PARAM_STR);
   $sth->execute();
 }
+
 ?>
