@@ -189,6 +189,8 @@ if (isset($_POST['send']))
           $_SESSION['codepostal'] = $_POST['codepostal'];
       if (isset($_POST['ville']))
           $_SESSION['ville'] = $_POST['ville'];
+      if (isset($_POST['salle']))
+          $_SESSION['salle'] = $_POST['salle'];
   }
 
   // Déclaration de variables
