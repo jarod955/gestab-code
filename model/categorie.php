@@ -63,4 +63,13 @@ function placesRestantesByCategorie($bdd, $idEnv, $idCat)
 
   return $sth->fetch(PDO::FETCH_ASSOC);
 }
+function addCategorie($bdd, $nom, $prix)
+{
+  $query = "INSERT INTO categorie(cat_nom, cat_prix, cat_datcre)
+            VALUES(:nom, :prix, NOW())";
+  $sth = $bdd->prepare($query);
+  $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
+  $sth->bindValue(':prix', $prix);
+  $sth->execute();
+}
 ?>

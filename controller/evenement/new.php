@@ -1,12 +1,9 @@
-<?php
-  $lead        = (isset($_SESSION['user'])) ? $_SESSION['user']['inter_prenom'] : "";
-  $tagline     = "Ici vous pouvez creer des events";
-  $breadcrumbs = array("Evenement", "Creation");
-  // $evenements  = listModel($bdd);
-  $pageInclude = "evenement/newEvenement.php";
-?>
-<?php
 
+
+
+<?php
+  include('model/categorie.php');
+  
  if (isset($_POST['inc']))
   {
       $_SESSION['ajoutcat']++;
@@ -54,14 +51,11 @@ if (isset($_POST['send']))
 
       foreach ($_POST['code'] as $codepromo)
       {
-      if(is_numeric($codepromo['place'] || is_numeric($codepromo['reduc'])))
+      if(is_numeric($codepromo['place']) || is_numeric($codepromo['reduc']))
       {
                   foreach ($_POST['cat'] as $categorie)
                   {
-                  $sth = $bdd->prepare("INSERT INTO categorie(cat_nom, cat_prix, cat_datcre)VALUES(:nom, :prix, NOW())");
-                  $sth->bindValue(':nom', $categorie['nom_categorie'], PDO::PARAM_STR);
-                  $sth->bindValue(':prix', $categorie['prix']);
-                  $sth->execute();
+                  addCategorie($bdd, $categorie['nom_categorie'], $categorie['prix']);
                   $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
                   }
                   
@@ -211,5 +205,9 @@ if (isset($_POST['send']))
   if (!isset($_SESSION['ajoutcode']))
       $_SESSION['ajoutcode'] = 1;
 
-
+  $lead        = (isset($_SESSION['user'])) ? $_SESSION['user']['inter_prenom'] : "";
+  $tagline     = "Ici vous pouvez creer des events";
+  $breadcrumbs = array("Evenement", "Creation");
+  // $evenements  = listModel($bdd);
+  $pageInclude = "evenement/newEvenement.php";
  ?>
