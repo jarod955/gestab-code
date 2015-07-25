@@ -1,4 +1,12 @@
 <?php
+  $lead        = (isset($_SESSION['user'])) ? $_SESSION['user']['inter_prenom'] : "";
+  $tagline     = "Ici vous pouvez creer des events";
+  $breadcrumbs = array("Evenement", "Creation");
+  // $evenements  = listModel($bdd);
+  $pageInclude = "evenement/newEvenement.php";
+?>
+<?php
+
  if (isset($_POST['inc']))
   {
       $_SESSION['ajoutcat']++;
@@ -41,63 +49,81 @@ if (isset($_POST['send']))
       // $categorie['nom'] = $_POST['cat'][$i]['nom_categorie'];
       // $categorie['prix'] = $_POST['cat'][$i]['prix'];
       // $places = $_POST['cat'][$i]['nombre_places'];
+     
+          
       if(!empty($_POST['code']))
       {
+        
+                  
+                  foreach ($_POST['cat'] as $categorie)
+                  {
+                  $sth = $bdd->prepare("INSERT INTO categorie(cat_nom, cat_prix, cat_datcre)VALUES(:nom, :prix, NOW())");
+                  $sth->bindValue(':nom', $categorie['nom_categorie'], PDO::PARAM_STR);
+                  $sth->bindValue(':prix', $categorie['prix']);
+                  $sth->execute();
+                  $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
+                  }
+                  
+                  $sth = $bdd->prepare('INSERT INTO adresse(adr_num_rue, adr_rue, adr_ville, adr_code_postal, adr_datcre)VALUES(:numrue, :rue, :ville, :codepostal, NOW())');
+                  $sth->bindValue(':numrue', $numrue, PDO::PARAM_INT);
+                  $sth->bindValue(':rue', $rue, PDO::PARAM_STR);
+                  $sth->bindValue(':ville', $ville, PDO::PARAM_STR);
+                  $sth->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
+                  $sth->execute();
+                  $adrid = $bdd->lastInsertId();
+                  
+                  $sth = $bdd->prepare('INSERT INTO lieu(lieu_nomSalle, lieu_adr_id, lieu_datcre)VALUES(:salle, :lieu, NOW())');
+                  $sth->bindValue(':salle', $salle, PDO::PARAM_STR);
+                  $sth->bindValue(':lieu', $adrid, PDO::PARAM_INT);
+                  $sth->execute();
+                  $evlieuid = $bdd->lastInsertId();
 
-          foreach ($_POST['cat'] as $categorie)
-          {
-          $sth = $bdd->prepare("INSERT INTO categorie(cat_nom, cat_prix, cat_datcre)VALUES(:nom, :prix, NOW())");
-          $sth->bindValue(':nom', $categorie['nom_categorie'], PDO::PARAM_STR);
-          $sth->bindValue(':prix', $categorie['prix']);
-          $sth->execute();
-          $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
-          }
-          
-          $sth = $bdd->prepare('INSERT INTO adresse(adr_num_rue, adr_rue, adr_ville, adr_code_postal, adr_datcre)VALUES(:numrue, :rue, :ville, :codepostal, NOW())');
-          $sth->bindValue(':numrue', $numrue, PDO::PARAM_INT);
-          $sth->bindValue(':rue', $rue, PDO::PARAM_STR);
-          $sth->bindValue(':ville', $ville, PDO::PARAM_STR);
-          $sth->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
-          $sth->execute();
-          $adrid = $bdd->lastInsertId();
-          
-          $sth = $bdd->prepare('INSERT INTO lieu(lieu_nomSalle, lieu_adr_id, lieu_datcre)VALUES(:salle, :lieu, NOW())');
-          $sth->bindValue(':salle', $salle, PDO::PARAM_STR);
-          $sth->bindValue(':lieu', $adrid, PDO::PARAM_INT);
-          $sth->execute();
-          $evlieuid = $bdd->lastInsertId();
-          
+                  $sth = $bdd->prepare('INSERT INTO evenement(ev_date, ev_libelle, ev_inter_id, ev_lieux_id, ev_datcre)VALUES(:dateev, :nom, :interid, :evlieuid, NOW())');
+                  $sth->bindValue(':dateev', $date1, PDO::PARAM_STR);
+                  $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
+                  $sth->bindValue(':interid', $interid, PDO::PARAM_INT);
+                  $sth->bindValue(':evlieuid', $evlieuid, PDO::PARAM_INT);
+                  $sth->execute();
+                  $evid = $bdd->lastInsertId();
 
-          $sth = $bdd->prepare('INSERT INTO evenement(ev_date, ev_libelle, ev_inter_id, ev_lieux_id, ev_datcre)VALUES(:dateev, :nom, :interid, :evlieuid, NOW())');
-          $sth->bindValue(':dateev', $date1, PDO::PARAM_STR);
-          $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
-          $sth->bindValue(':interid', $interid, PDO::PARAM_INT);
-          $sth->bindValue(':evlieuid', $evlieuid, PDO::PARAM_INT);
-          $sth->execute();
-          $evid = $bdd->lastInsertId();
-          
-          foreach ($_POST['code'] as $codepromo)
-          {
-          $sth = $bdd->prepare('INSERT INTO codepromo(code_nom, code_taux_reduc, code_nb, code_ev_id)VALUES(:code, :reduc, :place, :evid)');
-          $sth->bindValue(':code', $codepromo['nom_code'], PDO::PARAM_STR);
-          $sth->bindValue(':reduc', $codepromo['reduc'], PDO::PARAM_INT);
-          $sth->bindValue(':place', $codepromo['place'], PDO::PARAM_INT);
-          $sth->bindValue(':evid', $evid, PDO::PARAM_INT);
-          $sth->execute();
-          }
+                  foreach ($_POST['code'] as $codepromo)
+                  {
+                           
+                  if ($codepromo['reduc'] < 0) {
+                  $codepromo['reduc'] = abs($codepromo['reduc']); # code...
+                  
+                  $sth = $bdd->prepare('INSERT INTO codepromo(code_nom, code_taux_reduc, code_nb, code_ev_id)VALUES(:code, :reduc, :place, :evid)');
+                  $sth->bindValue(':code', $codepromo['nom_code'], PDO::PARAM_STR);
+                  $sth->bindValue(':reduc', $codepromo['reduc'], PDO::PARAM_INT);
+                  $sth->bindValue(':place', $codepromo['place'], PDO::PARAM_INT);
+                  $sth->bindValue(':evid', $evid, PDO::PARAM_INT);
+                  $sth->execute();
+                  }
+                  else
+                  {
+                    $sth = $bdd->prepare('INSERT INTO codepromo(code_nom, code_taux_reduc, code_nb, code_ev_id)VALUES(:code, :reduc, :place, :evid)');
+                  $sth->bindValue(':code', $codepromo['nom_code'], PDO::PARAM_STR);
+                  $sth->bindValue(':reduc', $codepromo['reduc'], PDO::PARAM_INT);
+                  $sth->bindValue(':place', $codepromo['place'], PDO::PARAM_INT);
+                  $sth->bindValue(':evid', $evid, PDO::PARAM_INT);
+                  $sth->execute();
+                  
+                  }
+                }
 
-          foreach ($categories as $cat_id => $cat_nb_place)
-          {   
-          $sth = $bdd->prepare('INSERT INTO evcat(evcat_ev_id, evcat_cat_id, evcat_nb_place)VALUES(:evid, :catid, :places)');
-          $sth->bindValue(':evid', $evid, PDO::PARAM_INT);
-          $sth->bindValue(':catid', $cat_id, PDO::PARAM_INT);
-          $sth->bindValue(':places', $cat_nb_place, PDO::PARAM_INT);
-          $sth->execute();
-          }
-          
-          success("L'événement à bien été enregistré.");
-          }
-
+                  foreach ($categories as $cat_id => $cat_nb_place)
+                  {   
+                  $sth = $bdd->prepare('INSERT INTO evcat(evcat_ev_id, evcat_cat_id, evcat_nb_place)VALUES(:evid, :catid, :places)');
+                  $sth->bindValue(':evid', $evid, PDO::PARAM_INT);
+                  $sth->bindValue(':catid', $cat_id, PDO::PARAM_INT);
+                  $sth->bindValue(':places', $cat_nb_place, PDO::PARAM_INT);
+                  $sth->execute();
+                  }
+                  
+                  success("L'événement à bien été enregistré.");
+            
+            
+      }
       else{
 
       foreach ($_POST['cat'] as $categorie)
@@ -142,6 +168,9 @@ if (isset($_POST['send']))
 
       success("L'événement à bien été enregistré.");
       }
+
+      
+            
   }
   else
   {
@@ -169,9 +198,5 @@ if (isset($_POST['send']))
   if (!isset($_SESSION['ajoutcode']))
       $_SESSION['ajoutcode'] = 1;
 
-  $lead        = (isset($_SESSION['user'])) ? $_SESSION['user']['inter_prenom'] : "";
-  $tagline     = "Ici vous pouvez creer des events";
-  $breadcrumbs = array("Evenement", "Creation");
-  // $evenements  = listModel($bdd);
-  $pageInclude = "evenement/newEvenement.php";
+
  ?>
