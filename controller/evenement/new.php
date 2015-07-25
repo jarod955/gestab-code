@@ -89,9 +89,10 @@ if (isset($_POST['send']))
                   foreach ($_POST['code'] as $codepromo)
                   {
                            
-                  if ($codepromo['reduc'] < 0) {
+                  if ($codepromo['reduc'] || $codepromo['place'] < 0){
                   $codepromo['reduc'] = abs($codepromo['reduc']); # code...
-                  
+                  $codepromo['place'] = abs($codepromo['place']);
+
                   $sth = $bdd->prepare('INSERT INTO codepromo(code_nom, code_taux_reduc, code_nb, code_ev_id)VALUES(:code, :reduc, :place, :evid)');
                   $sth->bindValue(':code', $codepromo['nom_code'], PDO::PARAM_STR);
                   $sth->bindValue(':reduc', $codepromo['reduc'], PDO::PARAM_INT);
@@ -99,17 +100,15 @@ if (isset($_POST['send']))
                   $sth->bindValue(':evid', $evid, PDO::PARAM_INT);
                   $sth->execute();
                   }
-                  else
-                  {
-                    $sth = $bdd->prepare('INSERT INTO codepromo(code_nom, code_taux_reduc, code_nb, code_ev_id)VALUES(:code, :reduc, :place, :evid)');
+                  else{
+                  $sth = $bdd->prepare('INSERT INTO codepromo(code_nom, code_taux_reduc, code_nb, code_ev_id)VALUES(:code, :reduc, :place, :evid)');
                   $sth->bindValue(':code', $codepromo['nom_code'], PDO::PARAM_STR);
                   $sth->bindValue(':reduc', $codepromo['reduc'], PDO::PARAM_INT);
                   $sth->bindValue(':place', $codepromo['place'], PDO::PARAM_INT);
                   $sth->bindValue(':evid', $evid, PDO::PARAM_INT);
                   $sth->execute();
-                  
                   }
-                }
+                  }
 
                   foreach ($categories as $cat_id => $cat_nb_place)
                   {   
