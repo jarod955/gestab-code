@@ -43,8 +43,8 @@ $mail = $_POST['email'];
 
 						suppressionMdp($bdd, $inter);
 						
-						ini_set("SMTP", "smtp.orange.fr");
-                        ini_set("sendmail_from", "le-peltier.jean-baptiste@orange.fr");
+						ini_set("SMTP", "smtp.humansurfer.com");
+                        ini_set("sendmail_from", "postmaster@humansurfer.com");
     
                         $to      = $email;
                         $subject = 'le sujet';
