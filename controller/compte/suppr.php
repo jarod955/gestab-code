@@ -1,7 +1,12 @@
 <?php
 $interid = ($_GET['idinter']);
 
-			
+						if($_SESSION['user']['inter_stat_id'] == 3)
+    					{
+      					error("Vous ne pouvez pas supprimer un compte superadmin.");
+    					}
+    					else
+    					{
 						function suppressionUtilisateur($bdd, $id_inter)
 						{
 						$query = "UPDATE internaute
@@ -20,7 +25,7 @@ $interid = ($_GET['idinter']);
 						suppressionUtilisateur($bdd, $interid);
 
 						redirection($page = "index.php?route=gestionUtilisateurs");
-					
+						}
 				
 	$lead        = "BIENVENUE SUR LA MAQUETTE DE RESERVATION";
 	$tagline     = "Ici vous avez la possibilité de creer vos codes promotionnels.";

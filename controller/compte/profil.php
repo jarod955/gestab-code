@@ -95,11 +95,19 @@ if (isset($_SESSION['user']))
   $codepostal  = $_SESSION['user']['adresse']['adr_code_postal'];
   if (isset($_POST['supprimer']))
   {
-    $req = $bdd->prepare('UPDATE internaute SET inter_datsup = NOW() WHERE inter_id = :interid');
+    if($_SESSION['user']['inter_stat_id'] == 3)
+    {
+      error("Vous ne pouvez pas supprimer un compte superadmin.");
+    
+    }
+    else
+    {
+      $req = $bdd->prepare('UPDATE internaute SET inter_datsup = NOW() WHERE inter_id = :interid');
     $req->execute(array(
       'interid' => $interid,
       ));
     success("<strong>Félicitation!</strong> le compte a bien été supprimé.");
+    }
   }
 
   
