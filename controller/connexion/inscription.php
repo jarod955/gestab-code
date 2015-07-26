@@ -6,8 +6,12 @@
         $nom              = htmlspecialchars(trim($_POST['nom']));
         $prenom           = htmlspecialchars(trim($_POST['prenom']));
         $entite           = htmlspecialchars(trim($_POST['entite']));
+        
+        $verifmdp         = $_POST['motdepasse'];
         $pass_hache       = sha1($_POST['motdepasse']);
         $pass_hache2      = sha1($_POST['motdepasse2']);
+        
+        
         $email            = htmlspecialchars(trim($_POST['email']));
         $email2           = htmlspecialchars(trim($_POST['email2']));
         $telephone        = htmlspecialchars(trim($_POST['telephone']));
@@ -50,13 +54,12 @@
                     }
                     else
                     {
-                        if (strlen($nom) < 8)
+                        if (strlen($verifmdp) < 8)
                         {
                             error("le mot de passe doit contenir au moins 8 caracteres!"); 
                         }
                         else
                         {
-
 
                             if ($email != $email2)
                             {
@@ -87,7 +90,7 @@
                                                             
                                                             /*if (preg_match("#[^0-9]#", $nom))*/
                                             $pattern = '#[^0-9]#';
-                                            if (preg_match($pattern, $nom) && preg_match($pattern, $prenom) && preg_match($pattern, $rue))
+                                            if (preg_match($pattern, $nom) && preg_match($pattern, $prenom) && preg_match($pattern, $ville))
                                             {
                                                                 
                                                 if (empty($entite) && empty($numrueentite) && empty($rueentite) && empty($codepostalentite) && empty($villeentite))
