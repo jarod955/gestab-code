@@ -1,20 +1,31 @@
 <?php
-$interid = ($_GET['idinter']);
+	
+$mail = $_POST['email'];
 
-						function getMail($bdd, $id)
+						function mdpRein($bdd, $email)
 						  {
-						    $query = "SELECT inter_mail
+						    $query = "SELECT *
 						              FROM internaute
-						              WHERE inter_id = :inter_id";
+						              WHERE inter_mail = :inter_mail";
 						    $sth = $bdd->prepare($query);
-						    $sth->bindValue(':inter_id', $id, PDO::PARAM_INT);
+						    $sth->bindValue(':inter_mail', $email, PDO::PARAM_STR);
 						    $sth->execute();
 
 						    return $sth->fetch(PDO::FETCH_ASSOC);
 						  }
-						 $mail =  getMail($bdd, $interid);
-						 $email = $mail['inter_mail'];
-						 
+						  $internaute = mdpRein($bdd, $mail);
+						  
+						  $inter = $internaute['inter_id'];
+
+						  $caracteres = array("a", "b", "c", "d", "e", "f", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+                         $caracteres_aleatoires = array_rand($caracteres, 8);
+                         $new_mdp = "";
+                          
+                         foreach($caracteres_aleatoires as $i)
+                         {
+                              $new_mdp .= $caracteres[$i];
+                         }
+                         
 						function suppressionMdp($bdd, $id_inter)
 						{
 						$mdp = sha1('Gestab2015');
@@ -30,12 +41,9 @@ $interid = ($_GET['idinter']);
 					    return $sth->fetch(PDO::FETCH_ASSOC);
 		  				}
 
-
-
-
-						suppressionMdp($bdd, $interid);
+						suppressionMdp($bdd, $inter);
 						
-						$to      = $email;
+						$to      = $mail;
                         $subject = 'le sujet';
                         $message = 'Bonjour, votre nouveau mot de passe est: Gestab2015, merci de le changer a votre prochaine connexion.';
                         $headers = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
@@ -44,11 +52,9 @@ $interid = ($_GET['idinter']);
                                                         
                         mail($to, $subject, $message, $headers);
 
-						redirection($page = "index.php?route=gestionUtilisateurs");
-					
-				
-	$lead        = "BIENVENUE SUR LA MAQUETTE DE RESERVATION";
-	$tagline     = "Ici vous avez la possibilité de creer vos codes promotionnels.";
-	$breadcrumbs = array("suppr");
-	$pageInclude = "promo/supprCode.php";
+						redirection($page = "index.php?");
+
+  $lead        = "test";
+  $breadcrumbs = array("Motdepasse");
+  $pageInclude = "compte/reinitialisationMdp.php";
 ?>

@@ -44,5 +44,5 @@ $interid = ($_GET['idinter']);
 	$lead        = "BIENVENUE SUR LA MAQUETTE DE RESERVATION";
 	$tagline     = "Ici vous avez la possibilité de creer vos codes promotionnels.";
 	$breadcrumbs = array("suppr");
-	$pageInclude = "promo/supprCode.php";
+	$pageInclude = "compte/supprCompte.php";
 ?>

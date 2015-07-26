@@ -110,5 +110,10 @@
       "controller" => "mail",
       "action"     => "create",
    ),
+    array(
+      "name"       => "reinitialisationMdp",
+      "controller" => "compte",
+      "action"     => "reinitialisation",
+   ),
 );
 ?>
