@@ -1,19 +1,4 @@
 <?php
-function addInternaute($bdd, $nom, $prenom, $entiteid, $adrid, $pass_hache, $email, $telephone, $status)
-{
-  $query = "INSERT INTO internaute(inter_stat_id, inter_nom, inter_prenom, inter_entite_id, adresse_adr_id, inter_user_pass, inter_mail, inter_telephone)
-            VALUES(:id, :nom, :prenom, :entiteid, :adrid, :pass_hache, :email, :telephone)";
-  $sth = $bdd->prepare($query);
-  $sth->bindValue(':id', $status, PDO::PARAM_INT);
-  $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
-  $sth->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-  $sth->bindValue(':entiteid', $entiteid, PDO::PARAM_INT);
-  $sth->bindValue(':adrid', $adrid, PDO::PARAM_INT);
-  $sth->bindValue(':pass_hache', $pass_hache, PDO::PARAM_STR);
-  $sth->bindValue(':email', $email, PDO::PARAM_STR);
-  $sth->bindValue(':telephone', $telephone, PDO::PARAM_INT);
-  $sth->execute();
-}
 function getInternautes($bdd)
   {
     $query = "SELECT *

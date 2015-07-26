@@ -1,5 +1,6 @@
 <?php
-   
+    
+    include('model/fonctionAdd.php');
     if(isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['entite']) AND isset($_POST['motdepasse']) AND isset($_POST['motdepasse2']) AND isset($_POST['email']) AND isset($_POST['telephone']) AND isset($_POST['numrue']) AND isset($_POST['rue']) AND(isset($_POST['codepostal']) AND isset($_POST['ville'])))
     {
         $nom              = htmlspecialchars(trim($_POST['nom']));
@@ -26,7 +27,7 @@
         if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['rue']) || empty($_POST['ville']) || empty($_POST['codepostal']) || empty($_POST['email']) || empty($_POST['email2']) || empty($_POST['telephone']) || empty($_POST['numrue']))
         {
             //$erreur = "Les champs marqué d'un * sont obligatoire";
-            ?><?php error("Les champs marqué d'un * sont obligatoire"); ?><?php
+             error("Les champs marqué d'un * sont obligatoire"); 
         }
             else
             {
@@ -35,21 +36,21 @@
                     if ((strlen($nom) >= 30) || (strlen($prenom) >= 30) || (strlen($rue) >= 30) || (strlen($ville) >= 30) || (strlen($email) >= 30))
                     {
                     //$erreur = 'Un des champs depasse la limite de 30 charactere';
-                    ?><?php error("Un des champs depasse la limite de 30 characteres"); ?><?php
+                     error("Un des champs depasse la limite de 30 characteres"); 
                     }
                         else
                         {
                             if ($pass_hache != $pass_hache2)
                             {
                             //$erreur = 'le mot de passe et le mot de passe de confirmation ne correspondent pas ';
-                                ?><?php error("le mot de passe et le mot de passe de confirmation ne correspondent pas!"); ?><?php
+                                 error("le mot de passe et le mot de passe de confirmation ne correspondent pas!"); 
                             }
                                 else
                                 {
                                     if ($email != $email2)
                                     {
                                     //$erreur = 'les emails rentré ne sont pas identique ';
-                                        ?><?php error("les emails rentré ne sont pas identique"); ?><?php
+                                         error("les emails rentré ne sont pas identique"); 
                                     }
                                         else
                                         {
@@ -62,93 +63,69 @@
                                                 if ($res)
                                                 {
                                                 //$erreur = "Cet email est déjà utilisé !";
-                                                    ?><?php error("Cet email est déjà utilisé !"); ?><?php
+                                                     error("Cet email est déjà utilisé !"); 
                                                 }
                                                     else
                                                     {
-                                                        /*if (!is_numeric($numrue) || (!is_numeric($codepostal)))
+                                                        
+
+                                                        if (is_numeric($numrue) && is_numeric($codepostal))
                                                         {
                                                         //$erreur = "Saisissez une valeur numérique !";
-                                                            ?><?php error("Saisissez une valeur numérique !"); ?><?php
-                                                        }
-                                                            else
-                                                            {
-                                        /*  if (is_string($nom) || (is_string($prenom)) || (is_string($ville)) || (is_string($rue)))
-                                        {*
-                                            $erreur = "Saisissez une chaîne de caractère pour le nom, prenom, ville et la rue.";
-                                        }
-                                        else
-                                        {*/                     
+                                                           
+                                                        
+                                                            
+                                                               
                                                              
-                                                                if (!empty($entite) || (!empty($numrueentite) || (!empty($rueentite) || (!empty($codepostalentite) || (!empty($villeentite))))))
-                                                                {
-                                                                $sth = $bdd->prepare('INSERT INTO adresse(adr_num_rue, adr_rue, adr_ville, adr_code_postal)VALUES(:numrue, :rue, :ville, :codepostal)');
-                                                                $sth->bindValue(':numrue', $numrue, PDO::PARAM_INT);
-                                                                $sth->bindValue(':rue', $rue, PDO::PARAM_STR);
-                                                                $sth->bindValue(':ville', $ville, PDO::PARAM_STR);
-                                                                $sth->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
-                                                                $sth->execute();
-                                                                $adrid= $bdd->lastInsertId();
                                                                 
-                                                                $sth = $bdd->prepare('INSERT INTO adresse(adr_num_rue, adr_rue, adr_ville, adr_code_postal)VALUES(:numrue, :rue, :ville, :codepostal)');
-                                                                $sth->bindValue(':numrue', $numrueentite, PDO::PARAM_INT);
-                                                                $sth->bindValue(':rue', $rueentite, PDO::PARAM_STR);
-                                                                $sth->bindValue(':ville', $villeentite, PDO::PARAM_STR);
-                                                                $sth->bindValue(':codepostal', $codepostalentite, PDO::PARAM_STR);
-                                                                $sth->execute();
+                                                            if (empty($entite) && empty($numrueentite) && empty($rueentite) && empty($codepostalentite) && empty($villeentite))
+                                                            {
+
+                                                                addAdresse($bdd, $numrue, $rue, $ville, $codepostal);
+                                                                $adrid= $bdd->lastInsertId();
+
+                                                                    
+                                                                    /*addInternaute($bdd, 1, $nom, $prenom, NULL, $adrid, $pass_hache, $email, $telephone);*/
+                                                                addInternaute($bdd, $nom, $prenom, $adrid, $pass_hache, $email, $telephone);
+                                                                    
+                                                                    //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé';
+                                                                success("<strong>Félicitation!</strong> le compte a bien été créé."); 
+                                                                }
+                                                            else 
+                                                            {
+                                                                addAdresse($bdd, $numrue, $rue, $ville, $codepostal);
+                                                                $adrid= $bdd->lastInsertId();
+                                                                    
+
+                                                                    
+                                                                addAdresse($bdd, $numrueentite, $rueentite, $villeentite, $codepostalentite);
                                                                 $adride= $bdd->lastInsertId();
-                                                                
-                                                                $sth = $bdd->prepare('INSERT INTO entite(entite_nom, entite_pdta, entite_adr_id)VALUES(:nom, :pdta, :id)');
-                                                                $sth->bindValue(':nom', $entite, PDO::PARAM_STR);
-                                                                $sth->bindValue(':pdta', 1, PDO::PARAM_INT);
-                                                                $sth->bindValue(':id', $adride, PDO::PARAM_INT);
-                                                                $sth->execute();
+                                                                    
+                                                                    
+                                                                addEntite($bdd, $entite, $adride);
                                                                 $entiteid= $bdd->lastInsertId();
-                                                                
-                                                                $sth = $bdd->prepare('INSERT INTO internaute(inter_stat_id, inter_nom, inter_prenom, inter_entite_id, adresse_adr_id, inter_user_pass, inter_mail, inter_telephone, inter_datcre)VALUES(:id, :nom, :prenom, :entiteid, :adrid, :pass_hache, :email, :telephone, NOW())');
-                                                                $sth->bindValue(':id', 1, PDO::PARAM_INT);
-                                                                $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
-                                                                $sth->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-                                                                $sth->bindValue(':entiteid', $entiteid, PDO::PARAM_INT);
-                                                                $sth->bindValue(':adrid', $adrid, PDO::PARAM_INT);
-                                                                $sth->bindValue(':pass_hache', $pass_hache, PDO::PARAM_STR);
-                                                                $sth->bindValue(':email', $email, PDO::PARAM_STR);
-                                                                $sth->bindValue(':telephone', $telephone, PDO::PARAM_INT);
-                                                                $sth->execute();
-                                                                //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé avec votre entité.';
-                                                                ?><?php success("<strong>Félicitation!</strong> le compte a bien été créé avec votre entité."); ?><?php
-                                                                }
-                                                                else 
-                                                                {
-                                                                $sth = $bdd->prepare('INSERT INTO adresse(adr_num_rue, adr_rue, adr_ville, adr_code_postal)VALUES(:numrue, :rue, :ville, :codepostal)');
-                                                                $sth->bindValue(':numrue', $numrue, PDO::PARAM_INT);
-                                                                $sth->bindValue(':rue', $rue, PDO::PARAM_STR);
-                                                                $sth->bindValue(':ville', $ville, PDO::PARAM_STR);
-                                                                $sth->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
-                                                                $sth->execute();
-                                                                $adrid= $bdd->lastInsertId();
-                                                                
-                                                                $sth = $bdd->prepare('INSERT INTO internaute(inter_stat_id, inter_nom, inter_prenom, inter_entite_id, inter_adr_id, inter_user_pass, inter_mail, inter_telephone, inter_datcre)VALUES(:id, :nom, :prenom, :entiteid, :adrid, :pass_hache, :email, :telephone, NOW())');
-                                                                $sth->bindValue(':id', 1, PDO::PARAM_INT);
-                                                                $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
-                                                                $sth->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-                                                                $sth->bindValue(':entiteid', null, PDO::PARAM_INT);
-                                                                $sth->bindValue(':adrid', $adrid, PDO::PARAM_INT);
-                                                                $sth->bindValue(':pass_hache', $pass_hache, PDO::PARAM_STR);
-                                                                $sth->bindValue(':email', $email, PDO::PARAM_STR);
-                                                                $sth->bindValue(':telephone', $telephone, PDO::PARAM_INT);
-                                                                $sth->execute();
-                                                                //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé';
-                                                                ?><?php success("<strong>Félicitation!</strong> le compte a bien été créé."); ?><?php
-                                                                }
+                                                                    
+                                                                    
+                                                                addInternautee($bdd, $nom, $prenom, $entiteid, $adrid, $pass_hache, $email, $telephone);
+                                                                    //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé avec votre entité.';
+                                                                success("<strong>Félicitation!</strong> le compte a bien été créé avec votre entité."); 
                                                             }
-                                                    
-                                            }
-                                            else
-                                            {
+
+                                                                
+                                                              
+                                                                    
+                                                        }
+                                                        else
+                                                        { 
+                                                            error("Le numero de la rue et/ou le code postal doit etre de type numerique !"); 
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
                                             //$erreur = "Merci d'écrire un numero de telephone français ou valide";
-                                                ?><?php error("Merci d'écrire un numero de telephone français ou valide"); ?><?php
-                                            }   
+                                                    error("Merci d'écrire un numero de telephone français ou valide");
+                                                }   
                                         }
                                 }
                         }
