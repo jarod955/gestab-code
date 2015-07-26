@@ -102,4 +102,34 @@ function addInternautee($bdd, $nom, $prenom, $entiteid, $adrid, $pass_hache, $em
   $sth->bindValue(':telephone', $telephone, PDO::PARAM_INT);
   $sth->execute();
 }
+function addAdmin($bdd, $nom, $prenom, $adrid, $pass_hache, $email, $telephone)
+{
+  $query = "INSERT INTO internaute(inter_stat_id, inter_nom, inter_prenom, inter_entite_id, inter_adr_id, inter_user_pass, inter_mail, inter_telephone, inter_datcre)
+            VALUES(:id, :nom, :prenom, :entiteid, :adrid, :pass_hache, :email, :telephone, NOW())";
+  $sth = $bdd->prepare($query);
+  $sth->bindValue(':id', 2, PDO::PARAM_INT);
+  $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
+  $sth->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+  $sth->bindValue(':entiteid', null, PDO::PARAM_INT);
+  $sth->bindValue(':adrid', $adrid, PDO::PARAM_INT);
+  $sth->bindValue(':pass_hache', $pass_hache, PDO::PARAM_STR);
+  $sth->bindValue(':email', $email, PDO::PARAM_STR);
+  $sth->bindValue(':telephone', $telephone, PDO::PARAM_INT);
+  $sth->execute();
+}
+function addAdmine($bdd, $nom, $prenom, $entiteid, $adrid, $pass_hache, $email, $telephone)
+{
+  $query = "INSERT INTO internaute(inter_stat_id, inter_nom, inter_prenom, inter_entite_id, inter_adr_id, inter_user_pass, inter_mail, inter_telephone, inter_datcre)
+            VALUES(:id, :nom, :prenom, :entiteid, :adrid, :pass_hache, :email, :telephone, , NOW())";
+  $sth = $bdd->prepare($query);
+  $sth->bindValue(':id', 2, PDO::PARAM_INT);
+  $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
+  $sth->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+  $sth->bindValue(':entiteid', $entiteid, PDO::PARAM_INT);
+  $sth->bindValue(':adrid', $adrid, PDO::PARAM_INT);
+  $sth->bindValue(':pass_hache', $pass_hache, PDO::PARAM_STR);
+  $sth->bindValue(':email', $email, PDO::PARAM_STR);
+  $sth->bindValue(':telephone', $telephone, PDO::PARAM_INT);
+  $sth->execute();
+}
 ?>
