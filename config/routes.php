@@ -61,14 +61,14 @@
       "action"     => "gestion",
     ),
     array(
-      "name"       => "supprUtilisateurs",
+      "name"       => "reiniCompte",
       "controller" => "compte",
-      "action"     => "suppr",
+      "action"     => "reini",
     ),
     array(
-      "name"       => "supprUtilisateursMdp",
+      "name"       => "supprCompte",
       "controller" => "compte",
-      "action"     => "supprmdp",
+      "action"     => "suppr",
     ),
     array(
       "name"       => "listFacture",
