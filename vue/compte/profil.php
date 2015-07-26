@@ -103,7 +103,10 @@
     <div class="row">
       <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
         <div class="text-center">
+        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4">
           <input type="submit" class="btn btn-primary" name="modifier" value="Modifier" />
+          </div>
+          <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4">
           <script type="text/javascript">
 // Méthode pour changer la visiblité d'une balise dont l'ID est passée en paramètre
 function toggleVisibility(tagId) {
@@ -144,7 +147,7 @@ Supprimer mon compte
 <div id="texte1" style="visibility: hidden; display: none;">
 <input type="submit" class="btn btn-primary" name="supprimer" value="Valider ?" />
 </div>
-
+</div>
           
         </div>
       </div>
