@@ -39,7 +39,7 @@
                 #[^0-9]#
             if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email))
             {
-                if ((strlen($nom) >= 30) || (strlen($prenom) >= 30) || (strlen($rue) >= 30) || (strlen($ville) >= 30) || (strlen($email) >= 30))
+                if ((strlen($nom) >= 30) || (strlen($prenom) >= 30) || (strlen($rue) >= 30) || (strlen($ville) >= 30))
                 {
                     //$erreur = 'Un des champs depasse la limite de 30 charactere';
                     error("Un des champs depasse la limite de 30 characteres"); 
@@ -105,6 +105,16 @@
                                                                     
                                                                     //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé';
                                                     success("<strong>Félicitation!</strong> le compte a bien été créé."); 
+                                                    
+                                                     $to      = $email;
+                                                     $subject = 'le sujet';
+                                                     $message = 'Bonjour !' . $nom . '' . $prenom . '  bienvenue sur la centrifugeuse de projet! ';
+                                                     $headers = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
+                                                     'Reply-To: webmaster@example.com' . "\r\n" .
+                                                     'X-Mailer: PHP/' . phpversion();
+                                                 
+                                                     mail($to, $subject, $message, $headers);
+                                                    
                                                 }
                                                 else 
                                                 {

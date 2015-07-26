@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="mdp" class="col-sm-4 control-label">Mot de passe*:</label>
+                        <label for="mdp" class="col-sm-4 control-label">Mot de passe*(8 caracteres min):</label>
                         <div class="col-sm-4">
                             <input type="password" class="form-control" id="mdp" name="motdepasse">
                         </div>
