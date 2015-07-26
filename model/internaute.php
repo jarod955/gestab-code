@@ -2,7 +2,9 @@
 function getInternautes($bdd)
   {
     $query = "SELECT *
-              FROM internaute";
+              FROM internaute
+              GROUP BY inter_id
+              ORDER BY inter_stat_id DESC";
     $sth = $bdd->query($query);
 
   return $sth->fetchAll(PDO::FETCH_ASSOC);
