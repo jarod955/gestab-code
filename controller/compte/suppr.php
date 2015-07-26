@@ -1,7 +1,21 @@
 <?php
 $interid = ($_GET['idinter']);
+						
+						function getStatut($bdd, $id)
+						  {
+						    $query = "SELECT inter_stat_id
+						              FROM internaute
+						              WHERE inter_id = :inter_id";
+						    $sth = $bdd->prepare($query);
+						    $sth->bindValue(':inter_id', $id, PDO::PARAM_INT);
+						    $sth->execute();
 
-						if($_SESSION['user']['inter_stat_id'] == 3)
+						    return $sth->fetch(PDO::FETCH_ASSOC);
+						  }
+						$statut =   getStatut($bdd, $interid);
+						$statu = $statut['inter_stat_id'];
+						
+						if($statu == 3)
     					{
       					error("Vous ne pouvez pas supprimer un compte superadmin.");
     					}

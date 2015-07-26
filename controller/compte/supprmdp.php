@@ -1,7 +1,7 @@
 <?php
 $interid = ($_GET['idinter']);
 
-						function getAdresse($bdd, $id)
+						function getMail($bdd, $id)
 						  {
 						    $query = "SELECT inter_mail
 						              FROM internaute
@@ -12,7 +12,7 @@ $interid = ($_GET['idinter']);
 
 						    return $sth->fetch(PDO::FETCH_ASSOC);
 						  }
-						 $mail =  getAdresse($bdd, $interid);
+						 $mail =  getMail($bdd, $interid);
 						 $email = $mail['inter_mail'];
 						 
 						function suppressionMdp($bdd, $id_inter)
