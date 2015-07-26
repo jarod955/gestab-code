@@ -27,8 +27,7 @@
         $codepostalentite = htmlspecialchars(trim($_POST['codepostalentite']));
         $villeentite      = htmlspecialchars(trim($_POST['villeentite']));
         $vide = "";
-        var_dump($email);
-        exit;
+       
         if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['rue']) || empty($_POST['ville']) || empty($_POST['codepostal']) || empty($_POST['email']) || empty($_POST['email2']) || empty($_POST['telephone']) || empty($_POST['numrue']))
         {
             //$erreur = "Les champs marqué d'un * sont obligatoire";

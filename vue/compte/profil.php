@@ -137,39 +137,15 @@ tagToToggle.style.visibility = 'hidden';
 </head>
 <body>
 <div>
-<a href="javascript:toggleVisibility('texte1')">
-Changer la visibilité du texte 1
+<a href="javascript:toggleVisibility('texte1')" class="btn btn-primary">
+Supprimer mon compte
 </a>
 </div>
 <div id="texte1" style="visibility: hidden; display: none;">
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+<input type="submit" class="btn btn-primary" name="supprimer" value="Valider ?" />
 </div>
-<div>
-<a href="javascript:toggleVisibility('texte2')">
-Changer la visibilité du texte 2
-</a>
-</div>
-<div id="texte2" style="visibility: hidden; display: none;">
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
-</div>
-<div>
-<a href="javascript:toggleVisibility('texte3')">
-Changer la visibilité du texte 3
-</a>
-</div>
-<div id="texte3" style="visibility: hidden; display: none;">
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
-Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
-</div>
-          <input type="submit" class="btn btn-primary" name="supprimer" value="Supprimer le compte" />
+
+          
         </div>
       </div>
     </div>
