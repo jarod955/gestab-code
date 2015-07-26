@@ -65,19 +65,19 @@ if (isset($_POST['send']))
               //if(is_numeric($codepromo['place']) || is_numeric($codepromo['reduc']))
                       
                             
-                              if ($categorie['prix'] || $categorie['nombre_places'] < 0)
-                              {
-                                $categorie['prix'] = abs($categorie['prix']); # code...
-                                $categorie['nombre_places'] = abs($categorie['nombre_places']);
+                            if ($categorie['prix'] || $categorie['nombre_places'] < 0)
+                            {
+                              $categorie['prix'] = abs($categorie['prix']); # code...
+                              $categorie['nombre_places'] = abs($categorie['nombre_places']);
                               
-                                addCategorie($bdd, $categorie['nom_categorie'], $categorie['prix']);
-                                $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
-                              }
-                              else
-                              {
-                                addCategorie($bdd, $categorie['nom_categorie'], $categorie['prix']);
-                                $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
-                              }
+                              addCategorie($bdd, $categorie['nom_categorie'], $categorie['prix']);
+                              $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
+                            }
+                            else
+                            {
+                              addCategorie($bdd, $categorie['nom_categorie'], $categorie['prix']);
+                              $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
+                            }
                            
 
                             addAdresse($bdd, $numrue, $rue, $ville, $codepostal);

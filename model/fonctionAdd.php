@@ -20,16 +20,6 @@ function addEvenement($bdd, $date, $libelle, $interid, $lieuid)
     $sth->bindValue(':evlieuid', $lieuid, PDO::PARAM_STR);
     $sth->execute();
   }
-  function addEntite($bdd, $nom, $id)
-  {
-    $query = "INSERT INTO entite(entite_nom, entite_pdta, entite_adr_id, entite_datcre)
-              VALUES(:nom, :pdta, :id, NOW())";
-    $sth = $bdd->prepare($query);
-    $sth->bindValue(':nom', $entite, PDO::PARAM_STR);
-    $sth->bindValue(':pdta', 1, PDO::PARAM_INT);
-    $sth->bindValue(':id', $adride, PDO::PARAM_INT);
-    $sth->execute();
-  }
   function addCategorie($bdd, $nom, $prix)
 {
   $query = "INSERT INTO categorie(cat_nom, cat_prix, cat_datcre)
@@ -61,7 +51,7 @@ function addAdresse($bdd, $numrue, $rue, $ville, $codepostal)
   $sth->bindValue(':lieu', $adrid);
   $sth->execute();
 }
-function addCode($bdd, $codenom, $reduc, $place, $evid)
+  function addCode($bdd, $codenom, $reduc, $place, $evid)
   {
     $query = "INSERT INTO codepromo(code_nom, code_taux_reduc, code_nb, code_ev_id, code_datcre)
               VALUES(:code, :reduc, :place, :evid, NOW())";
@@ -72,6 +62,16 @@ function addCode($bdd, $codenom, $reduc, $place, $evid)
     $sth->bindValue(':evid', $evid, PDO::PARAM_STR);
     $sth->execute();
   }
+  function addEntite($bdd, $entite, $adride)
+  {
+    $query = "INSERT INTO entite(entite_nom, entite_pdta, entite_adr_id, entite_datcre)
+              VALUES(:nom, :pdta, :id, NOW())";
+    $sth = $bdd->prepare($query);
+    $sth->bindValue(':nom', $entite, PDO::PARAM_STR);
+    $sth->bindValue(':pdta', 1, PDO::PARAM_INT);
+    $sth->bindValue(':id', $adride, PDO::PARAM_INT);
+    $sth->execute();
+  }  
   function addInternaute($bdd, $nom, $prenom, $adrid, $pass_hache, $email, $telephone)
 {
   $query = "INSERT INTO internaute(inter_stat_id, inter_nom, inter_prenom, inter_entite_id, inter_adr_id, inter_user_pass, inter_mail, inter_telephone, inter_datcre)
