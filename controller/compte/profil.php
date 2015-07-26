@@ -93,8 +93,11 @@ if (isset($_SESSION['user']))
   $rue         = $_SESSION['user']['adresse']['adr_rue'];
   $ville       = $_SESSION['user']['adresse']['adr_ville'];
   $codepostal  = $_SESSION['user']['adresse']['adr_code_postal'];
+  
+  
   if (isset($_POST['supprimer']))
   {
+    $interid     = $_SESSION['user']['inter_id'];
     if($_SESSION['user']['inter_stat_id'] == 3)
     {
       error("Vous ne pouvez pas supprimer un compte superadmin.");
@@ -108,8 +111,7 @@ if (isset($_SESSION['user']))
       ));
     success("<strong>Félicitation!</strong> le compte a bien été supprimé.");
     }
-  }
-
+  } 
   
   if ($_SESSION['user']['entite'] != false)
   {

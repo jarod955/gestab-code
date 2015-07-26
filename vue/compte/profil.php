@@ -104,6 +104,71 @@
       <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
         <div class="text-center">
           <input type="submit" class="btn btn-primary" name="modifier" value="Modifier" />
+          <script type="text/javascript">
+// Méthode pour changer la visiblité d'une balise dont l'ID est passée en paramètre
+function toggleVisibility(tagId) {
+if (!document.getElementById) {
+msg = 'Votre navigateur est trop ancien pour profiter de votre visite\n';
+msg += 'Veuillez le mettre à jour ou vous en procurer un autre';
+return false;
+}
+var tagToToggle;
+try { // On tente de récupérer la balise cible dont on doit changer la visibilité
+tagToToggle = document.getElementById(tagId);
+} catch (e) { // Si échec de la récupération de la balise cible
+alert('Je n\'ai pas pu trouver la balise cible');
+}
+try { // Seulement pour les non IE
+if (tagToToggle.style.display == 'none') {
+tagToToggle.style.display = 'inline';
+} else {
+tagToToggle.style.display = 'none';
+}
+} catch (e) {
+}
+// Pour IE
+if (tagToToggle.style.visibility == 'hidden') {
+tagToToggle.style.visibility = 'visible';
+} else {
+tagToToggle.style.visibility = 'hidden';
+}
+}
+</script>
+</head>
+<body>
+<div>
+<a href="javascript:toggleVisibility('texte1')">
+Changer la visibilité du texte 1
+</a>
+</div>
+<div id="texte1" style="visibility: hidden; display: none;">
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+</div>
+<div>
+<a href="javascript:toggleVisibility('texte2')">
+Changer la visibilité du texte 2
+</a>
+</div>
+<div id="texte2" style="visibility: hidden; display: none;">
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+</div>
+<div>
+<a href="javascript:toggleVisibility('texte3')">
+Changer la visibilité du texte 3
+</a>
+</div>
+<div id="texte3" style="visibility: hidden; display: none;">
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test, Texte test,
+</div>
           <input type="submit" class="btn btn-primary" name="supprimer" value="Supprimer le compte" />
         </div>
       </div>

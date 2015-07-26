@@ -43,16 +43,19 @@ $mail = $_POST['email'];
 
 						suppressionMdp($bdd, $inter);
 						
-						$to      = $mail;
+						ini_set("SMTP", "smtp.orange.fr");
+                        ini_set("sendmail_from", "le-peltier.jean-baptiste@orange.fr");
+    
+                        $to      = $email;
                         $subject = 'le sujet';
-                        $message = 'Bonjour, votre nouveau mot de passe est: Gestab2015, merci de le changer a votre prochaine connexion.';
+                        $message = 'Bonjour ' . $nom . '' . $prenom . ', bienvenue sur la centrifugeuse de projet! ';
                         $headers = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
-                        'Reply-To: webmaster@example.com' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
-                                                        
-                        mail($to, $subject, $message, $headers);
+                                                     'Reply-To: postmaster@humansurfer.com' . "\r\n" .
+                                                     'X-Mailer: PHP/' . phpversion();
+                                                 
+                                                     mail($to, $subject, $message, $headers);
 
-						redirection($page = "index.php?");
+						
 
   $lead        = "test";
   $breadcrumbs = array("Motdepasse");
