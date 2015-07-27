@@ -139,7 +139,7 @@
         </div>
       </div>
     </footer>
-    <script src="jquery-1.11.3.min.js"></script>
-    <script src="bootstrap.min.js"></script>
+    <script src="assets/js/jquery-1.11.3.min.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
   </body>
 </html>
