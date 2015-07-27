@@ -52,13 +52,23 @@
             </div>
             <?php if (isset($_SESSION['user'])): ?>
             <!-- le sous menu quand il est connecter -->
+
             <div class="row">
-                <div class="col-md-12">
-                    <ul class="menu nav nav-pills " role="tablist">
+            <nav class="navbar navbar-default">
+            <div class="container-fluid">
+            <div class="navbar-header">
+                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
                         <?php displayMenu($base, $menus, "profil"); ?>
                     </ul>
+                    </div>
+                    </div>
+                    </div>
+                    </nav>
                   <?php endif ?>
-                </div>
+                
             </div>
         </div>
     </header>
