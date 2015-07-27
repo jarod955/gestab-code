@@ -64,7 +64,7 @@ $mpdf->SetHTMLFooter($footerE,'E');
 
 $html = '
 
-<h1>' . $facture['ev_libelle'] . ' ' . $facture['ev_date'] . ' </h1>
+<h1>Evenement du ' . $facture['ev_date'] . ' </h1>
 <h2>Ma facture évènement n° ' . $facture['ev_id'] . '</h2>
 <h3>Cette facture fera office de place le jour venu.</h3>
 <p>Vous trouverez ci-dessous toutes les informations de votre évènement "' . $facture['ev_libelle'] . '", merci de la présenter à notre organisateur le jour venu. </p>
