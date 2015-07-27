@@ -54,11 +54,15 @@
      </script>
  
     <div>
-      <a href="javascript:toggleVisibility('supprimer')" class="btn btn-primary">Supprimer</a>
-     </div>
-    <div id="supprimer" style="visibility: hidden; display: none;">
-      <a href="index.php?route=supprCompte&idinter=<?= $internaute['inter_id']; ?>" type="button" class="btn btn-primary">Valider ?</a>
-    </div></td>
+ <a href="javascript:toggleVisibility('supprimer<?= $internaute['inter_id']; ?>')" class="btn btn-primary">
+     Supprimer
+ </a>
+</div>
+<div id="supprimer<?= $internaute['inter_id']; ?>" style="visibility: hidden; display: none;">
+ <a href="index.php?route=supprCompte&idinter=<?= $internaute['inter_id']; ?>" type="button" class="btn btn-primary">
+     Valider ?
+ </a>
+</div></td>
 
       <td><center><a href="index.php?route=reiniCompte&idinter=<?= $internaute['inter_id']; ?>" type="button" class="btn btn-primary">
      <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
