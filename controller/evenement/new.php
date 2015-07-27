@@ -1,4 +1,10 @@
-<?php
+<?php 
+if (empty($_SESSION['user'])){
+  redirection($page = "index.php?route=error404");
+}
+elseif ($_SESSION['user']['inter_stat_id'] == 2 or 3) {
+ // Mettre ici tout le corps de la page 
+
   include('model/fonctionAdd.php');
 
  if (isset($_POST['inc']))
@@ -182,4 +188,9 @@ if (isset($_POST['send']))
   $tagline     = "Ici vous pouvez creer des events";
   $breadcrumbs = array("Evenement", "Creation");
   $pageInclude = "evenement/newEvenement.php";
- ?>
+}
+else{
+ 
+redirection($page = "index.php?");
+}
+?>
