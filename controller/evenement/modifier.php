@@ -1,4 +1,10 @@
-<?php
+<?php 
+if (empty($_SESSION['user'])){
+  redirection($page = "index.php?route=error404");
+}
+elseif ($_SESSION['user']['inter_stat_id'] == 2 or 3) {
+ // Mettre ici tout le corps de la page 
+
 //include le model des categories
 include('model/categorie.php');
 //inclure le model des factures
@@ -9,14 +15,14 @@ include('model/internaute.php');
 include('model/adresse.php');
 if (isset($_SESSION['user']))
 {
-	if(isset($_POST['modifier']))
-  	
-  	{
-  	  $evid = $_POST['evid'];
+  if(isset($_POST['modifier']))
+    
+    {
+      $evid = $_POST['evid'];
       $lieuid = $_POST['lieuid'];
-  	  $adrid = $_POST['adrid'];
+      $adrid = $_POST['adrid'];
 
-  	  $libelle = $_POST['libelle'];
+      $libelle = $_POST['libelle'];
       $nomsalle = $_POST['nom_salle'];
       $numrue = $_POST['adr_num_rue'];
       $rue = $_POST['adr_rue'];
@@ -43,7 +49,7 @@ if (isset($_SESSION['user']))
               error("Ca ne fonctionne pas");
               
             }
-	}
+  }
 
 $evenement   = showEvenement($bdd, $id);
 //liste des categories de l'evenement
@@ -54,17 +60,17 @@ $facture     = getFacture($bdd, $_SESSION['user']['inter_id'], $evenement['ev_id
 $participants = intEvenement($bdd, $evenement['ev_id']);
 //recuperation du nombre de place par categorie
 foreach ($categories as $key => $categorie)
-  	$categories[$key]['place'] = placesRestantesByCategorie($bdd, $evenement['ev_id'], $categorie['cat_id']);
+    $categories[$key]['place'] = placesRestantesByCategorie($bdd, $evenement['ev_id'], $categorie['cat_id']);
 //formater la date de l'evenement
-		$datetimEvenement = new DateTime($evenement['ev_date']);
-		$date = date_parse($evenement['ev_date']);
-		$day = $date['day'];
-		$month = $date['month'];
-		$year = $date['year'];
-		$hour = $date['hour'];
-		$minut = $date['minute'];
+    $datetimEvenement = new DateTime($evenement['ev_date']);
+    $date = date_parse($evenement['ev_date']);
+    $day = $date['day'];
+    $month = $date['month'];
+    $year = $date['year'];
+    $hour = $date['hour'];
+    $minut = $date['minute'];
 
-	
+  
 
 
 
@@ -72,5 +78,11 @@ foreach ($categories as $key => $categorie)
 $breadcrumbs      = array("Evenement", "modifier");
 //la vue à afficher
 $pageInclude      = "evenement/modifierEvenement.php";
+}
+
+}
+else{
+ 
+redirection($page = "index.php?");
 }
 ?>
