@@ -1,4 +1,10 @@
 <?php 
+if (empty($_SESSION['user'])){
+    redirection($page = "index.php?route=error404");
+}
+elseif ($_SESSION['user']['inter_stat_id'] == 3) {
+ // Mettre ici tout le corps de la page 
+ 
 include('model/fonctionAdd.php');
     if(isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['entite']) AND isset($_POST['motdepasse']) AND isset($_POST['motdepasse2']) AND isset($_POST['email']) AND isset($_POST['telephone']) AND isset($_POST['numrue']) AND isset($_POST['rue']) AND(isset($_POST['codepostal']) AND isset($_POST['ville'])))
     {
@@ -190,4 +196,10 @@ include('model/fonctionAdd.php');
    $lead        = "Créer un nouvel Administrateur";
    $breadcrumbs = array("Créer un nouvel Administrateur");
    $pageInclude = "compte/newAdmin.php";
+}
+else{
+ 
+redirection($page = "index.php?");
+}
 ?>
+

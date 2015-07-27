@@ -1,6 +1,6 @@
 <?php 
 if (empty($_SESSION['user'])){
-    header('location: error.php');
+	redirection($page = "index.php?route=error404");
 }
 
 elseif ($_SESSION['user']['statut'] == 2 or 3) {
@@ -33,6 +33,6 @@ $codeid = ($_GET['idcode']);
 }
 else{
  
-redirection($page = "http://localhost/gestab-code/index.php?");
+redirection($page = "index.php?");
 }
 ?>
