@@ -107,45 +107,30 @@
           <input type="submit" class="btn btn-primary" name="modifier" value="Modifier" />
           </div>
           <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4">
-          <script type="text/javascript">
+          
 // Méthode pour changer la visiblité d'une balise dont l'ID est passée en paramètre
-function toggleVisibility(tagId) {
-if (!document.getElementById) {
-msg = 'Votre navigateur est trop ancien pour profiter de votre visite\n';
-msg += 'Veuillez le mettre à jour ou vous en procurer un autre';
-return false;
-}
-var tagToToggle;
-try { // On tente de récupérer la balise cible dont on doit changer la visibilité
-tagToToggle = document.getElementById(tagId);
-} catch (e) { // Si échec de la récupération de la balise cible
-alert('Je n\'ai pas pu trouver la balise cible');
-}
-try { // Seulement pour les non IE
-if (tagToToggle.style.display == 'none') {
-tagToToggle.style.display = 'inline';
-} else {
-tagToToggle.style.display = 'none';
-}
-} catch (e) {
-}
-// Pour IE
-if (tagToToggle.style.visibility == 'hidden') {
-tagToToggle.style.visibility = 'visible';
-} else {
-tagToToggle.style.visibility = 'hidden';
-}
-}
-</script>
-</head>
-<body>
-<div>
-<a href="javascript:toggleVisibility('texte1')" class="btn btn-primary">
-Supprimer mon compte
-</a>
-</div>
-<div id="texte1" style="visibility: hidden; display: none;">
-<input type="submit" class="btn btn-primary" name="supprimer" value="Valider ?" />
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
           
