@@ -44,8 +44,8 @@ if(isset($_POST['email']) AND isset($_POST['motdepasse']))
     error('Merci de remplir les champs');
 	}
 }
-$lead        = "BIENVENUE SUR LA MAQUETTE DE RESERVATION";
-$tagline     = "Ici vous avez la possibilité de vous inscrire aux évenements.";
+$lead        = "Espace de Connexion";
+$tagline     = "";
 $breadcrumbs = array("Connexion");
 // $evenements  = listModel($bdd);
 $pageInclude = "connexion/connexion.php";
