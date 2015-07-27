@@ -9,9 +9,6 @@ elseif ($_SESSION['user']['inter_stat_id'] == 1 or 2 or 3) {
   $tagline     = "Ici vous avez la possibilité de télecharger vos factures.";
   $breadcrumbs = array("Factures");
   $pageInclude = "facture/listFacture.php";
-  
-  $date = date("Y-m-d H:i:s");
-  $evid = $evenement['ev_id'];
 }
 else{
  
