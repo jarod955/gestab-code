@@ -105,8 +105,7 @@
                                                                     
                                                                     //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé';
                                                     success("<strong>Félicitation!</strong> le compte a bien été créé."); 
-                                                        ini_set("SMTP", "smtp.humansurfer.com");
-                                                    ini_set("sendmail_from", "postmaster@humansurfer.com");
+
                                                      $to      = $email;
                                                      $subject = 'le sujet';
                                                      $message = 'Bonjour ' . $nom . '' . $prenom . ', bienvenue sur la centrifugeuse de projet! ';
@@ -133,8 +132,7 @@
                                                         addInternautee($bdd, $nom, $prenom, $entiteid, $adrid, $pass_hache, $email, $telephone);
                                                                     //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé avec votre entité.';
                                                         success("<strong>Félicitation!</strong> le compte a bien été créé avec votre entité."); 
-                                                    ini_set("SMTP", "smtp.humansurfer.com");
-                                                    ini_set("sendmail_from", "postmaster@humansurfer.com");
+
                                                         $to      = $email;
                                                         $subject = 'le sujet';
                                                         $message = 'Bonjour ' . $nom . '' . $prenom . ', bienvenue sur la centrifugeuse de projet! ';

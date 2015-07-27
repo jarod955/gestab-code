@@ -1,6 +1,7 @@
 <?php
 	
 $mail = $_POST['email'];
+var_dump($mail);
 
 						function mdpRein($bdd, $email)
 						  {
@@ -16,20 +17,32 @@ $mail = $_POST['email'];
 						  $internaute = mdpRein($bdd, $mail);
 						  
 						  $inter = $internaute['inter_id'];
+						  $nom = $internaute['inter_nom'];
+						  $prenom = $internaute['inter_prenom'];
 
-						  $caracteres = array("a", "b", "c", "d", "e", "f", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-                         $caracteres_aleatoires = array_rand($caracteres, 8);
-                         $new_mdp = "";
-                          
-                         foreach($caracteres_aleatoires as $i)
-                         {
-                              $new_mdp .= $caracteres[$i];
-                         }
-                         
-						function suppressionMdp($bdd, $id_inter)
-						{
-						$mdp = sha1('Gestab2015');
 						
+						function chaine_aleatoire($nb_car, $chaine = 'azertyuiopqsdfghjklmwxcvbn123456789')
+						{
+						    $nb_lettres = strlen($chaine) - 1;
+						    $generation = '';
+						    for($i=0; $i < $nb_car; $i++)
+						    {
+						        $pos = mt_rand(0, $nb_lettres);
+						        $car = $chaine[$pos];
+						        $generation .= $car;
+						    }
+						    return $generation;
+						}
+
+						$mdpmail = chaine_aleatoire(8);
+						$mdpbdd	 = sha1($mdpmail);
+
+						var_dump($mdpmail);
+						var_dump($mdpbdd);
+						
+
+						function suppressionMdp($bdd, $id_inter, $mdp)
+						{
 						$query = "UPDATE internaute
 						SET inter_user_pass = :mdp
 						WHERE inter_id = :id";
@@ -41,21 +54,19 @@ $mail = $_POST['email'];
 					    return $sth->fetch(PDO::FETCH_ASSOC);
 		  				}
 
-						suppressionMdp($bdd, $inter);
+						suppressionMdp($bdd, $inter, $mdpbdd);
 						
-						ini_set("SMTP", "smtp.humansurfer.com");
-                        ini_set("sendmail_from", "postmaster@humansurfer.com");
     
-                        $to      = $email;
+                        $to      = $mail;
                         $subject = 'le sujet';
-                        $message = 'Bonjour ' . $nom . '' . $prenom . ', bienvenue sur la centrifugeuse de projet! ';
+                        $message = 'Bonjour ' . $nom . '' . $prenom . ', votre nouveau mot de passe est : ' . $mdpmail . '! ';
                         $headers = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
-                                                     'Reply-To: postmaster@humansurfer.com' . "\r\n" .
-                                                     'X-Mailer: PHP/' . phpversion();
+                        'Reply-To: postmaster@humansurfer.com' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
                                                  
-                                                     mail($to, $subject, $message, $headers);
+                        mail($to, $subject, $message, $headers);
 
-						
+						redirection($page = "index.php?route=connexion");
 
   $lead        = "test";
   $breadcrumbs = array("Motdepasse");
