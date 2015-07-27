@@ -38,10 +38,10 @@ $mpdf=new mPDF('c','A4','','',32,25,47,47,10,10);
 $mpdf->mirrorMargins = 1; // Use different Odd/Even headers and footers and mirror margins
 
 $header = '
-<table width="100%" style="border-bottom: 1px solid #000000; vertical-align: bottom; font-family: serif; font-size: 9pt; color: #000088;"><tr>
+<table width="100%" style="border-bottom: px solid #000000; vertical-align: bottom; font-family: serif; font-size: 9pt; color: #000088;"><tr>
 <td width="33%">Facture évènement n° ' . $facture['ev_id'] . '<span style="font-size:14pt;">{PAGENO}</span></td>
 
-<td width="33%" style="text-align: right;"><span style="font-weight: bold;">' . $facture['ev_libelle'] . ' </span></td>
+<td width="33%" style="text-align: right;"><span style="font-weight: bold;">' . $facture['ev_libelle'] . ' ' . $facture['ev_date'] . ' </span></td>
 </tr></table>
 ';
 $headerE = '
@@ -64,7 +64,7 @@ $mpdf->SetHTMLFooter($footerE,'E');
 
 $html = '
 
-<h1>Evenement du' . $facture['ev_date'] . ' </h1>
+<h1>' . $facture['ev_libelle'] . ' ' . $facture['ev_date'] . ' </h1>
 <h2>Ma facture évènement n° ' . $facture['ev_id'] . '</h2>
 <h3>Cette facture fera office de place le jour venu.</h3>
 <p>Vous trouverez ci-dessous toutes les informations de votre évènement "' . $facture['ev_libelle'] . '", merci de la présenter à notre organisateur le jour venu. </p>
