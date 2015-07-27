@@ -54,19 +54,19 @@
             <!-- le sous menu quand il est connecter -->
 
             <div class="row">
-            <nav class="navbar navbar-default">
-            <div class="container-fluid">
-            <div class="navbar-header">
-                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+              <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+                      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
                         <?php displayMenu($base, $menus, "profil"); ?>
-                    </ul>
+                        </ul>
+                      </div>
                     </div>
-                    </div>
-                    </div>
-                    </nav>
+                  </div>
+                </nav>
                   <?php endif ?>
                 
             </div>
