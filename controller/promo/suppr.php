@@ -1,4 +1,11 @@
-<?php
+<?php 
+if (empty($_SESSION['user'])){
+    header('location: error.php');
+}
+
+elseif ($_SESSION['user']['statut'] == 2 or 3) {
+ // Mettre ici tout le corps de la page 
+
 $codeid = ($_GET['idcode']);
 
 			
@@ -22,4 +29,10 @@ $codeid = ($_GET['idcode']);
 	$tagline     = "Ici vous avez la possibilité de creer vos codes promotionnels.";
 	$breadcrumbs = array("suppr");
 	$pageInclude = "promo/supprCode.php";
+
+}
+else{
+ 
+redirection($page = "http://localhost/gestab-code/index.php?");
+}
 ?>
