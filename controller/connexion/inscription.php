@@ -133,10 +133,12 @@
                                                                     //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé avec votre entité.';
                                                         success("<strong>Félicitation!</strong> le compte a bien été créé avec votre entité."); 
 
-                                                        $to      = $email;
-                                                        $subject = 'le sujet';
-                                                        $message = 'Bonjour ' . $nom . '' . $prenom . ', bienvenue sur la centrifugeuse de projet! ';
-                                                        $headers = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
+                                                        $to       = $email;
+                                                        $subject  = 'le sujet';
+                                                        $message  = 'Bonjour ' . $nom . '' . $prenom . ', bienvenue sur la centrifugeuse de projet! ';
+                                                        $message .= ' Votre login est: '  . $email . "\r\n";
+                                                        $message .= 'Votre mot de passe est : Vous seul le connaissez! ' . "\r\n";
+                                                        $headers  = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
                                                         'Reply-To: webmaster@example.com' . "\r\n" .
                                                         'X-Mailer: PHP/' . phpversion();
                                                         
