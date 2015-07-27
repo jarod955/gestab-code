@@ -19,6 +19,9 @@ foreach ($categories as $key => $categorie)
   $categories[$key]['place'] = placesRestantesByCategorie($bdd, $evenement['ev_id'], $categorie['cat_id']);
 //formater la date de l'evenement
 $datetimEvenement = new DateTime($evenement['ev_date']);
+
+$lead        = "Resume evenement";
+$tagline     = "Voici le resume de l'evenement.";
 //pour le file d'ariane
 $breadcrumbs      = array("Evenement", "show");
 //la vue à afficher
