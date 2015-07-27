@@ -1,5 +1,10 @@
-<?php
-$interid = ($_GET['idinter']);
+<?php 
+if (empty($_SESSION['user'])){
+	redirection($page = "index.php?route=error404");
+}
+elseif ($_SESSION['user']['inter_stat_id'] == 3) {
+ // Mettre ici tout le corps de la page 
+	$interid = ($_GET['idinter']);
 						
 						function getStatut($bdd, $id)
 						  {
@@ -45,4 +50,12 @@ $interid = ($_GET['idinter']);
 	$tagline     = "Ici vous avez la possibilité de creer vos codes promotionnels.";
 	$breadcrumbs = array("suppr");
 	$pageInclude = "compte/supprCompte.php";
+
+}
+else{
+ 
+redirection($page = "index.php?");
+}
 ?>
+
+
