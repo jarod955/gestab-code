@@ -6,15 +6,16 @@
 <?php
 $evid = $evenement['ev_id'];
 
+
+
+if($evenement['ev_datsup'] == null)
+{ 
 if($date > $evenement['ev_date'])
 {
 
 suprEvenement($bdd, $evid, $date);
 
-}
-
-if($evenement['ev_datsup'] == null)
-{ ?>
+} ?>
 <div class="col-md-12">
 <div class="well">
 <h2><?= ucfirst(lcfirst($evenement['ev_libelle'])); ?> <?= $datetimEvenement->format('d / m / Y') ?> à <?= $datetimEvenement->format('H:i') ?></h2>
