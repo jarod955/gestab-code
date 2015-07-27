@@ -1,7 +1,7 @@
 <form class="form-horizontal" action="index.php?route=profil" method="post">
   <div class="container">
     <div class="row">
-      <div class="col-xs-6 col-md-6 col-sm-6 col-lg-6">
+      <div class="col-xs-12 col-md-8 col-sm-6 col-lg-6">
         <div class="well">
           <h2>Profil</h2>
           <hr>
@@ -68,7 +68,7 @@
         </div>
       </div>
       <?php if ($_SESSION['user']['entite'] != false): ?>
-        <div class="col-xs-6 col-md-6 col-sm-6 col-lg-6">
+        <div class="col-xs-12 col-md-8 col-sm-6 col-lg-6">
           <div class="well">
             <h2>Entité</h2>
             <hr>
@@ -103,7 +103,7 @@
     <div class="row">
       <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
         <div class="text-center">
-        <div class="col-xs-2 col-md-2 col-sm-2 col-lg-2">
+        <div class="col-xs-6 col-md-2 col-sm-2 col-lg-2">
           <input type="submit" class="btn btn-default" name="modifier" value="Modifier" />
           </div>
           <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4">
