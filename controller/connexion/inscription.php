@@ -135,7 +135,7 @@
 
                                                         $to       = $email;
                                                         $subject  = 'le sujet';
-                                                        $message  = 'Bonjour ' . $nom . '' . $prenom . ', bienvenue sur la centrifugeuse de projet! ';
+                                                        $message  = 'Bonjour ' . $nom . '' . $prenom . ', bienvenue sur la centrifugeuse de projet! ' . "\r\n";
                                                         $message .= ' Votre login est: '  . $email . "\r\n";
                                                         $message .= 'Votre mot de passe est : Vous seul le connaissez! ' . "\r\n";
                                                         $headers  = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
