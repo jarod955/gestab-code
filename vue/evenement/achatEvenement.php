@@ -59,6 +59,7 @@
                   <form class="form-horizontal" action="index.php?route=achatCodePromo" method="post">
                     <input type="hidden" name="categorieid" value="<?= $categorie['cat_id']?>">
                     <input type="hidden" name="evenementid" value="<?= $evenement['ev_id']?>">
+                    
                     <?php 
                         if(empty($categorie['place']['nb_place_prise'])) 
                         {

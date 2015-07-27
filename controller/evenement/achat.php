@@ -49,6 +49,21 @@ if (isset($_POST['categorieid']) && isset($_POST['evenementid']))
         'intid'   => $_SESSION['user']['inter_id'],
         'codeid'  => $codepromoid
       );
+
+      function selectEvenement($bdd, $id)
+      {
+        $query = 'SELECT * 
+                  FROM internaute, evenement, lieu, adresse 
+            WHERE ev_inter_id = inter_id 
+            AND ev_lieux_id = lieu_id 
+            AND lieu_adr_id = adr_id 
+            AND ev_id = ?';
+        $sth   = $bdd->prepare($query);
+        $sth->execute(array($id));
+        return $sth->fetch(PDO::FETCH_ASSOC);
+      }
+      $ev = selectEvenement($bdd, $evenementid);
+
       $_SESSION['achat'] = $achatinfos;
 
       $requete = construit_url_paypal();
@@ -57,7 +72,8 @@ if (isset($_POST['categorieid']) && isset($_POST['evenementid']))
           "&RETURNURL=".urlencode("http://localhost/gestab-code/index.php?route=traitementPaypal"."&amt=".$_SESSION['achat']['catprix']."&catid=".$_SESSION['achat']['catid']."&evid=".$_SESSION['achat']['evid']."&intid=".$_SESSION['achat']['intid']."&codeid=".$_SESSION['achat']['codeid']).
           "&AMT=".$_SESSION['achat']['catprix'].
           "&CURRENCYCODE=EUR".
-          "&DESC=".urlencode("Test thibaud.)").
+          "&DESC=".urlencode("". $ev['ev_libelle'] ." ". $ev['ev_date'] ." en salle : ". $ev['lieu_nomSalle'] ." 
+            à l'adresse suivante : ". $ev['adr_num_rue'] ." ". $ev['adr_rue'] ." ". $ev['adr_ville'] ." ". $ev['adr_code_postal'] ."").
           "&LOCALECODE=FR".
           "&HDRIMG=".urlencode("http://www.siteduzero.com/Templates/images/designs/2/logo_sdz_fr.png");
 

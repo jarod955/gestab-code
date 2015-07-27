@@ -20,10 +20,25 @@ $interid = ($_GET['idinter']);
 						 $mail =  getMail($bdd, $interid);
 						 $email = $mail['inter_mail'];
 						 
-						function suppressionMdp($bdd, $id_inter)
+						function chaine_aleatoire($nb_car, $chaine = 'azertyuiopqsdfghjklmwxcvbn123456789')
 						{
-						$mdp = sha1('Gestab2015');
+						    $nb_lettres = strlen($chaine) - 1;
+						    $generation = '';
+						    for($i=0; $i < $nb_car; $i++)
+						    {
+						        $pos = mt_rand(0, $nb_lettres);
+						        $car = $chaine[$pos];
+						        $generation .= $car;
+						    }
+						    return $generation;
+						}
+
+						$mdpmail = chaine_aleatoire(8);
+						$mdpbdd	 = sha1($mdpmail);
 						
+
+						function suppressionMdp($bdd, $id_inter, $mdp)
+						{
 						$query = "UPDATE internaute
 						SET inter_user_pass = :mdp
 						WHERE inter_id = :id";
@@ -35,14 +50,11 @@ $interid = ($_GET['idinter']);
 					    return $sth->fetch(PDO::FETCH_ASSOC);
 		  				}
 
+						suppressionMdp($bdd, $inter, $mdpbdd);
 
-
-
-						suppressionMdp($bdd, $interid);
-						
 						$to      = $email;
                         $subject = 'le sujet';
-                        $message = 'Bonjour, votre nouveau mot de passe est: Gestab2015, merci de le changer a votre prochaine connexion.';
+                        $message = 'Bonjour, votre nouveau mot de passe est: ' . $mdpmail . ', merci de le changer a votre prochaine connexion.';
                         $headers = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
                         'Reply-To: webmaster@example.com' . "\r\n" .
                         'X-Mailer: PHP/' . phpversion();
