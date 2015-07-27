@@ -103,14 +103,14 @@
     <div class="row">
       <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
         <div class="text-center">
-        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4">
-          <input type="submit" class="btn btn-primary" name="modifier" value="Modifier" />
+        <div class="col-xs-2 col-md-2 col-sm-2 col-lg-2">
+          <input type="submit" class="btn btn-default" name="modifier" value="Modifier" />
           </div>
           <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4">
           
          <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+  Supprimer
 </button>
 
 <!-- Modal -->
@@ -119,14 +119,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Suppression</h4>
       </div>
       <div class="modal-body">
-        ...
+        Etes vous certain de vouloir supprimer votre compte ? 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <input type="submit" class="btn btn-primary" name="supprimer" value="Valider ?" />
       </div>
     </div>
   </div>
