@@ -1,7 +1,8 @@
 <?php
 	
 $mail = $_POST['email'];
-var_dump($mail);
+						
+
 
 						function mdpRein($bdd, $email)
 						  {
@@ -20,7 +21,7 @@ var_dump($mail);
 						  $nom = $internaute['inter_nom'];
 						  $prenom = $internaute['inter_prenom'];
 
-						
+							
 						function chaine_aleatoire($nb_car, $chaine = 'azertyuiopqsdfghjklmwxcvbn123456789')
 						{
 						    $nb_lettres = strlen($chaine) - 1;
@@ -33,19 +34,23 @@ var_dump($mail);
 						    }
 						    return $generation;
 						}
+						
 
 						$mdpmail = chaine_aleatoire(8);
 						$mdpbdd	 = sha1($mdpmail);
+
+						var_dump($mdpmail);
+						var_dump($mdpbdd);
 
 
 						function suppressionMdp($bdd, $id_inter, $mdp)
 						{
 						$query = "UPDATE internaute
-						SET inter_user_pass = :mdp
+						SET inter_user_pass = :mdp, inter_datmaj = NOW()
 						WHERE inter_id = :id";
 						$sth = $bdd->prepare($query);
+						$sth->bindValue(':id', $id_inter, PDO::PARAM_INT);
 						$sth->bindValue(':mdp', $mdp, PDO::PARAM_STR);
-					    $sth->bindValue(':id', $id_inter, PDO::PARAM_INT);
 					    $sth->execute();
 
 					    return $sth->fetch(PDO::FETCH_ASSOC);
@@ -53,17 +58,17 @@ var_dump($mail);
 
 						suppressionMdp($bdd, $inter, $mdpbdd);
 						
-    
+    					
                         $to      = $mail;
                         $subject = 'le sujet';
-                        $message = 'Bonjour ' . $nom . '' . $prenom . ', votre nouveau mot de passe est : ' . $mdpmail . '! ';
+                        $message = 'Bonjour ' . $prenom . ' ' . $nom . ', votre nouveau mot de passe est : ' . $mdpmail . ' !';
                         $headers = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
                         'Reply-To: postmaster@humansurfer.com' . "\r\n" .
                         'X-Mailer: PHP/' . phpversion();
                                                  
                         mail($to, $subject, $message, $headers);
 
-						redirection($page = "index.php?route=connexion");
+						/*redirection($page = "index.php?route=connexion");*/
 
   $lead        = "test";
   $breadcrumbs = array("Motdepasse");

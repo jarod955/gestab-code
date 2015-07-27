@@ -5,7 +5,8 @@
   <head>
     <base href="<?php echo $base; ?>">
     <meta charset="utf-8">
-    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"    content="width=device-width, initial-scale=1">
+    <meta name="viewport"    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>LUMINANCES-Plateforme</title>
     <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -138,6 +139,7 @@
         </div>
       </div>
     </footer>
-    <script src="assets/js/masonry.min.js"></script>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script src="bootstrap.min.js"></script>
   </body>
 </html>

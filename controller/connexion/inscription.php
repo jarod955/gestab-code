@@ -106,14 +106,16 @@
                                                                     //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé';
                                                     success("<strong>Félicitation!</strong> le compte a bien été créé."); 
 
-                                                     $to      = $email;
-                                                     $subject = 'le sujet';
-                                                     $message = 'Bonjour ' . $nom . '' . $prenom . ', bienvenue sur la centrifugeuse de projet! ';
-                                                     $headers = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
-                                                     'Reply-To: webmaster@example.com' . "\r\n" .
-                                                     'X-Mailer: PHP/' . phpversion();
-                                                 
-                                                     mail($to, $subject, $message, $headers);
+                                                        $to       = $email;
+                                                        $subject  = 'Inscription centrifugeuse';
+                                                        $message  = 'Bonjour ' . $prenom . ' ' . $nom . ', bienvenue sur la centrifugeuse de projet! ' . "\r\n";
+                                                        $message .= 'Votre login est: '  . $email . "\r\n";
+                                                        $message .= 'Merci de pour votre inscription, vous pouvez maintenant vous inscrire aux évenements affichés sur la centrifeuse de projet.' . "\r\n";
+                                                        $headers  = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
+                                                        'Reply-To: webmaster@example.com' . "\r\n" .
+                                                        'X-Mailer: PHP/' . phpversion();
+                                                        
+                                                        mail($to, $subject, $message, $headers);
                                                     
                                                 }
                                                 else 
@@ -134,10 +136,10 @@
                                                         success("<strong>Félicitation!</strong> le compte a bien été créé avec votre entité."); 
 
                                                         $to       = $email;
-                                                        $subject  = 'le sujet';
-                                                        $message  = 'Bonjour ' . $nom . '' . $prenom . ', bienvenue sur la centrifugeuse de projet! ' . "\r\n";
-                                                        $message .= ' Votre login est: '  . $email . "\r\n";
-                                                        $message .= 'Votre mot de passe est : Vous seul le connaissez! ' . "\r\n";
+                                                        $subject  = 'Inscription centrifugeuse';
+                                                        $message  = 'Bonjour ' . $prenom . ' ' . $nom . ', bienvenue sur la centrifugeuse de projet! ' . "\r\n";
+                                                        $message .= 'Votre login est: '  . $email . "\r\n";
+                                                        $message .= 'Merci de pour votre inscription, vous pouvez maintenant vous inscrire aux évenements affichés sur la centrifeuse de projet.' . "\r\n";
                                                         $headers  = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
                                                         'Reply-To: webmaster@example.com' . "\r\n" .
                                                         'X-Mailer: PHP/' . phpversion();
