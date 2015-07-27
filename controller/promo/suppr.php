@@ -3,7 +3,7 @@ if (empty($_SESSION['user'])){
 	redirection($page = "index.php?route=error404");
 }
 
-elseif ($_SESSION['user']['statut'] == 2 or 3) {
+elseif ($_SESSION['user']['inter_stat_id'] == 2 or 3) {
  // Mettre ici tout le corps de la page 
 
 $codeid = ($_GET['idcode']);
