@@ -19,10 +19,10 @@
                     <!-- Ici tu demande à l'utilisateur d'entrer une date, en allant voir le cours que je t'ai donné tu pourrais remarquer qu'il existe des moyens plus simple comme la balise que je vais te mettre ci-dessous -->
                     <fieldset>
                         <legend>Date</legend>
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
                         
                         </div>
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
                                     <label for="nb_rue" class="col-sm-2 control-label">Jour</label>
                                     
                                         <select name="jour" id="jour" class="form-control">
@@ -32,7 +32,7 @@
                                         </select>
                                     
                         </div>
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
                                     <label for="nb_rue" class="col-sm-2 control-label">Mois</label>
                                     
                                         <select name="mois" id="mois" class="form-control">
@@ -42,7 +42,7 @@
                                         </select>
                                     
                         </div>
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
                                     <label for="nb_rue" class="col-sm-2 control-label">Annee</label>
                                     
                                         <select name="annee" id="annee" class="form-control">
@@ -53,7 +53,7 @@
                                     
 
                         </div>
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
                                     <label for="nb_rue" class="col-sm-2 control-label">Heure</label>
                                     
                                         <select name="heure" id="heure" class="form-control">
@@ -64,7 +64,8 @@
                                     
                                     
                         </div>
-<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">                                    <label for="Rue" class="col-sm-2 control-label">Minute</label>
+                        <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">                                    
+                                    <label for="Rue" class="col-sm-2 control-label">Minute</label>
                                     
                                         <select name="minute" id="minute" class="form-control">
                                         <?php for ($minute = 00 ; $minute <= 59 ; $minute++): ?>
@@ -134,7 +135,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <legend>Catégorie n°<?php echo $i+1; ?></legend>
                             </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Nom de la categorie</div>
                                     <div class="panel-body">
@@ -143,7 +144,7 @@
                                                     
                             </div>
                             </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Prix</div>
                                     <div class="panel-body"><div class="col-sm-4"><input type="text" name="cat[<?= $i; ?>][prix]"  class="form-control"/>
@@ -151,7 +152,7 @@
                                                     
                             </div>
                             </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Nombre de place</div>
                                     <div class="panel-body"><div class="col-sm-4"><input type="text" name="cat[<?= $i; ?>][nombre_places]" class="form-control"/>
@@ -188,7 +189,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <legend>Code n°<?php echo $i+1; ?></legend>
                             </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-5 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Nom du code promo</div>
                                     <div class="panel-body">
@@ -197,7 +198,7 @@
                                                     
                             </div>
                             </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-5 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">% reduction</div>
                                     <div class="panel-body"><div class="col-sm-4"><input type="text" name="code[<?= $i; ?>][reduc]"  class="form-control"/>
@@ -205,7 +206,7 @@
                                                     
                             </div>
                             </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-5 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Nombre disponible</div>
                                     <div class="panel-body"><div class="col-sm-4"><input type="text" name="code[<?= $i; ?>][place]" class="form-control"/>

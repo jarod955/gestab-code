@@ -16,7 +16,7 @@ if($date > $evenement['ev_date'])
 suprEvenement($bdd, $evid, $date);
 
 } ?>
-<div class="col-md-12">
+<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
 <div class="well">
 <h2><?= ucfirst(lcfirst($evenement['ev_libelle'])); ?> <?= $datetimEvenement->format('d / m / Y') ?> à <?= $datetimEvenement->format('H:i') ?></h2>
 <span class="label label-info">
