@@ -1,6 +1,10 @@
-<?php
-
-include('model/categorie.php');
+<?php 
+if (empty($_SESSION['user'])){
+  redirection($page = "index.php?route=error404");
+}
+elseif ($_SESSION['user']['inter_stat_id'] == 1 or 2 or 3) {
+ // Mettre ici tout le corps de la page 
+  include('model/categorie.php');
 include('model/facture.php');
 include('model/codePromot.php');
 include("model/paypal.php");
@@ -107,4 +111,11 @@ if (isset($_POST['categorieid']) && isset($_POST['evenementid']))
     }
   }
 }
+
+}
+else{
+ 
+redirection($page = "index.php?");
+}
 ?>
+
