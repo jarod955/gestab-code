@@ -1,7 +1,7 @@
 <?php 
 function listModel($bdd)
 {
-  $query = 'SELECT ev_id, ev_libelle, ev_date, ev_lieux_id, lieu_nomSalle, count(evcat_cat_id) AS "nb_cat"
+  $query = 'SELECT ev_id, ev_libelle, ev_date, ev_lieux_id, ev_datsup, lieu_nomSalle, count(evcat_cat_id) AS "nb_cat"
             FROM evenement, lieu, evcat
             WHERE lieu_id = ev_lieux_id
             AND ev_id = evcat_ev_id
@@ -33,5 +33,14 @@ function updateEvenement($bdd, $id, $libelle, $date)
   $sth->bindValue(':dat', $date, PDO::PARAM_STR);
   $sth->execute();
 }
-
+function suprEvenement($bdd, $id, $datesup)
+{
+$query = "UPDATE evenement
+SET ev_datsup = :datesup
+WHERE ev_id = :id";
+$sth = $bdd->prepare($query);
+$sth->bindValue(':id', $id, PDO::PARAM_INT);
+$sth->bindValue(':datesup', $datesup, PDO::PARAM_STR);
+$sth->execute();
+}
 ?>
