@@ -50,7 +50,7 @@ $interid = ($_GET['idinter']);
 					    return $sth->fetch(PDO::FETCH_ASSOC);
 		  				}
 
-						suppressionMdp($bdd, $inter, $mdpbdd);
+						suppressionMdp($bdd, $interid, $mdpbdd);
 
 						$to      = $email;
                         $subject = 'le sujet';

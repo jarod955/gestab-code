@@ -22,11 +22,14 @@
   				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
   				<a class="navbar-brand" href="index.php">
             <img src="assets/images/logo.png" alt="Progressus HTML5 template">
+            <?php if(isset($_SESSION['user'])){?><h5><a href="index.php?route=profil" rel="designer"><?php echo $_SESSION['user']['inter_mail']; ?></a></h5><?php }else{}?>
           </a>
   			</div>
   			<div class="navbar-collapse collapse">
   				<ul class="nav navbar-nav pull-right">
+
   					<?php displayMenu($base, $menus, "main"); ?>
+            
   				</ul>
   			</div>
   		</div>
@@ -41,11 +44,13 @@
                   <?php if (isset($lead)): ?>
                     <h1 class="lead">
                       <?= $lead ?>
+
                     </h1>
                   <?php endif ?>
                   <?php if (isset($tagline)): ?>
                     <p class="tagline">
                       <?= $tagline ?>
+
                     </p>
                   <?php endif ?>
                 </div>

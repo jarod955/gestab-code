@@ -126,7 +126,7 @@ if (isset($_SESSION['user']))
   }
 
   $lead        = "Bienvenue sur votre espace perso";
-  $tagline     = $_SESSION['user']['inter_mail'] ;
+  $tagline     = "Ici vous pouvez modifier votre profil";;
   $breadcrumbs = array("Profil");
   $pageInclude = "compte/profil.php";
 }

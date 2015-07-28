@@ -7,6 +7,7 @@ elseif ($_SESSION['user']['inter_stat_id'] == 3) {
   include('model/internaute.php');
   $internautes 		= getInternautes($bdd);
   $lead        = "Gestion des Utilisateurs";
+  $tagline     = "L'administrateur peut gerer les utilisateurs";
   $breadcrumbs = array("Gestion des Utilisateurs");
   $pageInclude = "compte/gestionUtilisateurs.php";
 

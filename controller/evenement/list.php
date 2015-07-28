@@ -1,7 +1,7 @@
 <?php
 include('model/facture.php');
-$lead = "Participez à un evenement";
-$tagline = "";
+$lead = "Bienvenue sur la plateforme centrifugeuse";
+$tagline = "Participez a un evenement";
 $breadcrumbs = array("Evenement");
 $evenements = listModel($bdd);
 foreach ($evenements as $key => $evenement)
