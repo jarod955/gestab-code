@@ -22,7 +22,7 @@
   				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
   				<a class="navbar-brand" href="index.php">
             <img src="assets/images/logo.png" alt="Progressus HTML5 template">
-            <?php if(isset($_SESSION['user'])){?><h5><a href="index.php?route=profil" rel="designer"><?php echo $_SESSION['user']['inter_mail']; ?></a></h5><?php }else{}?>
+            <?php if(isset($_SESSION['user'])){?><h5><a style="text-decoration: none;" ref="index.php?route=profil" rel="designer"><?php echo $_SESSION['user']['inter_mail']; ?></a></h5><?php }else{}?>
           </a>
   			</div>
   			<div class="navbar-collapse collapse">
