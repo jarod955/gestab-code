@@ -1,4 +1,5 @@
 <div class="container">
+<div class="table-responsive"> 
  <table class="table table-bordered table-striped">
   <tr>
    <th>Date de l'évenement</th>
@@ -22,7 +23,7 @@
     
     if(!empty($facture['fac_code_id']))
     {        
-    ?><?= $test = $facture['cat_prix'] - $reduction = $facture['cat_prix'] * $facture['code_taux_reduc'] / 100; ?> <?php 
+    ?><?= $facture['cat_prix'] - $reduction = $facture['cat_prix'] * $facture['code_taux_reduc'] / 100; ?> <?php 
     }
     else{
     ?><?= $facture['cat_prix']; ?> <?php 
@@ -42,4 +43,5 @@
       
   <?php endforeach ?>
  </table>
+</div>
 </div>

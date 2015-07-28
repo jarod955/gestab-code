@@ -1,5 +1,6 @@
 
 <div class="container">
+<div class="table-responsive">
  <table class="table table-bordered table-striped">
   <tr>
    <th>Nom</th>
@@ -73,4 +74,5 @@
    </tr>
   <?php endforeach ?>
  </table>
+ </div>
 </div>
