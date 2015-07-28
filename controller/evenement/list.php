@@ -1,7 +1,7 @@
 <?php
 include('model/facture.php');
-$lead = "BIENVENUE SUR LA MAQUETTE DE RESERVATION";
-$tagline = "Ici vous avez la possibilité de vous inscrire aux évenements.";
+$lead = "Participez à un evenement";
+$tagline = "";
 $breadcrumbs = array("Evenement");
 $evenements = listModel($bdd);
 foreach ($evenements as $key => $evenement)
