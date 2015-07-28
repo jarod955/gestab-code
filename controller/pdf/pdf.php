@@ -1,5 +1,5 @@
 <?php
-
+include('model/facture.php');
  function showModel($bdd, $id)
   {
     $query = 'SELECT * FROM evenement WHERE ev_id = ?';
@@ -29,8 +29,25 @@ function listModel($bdd, $id_cat, $id_ev)
 
     return $sth->fetch(PDO::FETCH_ASSOC);
   }
-$facture    = listModel($bdd, $evenemennt['fac_cat_id'], $evenemennt['fac_ev_id']);
+function getCodePromot($bdd, $id)
+  {
+    $query = "SELECT *
+              FROM codepromo
+              WHERE code_id = :id";
+    $sth = $bdd->prepare($query);
+    $sth->bindValue(':id', $id, PDO::PARAM_INT);
+    $sth->execute();
 
+    return $sth->fetch(PDO::FETCH_ASSOC);
+  }
+
+
+$facture    = listModel($bdd, $evenemennt['fac_cat_id'], $evenemennt['fac_ev_id']);
+$code       = getFacture($bdd, $_SESSION['user']['inter_id'], $evenement['ev_id']);
+$codepromo  = getCodePromot($bdd, $code['fac_code_id']);
+
+
+$test = $facture['cat_prix'] - $reduction = $facture['cat_prix'] * $codepromo['code_taux_reduc'] / 100;
 
 require 'pdf/mpdf.php';
 $mpdf=new mPDF('c','A4','','',32,25,47,47,10,10); 
@@ -41,7 +58,7 @@ $header = '
 <table width="100%" style="border-bottom: px solid #000000; vertical-align: bottom; font-family: serif; font-size: 9pt; color: #000088;"><tr>
 <td width="33%">Facture évènement n° ' . $facture['ev_id'] . '<span style="font-size:14pt;">{PAGENO}</span></td>
 
-<td width="33%" style="text-align: right;"><span style="font-weight: bold;">' . $facture['ev_libelle'] . ' ' . $facture['ev_date'] . ' </span></td>
+<td width="33%" style="text-align: right;"><span style="font-weight: bold;">Centrifugeuse de projet</span></td>
 </tr></table>
 ';
 $headerE = '
@@ -101,14 +118,14 @@ td, th /* Mettre une bordure sur les td ET les th */
 
        <th>Nom évènement</th>
 
-       <td>' . $facture['ev_libelle'] . '</td>
+       <td>' . $facture['ev_libelle'] . ' ' . $facture['ev_date'] . '</td>
 
    </tr>
 
    <tr>
 
        <th>Informations évènement </th>
-       <td width=80%> <b>Date</b> : ' . $facture['ev_date'] . ' <br></br> <b>Salle </b> : ' . $facture['ev_lieux_id'] . '<br></br> <b> Catégorie </b> : ' . $facture['cat_nom'] . ' <br></br> <b> Prix </b> : ' . $facture['cat_prix'] . ' <br></br>  </td>
+       <td width=80%> <b>Salle </b> : ' . $facture['ev_lieux_id'] . '<br></br> <b> Catégorie </b> : ' . $facture['cat_nom'] . ' <br></br> <b> Prix </b> : ' . $test . ' <br></br>  </td>
 
        
 
