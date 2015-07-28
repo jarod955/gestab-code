@@ -205,7 +205,7 @@ if (isset($_POST['send']))
   if (!isset($_SESSION['ajoutcode']))
       $_SESSION['ajoutcode'] = 1;
 
-  $lead        = "Ici vous pouvez creer des events";
+  $lead        = "Espace de creation d'evenements";
   $tagline     = (isset($_SESSION['user'])) ? $_SESSION['user']['inter_mail'] : "";
   $breadcrumbs = array("Evenement", "Creation");
   $pageInclude = "evenement/newEvenement.php";

@@ -125,8 +125,8 @@ if (isset($_SESSION['user']))
     $entiteCp    = $_SESSION['user']['entite']['adresse']['adr_code_postal'];
   }
 
-  $lead        = $_SESSION['user']['inter_prenom'];
-  $tagline     = "Bienvenue sur votre espace perso";
+  $lead        = "Bienvenue sur votre espace perso";
+  $tagline     = $_SESSION['user']['inter_mail'] ;
   $breadcrumbs = array("Profil");
   $pageInclude = "compte/profil.php";
 }
