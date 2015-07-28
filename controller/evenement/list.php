@@ -1,7 +1,13 @@
 <?php
 include('model/facture.php');
 $lead = "Bienvenue sur la plateforme centrifugeuse";
-$tagline = "Participez a un evenement";
+if(isset($_SESSION['user'])){
+	$tagline = "Participez a un evenement";
+	}
+	else
+	{
+		$tagline = "Connectez vous ou inscrez vous pour vous inscrire a un evenement";
+	}
 $breadcrumbs = array("Evenement");
 $evenements = listModel($bdd);
 foreach ($evenements as $key => $evenement)
