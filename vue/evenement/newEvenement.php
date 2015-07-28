@@ -135,7 +135,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <legend>Catégorie n°<?php echo $i+1; ?></legend>
                             </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Nom de la categorie</div>
                                     <div class="panel-body">
@@ -144,7 +144,7 @@
                                                     
                             </div>
                             </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Prix</div>
                                     <div class="panel-body"><div class="col-sm-4"><input type="text" name="cat[<?= $i; ?>][prix]"  class="form-control"/>
@@ -152,7 +152,7 @@
                                                     
                             </div>
                             </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Nombre de place</div>
                                     <div class="panel-body"><div class="col-sm-4"><input type="text" name="cat[<?= $i; ?>][nombre_places]" class="form-control"/>
@@ -189,7 +189,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <legend>Code n°<?php echo $i+1; ?></legend>
                             </div>
-                            <div class="col-xs-5 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Nom du code promo</div>
                                     <div class="panel-body">
@@ -198,7 +198,7 @@
                                                     
                             </div>
                             </div>
-                            <div class="col-xs-5 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">% reduction</div>
                                     <div class="panel-body"><div class="col-sm-4"><input type="text" name="code[<?= $i; ?>][reduc]"  class="form-control"/>
@@ -206,7 +206,7 @@
                                                     
                             </div>
                             </div>
-                            <div class="col-xs-5 col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Nombre disponible</div>
                                     <div class="panel-body"><div class="col-sm-4"><input type="text" name="code[<?= $i; ?>][place]" class="form-control"/>
