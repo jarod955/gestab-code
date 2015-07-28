@@ -168,7 +168,7 @@
                   </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                <input type="submit" class="btn btn-primary" name="supprimer" value="Valider" />
+                <input type="submit" class="btn btn-primary" name="modifier" value="Valider" />
               </div>
             </div>
           </div>

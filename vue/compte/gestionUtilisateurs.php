@@ -22,53 +22,12 @@
    
     <td><?= $datetiminternaute->format('d / m / Y') ?> à <?= $datetiminternaute->format('H:i') ?></td>
      <td>
-     <script type="text/javascript">
-     // Méthode pour changer la visiblité d'une balise dont l'ID est passée en paramètre
-     function toggleVisibility(tagId) {
-     if (!document.getElementById) {
-     msg = 'Votre navigateur est trop ancien pour profiter de votre visite\n';
-     msg += 'Veuillez le mettre à jour ou vous en procurer un autre';
-     return false;
-     }
-     var tagToToggle;
-     try { // On tente de récupérer la balise cible dont on doit changer la visibilité
-     tagToToggle = document.getElementById(tagId);
-     } catch (e) { // Si échec de la récupération de la balise cible
-     alert('Je n\'ai pas pu trouver la balise cible');
-     }
-     try { // Seulement pour les non IE
-     if (tagToToggle.style.display == 'none') {
-     tagToToggle.style.display = 'inline';
-     } else {
-     tagToToggle.style.display = 'none';
-     }
-     } catch (e) {
-     }
-     // Pour IE
-     if (tagToToggle.style.visibility == 'hidden') {
-     tagToToggle.style.visibility = 'visible';
-     } else {
-     tagToToggle.style.visibility = 'hidden';
-     }
-     }
-     </script>
- 
-    <div>
- <a href="javascript:toggleVisibility('supprimer<?= $internaute['inter_id']; ?>')" class="btn btn-primary">
-     Supprimer
- </a>
-</div>
-<div id="supprimer<?= $internaute['inter_id']; ?>" style="visibility: hidden; display: none;">
- <a href="index.php?route=supprCompte&idinter=<?= $internaute['inter_id']; ?>" type="button" class="btn btn-primary">
-     Valider ?
- </a>
-</div>
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+<button type="button" data-id-user="supprimer<?= $internaute['inter_id']; ?>" class="btn btn-default" data-toggle="modal" data-target="#myModal">
   Supprimer
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div id="supprimer<?= $internaute['inter_id']; ?>" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -76,11 +35,11 @@
         <h4 class="modal-title" id="myModalLabel">Suppression</h4>
       </div>
       <div class="modal-body">
-        Etes vous certain de vouloir supprimer votre compte ? 
+        <?php var_dump($internaute['inter_id']);?>Etes vous certain de vouloir supprimer votre compte ? 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-        <a href="index.php?route=supprCompte&idinter=<?= $internaute['inter_id']; ?>" />
+        <a href="index.php?route=supprCompte&idinter=<?= $internaute['inter_id']; ?>" class="btn btn-default"/></a>
       </div>
     </div>
   </div>

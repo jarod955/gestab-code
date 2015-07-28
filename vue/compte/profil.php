@@ -104,7 +104,29 @@
       <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
         <div class="text-center">
         <div class="col-xs-6 col-md-2 col-sm-2 col-lg-2">
-          <input type="submit" class="btn btn-default" name="modifier" value="Modifier" />
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModall">
+          Modifier
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModall" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modification</h4>
+              </div>
+              <div class="modal-body">
+                Etes vous certain de vouloir modifier votre compte ? 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <input type="submit" class="btn btn-primary" name="modifier" value="Valider ?" />
+              </div>
+            </div>
+          </div>
+        </div>
+          
           </div>
           <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4">
           

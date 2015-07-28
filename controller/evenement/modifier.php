@@ -82,7 +82,7 @@ if (isset($_SESSION['user']))
             else
             {
               //Les modifications dans la bdd
-              error("L'update de l'évenement n'a pas fonctionné 2");
+              error("La suppression de l'évenement n'a pas fonctionné");
               
             }
   }
