@@ -56,7 +56,7 @@ if (isset($_POST['send']))
       // $categorie['nom'] = $_POST['cat'][$i]['nom_categorie'];
       // $categorie['prix'] = $_POST['cat'][$i]['prix'];
       // $places = $_POST['cat'][$i]['nombre_places'];
-      if(!empty($_POST['reduc']))
+      if(isset($_SESSION['user']))
       {
           
             
@@ -126,8 +126,11 @@ if (isset($_POST['send']))
               {
                 error("La reduction ou le nombre de code promo doit etre de type numerique");
               }*/
-            
-
+            }
+            else
+            {
+              error("erreur merci de reessayer");
+            }
       
       
        
