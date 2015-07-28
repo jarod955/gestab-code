@@ -33,20 +33,56 @@ if (isset($_SESSION['user']))
       
       
 
-            if(!empty($nomsalle))
+            if(!empty($libelle) && !empty($nomsalle) && !empty($numrue) && !empty($rue) && !empty($ville) && !empty($codepostal))
             {
             //$erreur = 'le mot de passe et le mot de passe de confirmation ne correspondent pas ';
             updateAdresse($bdd, $adrid, $numrue, $rue, $ville, $codepostal);
             updateLieu($bdd, $lieuid, $nomsalle);
             updateEvenement($bdd, $evid, $libelle, $date1);
-            success("<strong>Félicitation!</strong> Le mot de passe a bien été changé .");
+            success("<strong>Félicitation!</strong> L'evenement a bien été mis a jour");
             redirection($page = "index.php?route=listadminEvenement");
 
-            }             else 
-
+            }
+            else
             {
               //Les modifications dans la bdd
-              error("Ca ne fonctionne pas");
+              error("L'update de l'évenement n'a pas fonctionné");
+              
+            }
+  }
+
+  if (isset($_POST['supprimer']))
+  {
+      $evid = $_POST['evid'];
+      $lieuid = $_POST['lieuid'];
+      $adrid = $_POST['adrid'];
+
+      $libelle = $_POST['libelle'];
+      $nomsalle = $_POST['nom_salle'];
+      $numrue = $_POST['adr_num_rue'];
+      $rue = $_POST['adr_rue'];
+      $ville = $_POST['adr_ville'];
+      $codepostal = $_POST['adr_code_postal'];
+      $date1      = $_POST['annee'].'-'.$_POST['mois'].'-'.$_POST['jour'].'-'.$_POST['heure'].'-'.$_POST['minute'];   
+
+      
+      
+
+            if(!empty($libelle) && !empty($nomsalle) && !empty($numrue) && !empty($rue) && !empty($ville) && !empty($codepostal))
+            {
+            //$erreur = 'le mot de passe et le mot de passe de confirmation ne correspondent pas ';
+            $req = $bdd->prepare('UPDATE evenement SET ev_datsup = NOW() WHERE ev_id = :evid');
+            $req->execute(array(
+              'evid' => $evid,
+              ));
+            success("<strong>Félicitation!</strong> l'évenement a bien été supprimé.");
+            }
+
+            
+            else
+            {
+              //Les modifications dans la bdd
+              error("L'update de l'évenement n'a pas fonctionné 2");
               
             }
   }
