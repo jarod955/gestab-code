@@ -10,7 +10,7 @@
   </div>
   <div class="row">
     
-    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
       <div class="well">
         <h2>Résumé de l'évenement</h2>
         <hr>
@@ -119,7 +119,7 @@
       </div>
 
     </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
       <div class="well">
         <h2>Participants</h2>
         <hr>
