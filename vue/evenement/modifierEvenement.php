@@ -139,8 +139,51 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
         <input type="submit" class="btn btn-primary" name="modifier" value="Modifier" />
-      </div>
+      
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          Supprimer
+        </button>
+
+        <!-- Modal -->
+        
+              
+              
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Suppression</h4>
+              </div>
+              <div class="modal-body">
+               
+                <?php if(!empty($participant)){ ?>
+                  Etes vous certain de vouloir supprimer votre evenement ? Si des participants sont inscrits pensé a les avertir ainsi qu'a proceder au remboursement
+                
+                  <h6><?= $participant['inter_nom']; ?> <?= $participant['inter_prenom']; ?> <div style="color:blue;"><?= $participant['inter_mail']; ?></div></h6>
+                <?php }
+                else
+                { ?>
+                  Etes vous certain de vouloir supprimer votre compte ?
+                <?php } ?>
+                
+                  </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <input type="submit" class="btn btn-primary" name="supprimer" value="Valider" />
+              </div>
+            </div>
+          </div>
+        </div>
+              
+              
+              
+              
+              
+        </div>
     </div>
+    
+
   <?php else: ?>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">

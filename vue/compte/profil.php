@@ -109,29 +109,29 @@
           <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4">
           
          <!-- Button trigger modal -->
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-  Supprimer
-</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+          Supprimer
+        </button>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Suppression</h4>
-      </div>
-      <div class="modal-body">
-        Etes vous certain de vouloir supprimer votre compte ? 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-        <input type="submit" class="btn btn-primary" name="supprimer" value="Valider ?" />
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Suppression</h4>
+              </div>
+              <div class="modal-body">
+                Etes vous certain de vouloir supprimer votre compte ? 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <input type="submit" class="btn btn-primary" name="supprimer" value="Valider ?" />
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
           
         </div>
       </div>
