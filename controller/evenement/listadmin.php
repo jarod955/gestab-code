@@ -7,7 +7,7 @@ elseif ($_SESSION['user']['inter_stat_id'] ==  2 or 3) {
 	include('model/categorie.php');
 	include('model/internaute.php');
 	$evenements  = listModel($bdd);
-	$lead        = "Reservation d'evenement Centrifugeuse de projets";
+	$lead        = "Modifiez vos evenements";
 	$tagline     = "Ici vous avez la possibilité de modifier les évenements.";
 	$breadcrumbs = array("list");
 	$pageInclude = "evenement/listadminEvenement.php";
