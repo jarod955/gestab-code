@@ -58,19 +58,18 @@ if (isset($_POST['send']))
       // $places = $_POST['cat'][$i]['nombre_places'];
       if(!empty($_POST['reduc']))
       {
-          foreach ($_POST['cat'] as $categorie)
-          {
-            foreach ($_POST['code'] as $codepromo)
-            {
+          
+            
               
-              if(is_numeric($codepromo['place']) && is_numeric($codepromo['reduc']))
+              /*if(is_numeric($codepromo['place']) && is_numeric($codepromo['reduc']))
               //if(is_numeric($codepromo['place']) || is_numeric($codepromo['reduc']))
               {
                   if(is_numeric($categorie['prix']) && is_numeric($categorie['nombre_places']))
-                  {
+                  {*/
               //if(is_numeric($codepromo['place']) || is_numeric($codepromo['reduc']))
                       
-                            
+                            foreach ($_POST['cat'] as $categorie)
+                            { 
                             if ($categorie['prix'] || $categorie['nombre_places'] < 0)
                             {
                               $categorie['prix'] = abs($categorie['prix']); # code...
@@ -84,7 +83,7 @@ if (isset($_POST['send']))
                               addCategorie($bdd, $categorie['nom_categorie'], $categorie['prix']);
                               $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
                             }
-                           
+                            }
 
                             addAdresse($bdd, $numrue, $rue, $ville, $codepostal);
                             $adrid = $bdd->lastInsertId();
@@ -95,7 +94,8 @@ if (isset($_POST['send']))
                             addEvenement($bdd, $date1, $nom, $interid, $evlieuid);
                             $evid = $bdd->lastInsertId();
            
-                            
+                            foreach ($_POST['code'] as $codepromo)
+                            {
                             if ($codepromo['reduc'] || $codepromo['place'] < 0)
                             {
                               $codepromo['reduc'] = abs($codepromo['reduc']); # code...
@@ -107,14 +107,15 @@ if (isset($_POST['send']))
                             {
                               addCode($bdd, $codepromo['nom_code'], $codepromo['reduc'], $codepromo['place'], $evid);
                             }
-                          
+                            }
+
                             foreach ($categories as $cat_id => $cat_nb_place)
                             {   
                               addEvcat($bdd, $evid, $cat_id, $cat_nb_place);
                             } 
                           
                             success("L'événement à bien été enregistré.");
-                  }
+                  /*}
                   else
                   {
                     error("Le prix ou le nombre de places doit etre de type numerique");
@@ -124,11 +125,10 @@ if (isset($_POST['send']))
               else
               {
                 error("La reduction ou le nombre de code promo doit etre de type numerique");
-              }
-            }
-          }
+              }*/
+            
 
-      }
+      
       
        
             
