@@ -1,7 +1,7 @@
 <?php 
   function getCodePromots($bdd)
   {
-    $query = "SELECT code_id, code_nom, code_taux_reduc, code_nb, code_ev_id, code_datsup, ev_libelle 
+    $query = "SELECT code_id, code_nom, code_taux_reduc, code_nb, code_ev_id, code_datsup, ev_libelle, ev_date
               FROM codepromo, evenement
               WHERE code_ev_id = ev_id"; 
     $sth = $bdd->query($query);

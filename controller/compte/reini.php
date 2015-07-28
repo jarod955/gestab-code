@@ -40,7 +40,7 @@ $interid = ($_GET['idinter']);
 						function suppressionMdp($bdd, $id_inter, $mdp)
 						{
 						$query = "UPDATE internaute
-						SET inter_user_pass = :mdp
+						SET inter_user_pass = :mdp, inter_datmaj = NOW()
 						WHERE inter_id = :id";
 						$sth = $bdd->prepare($query);
 						$sth->bindValue(':mdp', $mdp, PDO::PARAM_STR);
@@ -50,7 +50,6 @@ $interid = ($_GET['idinter']);
 					    return $sth->fetch(PDO::FETCH_ASSOC);
 		  				}
 
-						suppressionMdp($bdd, $interid, $mdpbdd);
 
 						$to      = $email;
                         $subject = 'le sujet';

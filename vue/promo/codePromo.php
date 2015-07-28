@@ -13,13 +13,14 @@
 
   </tr>
     <?php foreach ($codes as $code): ?>
+      <?php $datetimcode = new DateTime($code['ev_date']); ?>
     <?php 
     if($code['code_datsup'] == null){ ?>
    <tr>
       <td><?= $code['code_nom']; ?></td>
       <td><?= $code['code_taux_reduc']; ?> %</td>
       <td><?= $code['code_nb']; ?></td>
-      <td><?= $code['ev_libelle']; ?></td>
+      <td><?= $code['ev_libelle']; ?> <?= $datetimcode->format('d / m / Y') ?> à <?= $datetimcode->format('H:i') ?></td>
 
 		  
 			
