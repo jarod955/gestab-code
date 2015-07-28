@@ -194,6 +194,7 @@ include('model/fonctionAdd.php');
     }
 
    $lead        = "Créer un nouvel Administrateur";
+   $tagline     = "L'administrateur peut créer et modifier des évènements";
    $breadcrumbs = array("Créer un nouvel Administrateur");
    $pageInclude = "compte/newAdmin.php";
 }
