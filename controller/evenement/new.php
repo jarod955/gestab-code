@@ -129,52 +129,8 @@ if (isset($_POST['send']))
           }
 
       }
-      else
-      {
-          foreach ($_POST['cat'] as $categorie)
-          {
-                if(is_numeric($categorie['prix']) && is_numeric($categorie['nombre_places']))
-                    {
-              //if(is_numeric($codepromo['place']) || is_numeric($codepromo['reduc']))
-                      
-                            
-                            if ($categorie['prix'] || $categorie['nombre_places'] < 0)
-                            {
-                              $categorie['prix'] = abs($categorie['prix']); # code...
-                              $categorie['nombre_places'] = abs($categorie['nombre_places']);
-                              
-                              addCategorie($bdd, $categorie['nom_categorie'], $categorie['prix']);
-                              $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
-                            }
-                            else
-                            {
-                              addCategorie($bdd, $categorie['nom_categorie'], $categorie['prix']);
-                              $categories[$bdd->lastInsertId()] = $categorie['nombre_places'];
-                            }
-                           
-
-                            addAdresse($bdd, $numrue, $rue, $ville, $codepostal);
-                            $adrid = $bdd->lastInsertId();
-                            
-                            addLieu($bdd, $salle, $adrid);
-                            $evlieuid = $bdd->lastInsertId();
-
-                            addEvenement($bdd, $date1, $nom, $interid, $evlieuid);
-                            $evid = $bdd->lastInsertId();
-           
-                          
-                            foreach ($categories as $cat_id => $cat_nb_place)
-                            {   
-                              addEvcat($bdd, $evid, $cat_id, $cat_nb_place);
-                            } 
-                          
-                            success("L'événement à bien été enregistré.");
-                  }
-                  else
-                  {
-                    error("Le prix ou le nombre de places doit etre de type numerique");
-                  }
-    }     }
+      
+    }    
             
   }
   else
