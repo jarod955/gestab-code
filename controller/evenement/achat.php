@@ -1,4 +1,5 @@
 <?php 
+
 if (empty($_SESSION['user'])){
   redirection($page = "index.php?route=error404");
 }
@@ -73,7 +74,7 @@ if (isset($_POST['categorieid']) && isset($_POST['evenementid']))
       $requete = construit_url_paypal();
       $requete = $requete."&METHOD=SetExpressCheckout".
           "&CANCELURL=".urlencode("http://www.google.fr").
-          "&RETURNURL=".urlencode("http://".$base."index.php?route=traitementPaypal"."&amt=".$_SESSION['achat']['catprix']."&catid=".$_SESSION['achat']['catid']."&evid=".$_SESSION['achat']['evid']."&intid=".$_SESSION['achat']['intid']."&codeid=".$_SESSION['achat']['codeid']).
+          "&RETURNURL=".urlencode("http://localhost/gestab-code/index.php?route=traitementPaypal"."&amt=".$_SESSION['achat']['catprix']."&catid=".$_SESSION['achat']['catid']."&evid=".$_SESSION['achat']['evid']."&intid=".$_SESSION['achat']['intid']."&codeid=".$_SESSION['achat']['codeid']).
           "&AMT=".$_SESSION['achat']['catprix'].
           "&CURRENCYCODE=EUR".
           "&DESC=".urlencode("". $ev['ev_libelle'] ." ". $ev['ev_date'] ." en salle : ". $ev['lieu_nomSalle'] ." 
