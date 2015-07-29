@@ -108,8 +108,12 @@ if (isset($_POST['send']))
             exit;*/
               if($cat == 1)
               {
-
-                
+                  if(preg_match($pattern, $nom) && preg_match($pattern, $ville) && preg_match($pattern, $salle))
+                  {
+                    if (is_numeric($numrue))
+                    {
+                      if (preg_match('#^[0-9]{5}$#',$codepostal))
+                      {
                             foreach ($_POST['cat'] as $categorie)
                             { 
                               if ($categorie['prix'] || $categorie['nombre_places'] < 0)
@@ -161,6 +165,21 @@ if (isset($_POST['send']))
                             } 
                           
                             success("L'événement à bien été enregistré.");
+                        }
+                        else
+                        {
+                          error("Le code postal n'est pas correct");
+                        }  
+                      }
+                      else
+                      {
+                        error("Merci de rentrer un numero de rue valide");
+                      }      
+                  }
+                  else
+                  {
+                    error("Merci de creer un evenement valide");
+                  }
                 }
                 else
                 {

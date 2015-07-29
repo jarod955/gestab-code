@@ -83,10 +83,11 @@
                                     {
                                                 
 
-                                        if (is_numeric($numrue) && is_numeric($codepostal))
+                                        if (is_numeric($numrue))
                                         {
                                                         //$erreur = "Saisissez une valeur numérique !";
-                                                           
+                                            if (preg_match('#^[0-9]{5}$#',$codepostal))
+                                            {               
                                                             
                                                             /*if (preg_match("#[^0-9]#", $nom))*/
                                             $pattern = '#[^0-9]#';
@@ -145,6 +146,10 @@
                                                         'X-Mailer: PHP/' . phpversion();
                                                         
                                                         mail($to, $subject, $message, $headers);
+                                                    
+
+
+
                                                     }
                                                     else
                                                     {
@@ -158,11 +163,15 @@
                                             {
                                                 error("Le nom et/ou prenom et/ou ville doivent etre de type charactere");
                                             }
-                                                                    
+                                            }
+                                            else
+                                            {
+                                                error("Le code postal n'est pas valide !"); 
+                                            }                        
                                         }
                                         else
                                         { 
-                                            error("Le numero de la rue et/ou le code postal doit etre de type numerique !"); 
+                                            error("Le numero de la rue doit etre de type numerique !"); 
                                         }
 
                                     }
