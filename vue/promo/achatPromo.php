@@ -41,9 +41,11 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <form class="form-horizontal" action="index.php?route=achatEvenement&id=<?= $evenementid ?>" method="post">
           <div class="form-group">
+          <div class="col-sm-4">
             <input type="hidden" name="categorieid" value="<?= $categorieid?>">
             <input type="hidden" name="evenementid" value="<?= $evenementid?>">
             <input type="submit" class="btn btn-primary" name="send" value="Non">
+          </div>
           </div>
         </form>
       </div>

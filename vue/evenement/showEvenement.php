@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
       <div class="well">
         <h2>Lieu</h2>
         <hr>
@@ -22,7 +22,7 @@
         </address>
       </div>
     </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
       <div class="well">
         <h2>Organisateur</h2>
         <hr>
@@ -39,7 +39,7 @@
         <hr>
         <div class="row">
           <?php foreach ($categories as $categorie): ?>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <div class="well" style="background-color: #FFF;">
                 <h3><?= ucfirst(lcfirst($categorie['cat_nom'])); ?></h3>
                 <p><strong>Prix:</strong> <?= $categorie['cat_prix']?> €</p>

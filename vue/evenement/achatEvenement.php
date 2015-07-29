@@ -7,11 +7,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
         <strong><p>Nom de l'évenement :</strong></br></br>
         <?= $evenement['ev_libelle']?></p>
       </div>
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
         <strong><p>Adresse :</p></strong>
         <address>
           <?= $evenement['adr_num_rue']?> <?= $evenement['adr_rue']?><br>
@@ -19,7 +19,7 @@
           <strong>Salle: </strong><?= $evenement['lieu_nomSalle']?><br>
         </address>
       </div>
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
         <strong><p>Organisateur :</strong> <?= $evenement['inter_nom']?> <?= $evenement['inter_prenom']?><br>
         <strong><p>Courriel : </strong><?= $evenement['inter_mail']?></a></p></p>
       </div>
@@ -31,7 +31,7 @@
         <hr>
         <?php foreach ($categories as $categorie): ?>
           <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <div class="panel panel-default">
                 <div class="panel-heading">Catégorie</div>
                 <div class="panel-body">
@@ -39,7 +39,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <div class="panel panel-default">
                 <div class="panel-heading">Prix</div>
                 <div class="panel-body">
@@ -52,7 +52,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <div class="panel panel-default">
                 <div class="panel-heading">Prendre une place</div>
                 <div class="panel-body">
