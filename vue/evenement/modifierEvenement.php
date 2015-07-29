@@ -4,7 +4,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <h2><?= ucfirst(lcfirst($evenement['ev_libelle'])); ?> <?= $datetimEvenement->format('d / m / Y') ?> à <?= $datetimEvenement->format('H:i') ?></h2>
       <p>
-        Afin de modifier l'évenement, il vous suffit de remplacer les champs souhaités par les nouveaux et de cliquer sur le bouton modifier.
+        Afin de modifier l'événement, il vous suffit de remplacer les champs souhaités par les nouveaux et de cliquer sur le bouton modifier.
       </p>
     </div>
   </div>
@@ -12,12 +12,12 @@
     
     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
       <div class="well">
-        <h2>Résumé de l'évenement</h2>
+        <h2>Résumé de l'événement</h2>
         <hr>
         <div class="row">
 
           <div class="form-group">
-              <label for="nom" class="col-sm-4 control-label">Nom evenement: </label>
+              <label for="nom" class="col-sm-4 control-label">Nom événement: </label>
               <div class="col-sm-8">
                   <input type="text" name="libelle" id="libelle" class="form-control" value="<?= $evenement['ev_libelle']?>" required />
               </div>
@@ -47,7 +47,7 @@
               </div>
           </div>
           <div class="form-group">
-              <label for="ville" class="col-sm-4 control-label">Code Postal:</label>
+              <label for="ville" class="col-sm-4 control-label">Code postal:</label>
               <div class="col-sm-8">
                   <input type="text" name="adr_code_postal" id="cp" class="form-control" value="<?= $evenement['adr_code_postal']?>" required />
               </div>
@@ -78,7 +78,7 @@
               </div>
           </div>
           <div class="form-group">
-              <label for="email" class="col-sm-4 control-label">Annee :</label>
+              <label for="email" class="col-sm-4 control-label">Année :</label>
               <div class="col-sm-8">
                   <select name="annee" id="annee" class="form-control">
                                         <option selected="selected"><?= $year ?></option>
@@ -192,13 +192,13 @@
               <div class="modal-body">
                
                 <?php if(!empty($participant)){ ?>
-                  Etes vous certain de vouloir supprimer votre evenement ? Si des participants sont inscrits pensé a les avertir ainsi qu'a proceder au remboursement
+                  Etes vous certain de vouloir supprimer votre événement ? Si des participants sont inscrits pensez à les avertir ainsi qu'a proceder au remboursement
                 
                   <h6><?= $participant['inter_nom']; ?> <?= $participant['inter_prenom']; ?> <div style="color:blue;"><?= $participant['inter_mail']; ?></div></h6>
                 <?php }
                 else
                 { ?>
-                  Etes vous certain de vouloir supprimer votre evenement ?
+                  Etes vous certain de vouloir supprimer votre événement ?
                 <?php } ?>
                 
                   </div>

@@ -3,12 +3,12 @@
   <div class="well">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <h3>Recapitulatif de l'inscription</h3></br>
+        <h3>Récapitulatif de l'inscription</h3></br>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        <strong><p>Nom de l'évenement :</strong></br></br>
+        <strong><p>Nom de l'événement :</strong></br></br>
         <?= $evenement['ev_libelle']?></p>
       </div>
       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -44,7 +44,7 @@
                 <div class="panel-heading">Prix</div>
                 <div class="panel-body">
                   <?php if (!empty($somme)): ?>
-                    Reduction de : <?= $test = $categorie['cat_prix'] * $somme ?>
+                    Réduction de : <?= $test = $categorie['cat_prix'] * $somme ?>
                     Nouveau prix : <?= $categorie['cat_prix'] - $test ?>
                   <?php else: ?>
                     <?= $categorie['cat_prix'] ?>
