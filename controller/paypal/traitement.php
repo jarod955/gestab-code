@@ -46,7 +46,7 @@ else
 
     	addFacture($bdd, $evenementid, $internauteid, $categorieid, $codepromoid);
 
-    	redirection($page = "http://" . $base . "index.php?route=listFacture");
+    	redirection($page = "http://".$base."index.php?route=listFacture");
 
 		}
     	else{// On affiche la page avec les remerciements, et tout le tralala...
@@ -60,7 +60,7 @@ else
 
     	addFacture($bdd, $evenementid, $internauteid, $categorieid, null);
 
-    	redirection($page = "http://" . $base . "index.php?route=listFacture");
+    	redirection($page = "http://".$base."index.php?route=listFacture");
 			}
 		// Mise à jour de la base de données & traitements divers...
 		/*mysql_query("UPDATE commandes SET etat='OK' WHERE id_commande='".$liste_param_paypal['TRANSACTIONID']."'");*/
