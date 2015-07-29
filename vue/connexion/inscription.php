@@ -7,7 +7,7 @@
 
     <form action="index.php?route=inscription" method="post"  class="form-horizontal">
         <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="well">
                     <h3>Informations personnelles <h6>(obligatoire)</h6></h3>
                     <div class="form-group">
@@ -31,7 +31,7 @@
                 </div>
             </div>
             
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="well">
                     <h3>Adresse <h6>(obligatoire)</h6></h3>    
                     <div class="form-group">
