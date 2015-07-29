@@ -39,8 +39,7 @@ $mail = $_POST['email'];
 						$mdpmail = chaine_aleatoire(8);
 						$mdpbdd	 = sha1($mdpmail);
 
-						var_dump($mdpmail);
-						var_dump($mdpbdd);
+
 
 
 						function suppressionMdp($bdd, $id_inter, $mdp)
