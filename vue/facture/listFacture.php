@@ -1,5 +1,5 @@
 <div class="container">
-<div class="table-responsive"> 
+<!-- <div class="table-responsive">  -->
  <table class="table table-bordered table-striped">
   <tr>
    <th>Date de l'évenement</th>
@@ -43,5 +43,5 @@
       
   <?php endforeach ?>
  </table>
-</div>
+<!-- </div> -->
 </div>
