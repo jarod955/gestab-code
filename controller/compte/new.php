@@ -36,7 +36,7 @@ include('model/fonctionAdd.php');
         if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['rue']) || empty($_POST['ville']) || empty($_POST['codepostal']) || empty($_POST['email']) || empty($_POST['email2']) || empty($_POST['telephone']) || empty($_POST['numrue']))
         {
             //$erreur = "Les champs marqué d'un * sont obligatoire";
-             error("Les champs marqué d'un * sont obligatoire"); 
+             error("Les champs marqués d'un * sont obligatoire"); 
         }
         else
         {
@@ -47,7 +47,7 @@ include('model/fonctionAdd.php');
                 if ((strlen($nom) >= 30) || (strlen($prenom) >= 30) || (strlen($rue) >= 30) || (strlen($ville) >= 30))
                 {
                     //$erreur = 'Un des champs depasse la limite de 30 charactere';
-                    error("Un des champs depasse la limite de 30 characteres"); 
+                    error("Un des champs depasse la limite de 30 caractères"); 
                 }
                 else
                 {
@@ -61,7 +61,7 @@ include('model/fonctionAdd.php');
                     {
                         if (strlen($verifmdp) < 8)
                         {
-                            error("le mot de passe doit contenir au moins 8 caracteres!"); 
+                            error("le mot de passe doit contenir au moins 8 caractères!"); 
                         }
                         else
                         {
@@ -157,7 +157,7 @@ include('model/fonctionAdd.php');
                                             }   
                                             else
                                             {
-                                                error("Le nom et/ou prenom et/ou ville doivent etre de type charactere");
+                                                error("Le nom et/ou prenom et/ou ville doivent etre de type caractères");
                                             }
                                                                     
                                         }
