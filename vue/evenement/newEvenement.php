@@ -8,11 +8,11 @@
               
                     -->
                     <fieldset>
-                        <legend>Evenement</legend>
+                        <legend>Evénement</legend>
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Nom evenement :</label>
+                            <label for="name" class="col-sm-2 control-label">Nom événement :</label>
                             <div class="col-sm-5">
-                                <input type="text" name="nom" id="name" class="form-control" value="Seance du"/>
+                                <input type="text" name="nom" id="name" class="form-control" value="Séance du"/>
                             </div>
                         </div>
                     </fieldset>
@@ -79,7 +79,7 @@
                     <fieldset>
                         <legend>Adresse</legend>
                         <div class="form-group">
-                            <label for="nb_rue" class="col-sm-2 control-label">Numero Rue :</label>
+                            <label for="nb_rue" class="col-sm-2 control-label">Numero de rue :</label>
                             <div class="col-sm-2">
                                 <input type="number" name="numerorue" id="nb_rue" class="form-control" value="<?php if (isset($_SESSION['numerorue'])) echo $_SESSION['numerorue']; unset($_SESSION['numerorue']); ?>" />
                             </div>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="cod" class="col-sm-2 control-label">Code Postal :</label>
+                            <label for="cod" class="col-sm-2 control-label">Code postal :</label>
                             <div class="col-sm-2">
                                 <input type="text" name="codepostal" id="cod" class="form-control" value="<?php if (isset($_SESSION['codepostal'])) echo $_SESSION['codepostal']; unset($_SESSION['codepostal']); ?>" />
                             </div>
@@ -137,7 +137,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Nom de la categorie</div>
+                                <div class="panel-heading">Nom de la catégorie</div>
                                     <div class="panel-body">
                                     <input type="text" name="cat[<?= $i; ?>][nom_categorie]" class="form-control"/>
                                     </div>
@@ -168,7 +168,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <fieldset>
-                        <legend>Code Promo</legend>
+                        <legend>Code promo</legend>
                         <div class="form-group">
                             <label for="cat" class="col-sm-2 control-label">Ajouter / Supprimer des codes promo :</label>
                             <div class="col-sm-10">
@@ -200,7 +200,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <div class="panel panel-default">
-                                <div class="panel-heading">% reduction</div>
+                                <div class="panel-heading">% réduction</div>
                                     <div class="panel-body"><div class="col-sm-4"><input type="text" name="code[<?= $i; ?>][reduc]"  class="form-control"/>
                             </div></div>
                                                     

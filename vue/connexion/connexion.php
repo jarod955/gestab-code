@@ -29,7 +29,7 @@
       <div class="well">
         <form action="index.php?route=reinitialisationMdp" method="post" class="form-horizontal">
           <div class="form-group">
-            <label for="mdp" class="col-sm-3 control-label">Mot de passe perdu ? </label>
+            <label for="mdp" class="col-sm-3 control-label">Mot de passe oublié ? </label>
             <div class="col-sm-4">
               <input type="email" name="email" class="form-control" id="mdp" placeholder="Entrez votre email">
             </div>

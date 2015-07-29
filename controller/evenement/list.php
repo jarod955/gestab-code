@@ -6,7 +6,7 @@ if(isset($_SESSION['user'])){
 	}
 	else
 	{
-		$tagline = "Connectez vous ou inscrez vous pour vous inscrire a un evenement";
+		$tagline = "Connectez vous ou inscrivez vous pour participer à un événement";
 	}
 $breadcrumbs = array("Evenement");
 $evenements = listModel($bdd);
