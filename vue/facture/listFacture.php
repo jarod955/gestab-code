@@ -1,5 +1,5 @@
 <div class="container">
-<!-- <div class="table-responsive">  -->
+<div class="table-responsive"> 
  <table class="table table-bordered table-striped">
   <tr>
    <th>Date de l'évenement</th>
@@ -12,23 +12,14 @@
   </tr>
    
     <?php foreach ($factures as $facture): ?>
-
+   
     <?php $datetimfacture = new DateTime($facture['ev_date']); ?>
    <tr>
     <td><?= $datetimfacture->format('d / m / Y') ?> à <?= $datetimfacture->format('H:i') ?></td>
     <td><a href="index.php?route=showEvenement&id=<?= $facture['ev_id']; ?>"><?= $facture['ev_libelle']; ?></a></td>
     <td><?= $facture['cat_nom']; ?></td>
     
-    <td><?php 
-    
-    if(!empty($facture['fac_code_id']))
-    {        
-    ?><?= $facture['cat_prix'] - $reduction = $facture['cat_prix'] * $facture['code_taux_reduc'] / 100; ?> <?php 
-    }
-    else{
-    ?><?= $facture['cat_prix']; ?> <?php 
-    } 
-    ?>
+    <td><?= $facture['cat_prix']; ?>
     </td> 
     <?php $datetimfacture = new DateTime($facture['fac_datcre']); ?>
    
@@ -43,5 +34,5 @@
       
   <?php endforeach ?>
  </table>
-<!-- </div> -->
+ </div> 
 </div>
