@@ -36,7 +36,7 @@ function updateEvenement($bdd, $id, $libelle, $date)
 function suprEvenement($bdd, $id)
 {
 $query = "UPDATE evenement, codepromo
-SET ev_datsup = :datesup, code_datsup = NOW()
+SET ev_datsup = NOW(), code_datsup = NOW()
 WHERE ev_id = :id
 AND code_ev_id = :id";
 $sth = $bdd->prepare($query);
