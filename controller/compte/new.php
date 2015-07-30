@@ -12,31 +12,32 @@ include('model/fonctionAdd.php');
         $prenom           = htmlspecialchars(trim($_POST['prenom']));
         $entite           = htmlspecialchars(trim($_POST['entite']));
         
-        $verifmdp         = $_POST['motdepasse'];
-        $pass_hache       = sha1($_POST['motdepasse']);
-        $pass_hache2      = sha1($_POST['motdepasse2']);
-        
-        
         $email            = htmlspecialchars(trim($_POST['email']));
         $email2           = htmlspecialchars(trim($_POST['email2']));
         $telephone        = htmlspecialchars(trim($_POST['telephone']));
-        $numrue           = htmlspecialchars(trim($_POST['numrue']));
         $rue              = htmlspecialchars(trim($_POST['rue']));
-        $codepostal       = htmlspecialchars(trim($_POST['codepostal']));
         $ville            = htmlspecialchars(trim($_POST['ville']));
-        
+        $codepostal       = htmlspecialchars(trim($_POST['codepostal']));
 
-        
-        $numrueentite     = htmlspecialchars(trim($_POST['numrueentite']));
         $rueentite        = htmlspecialchars(trim($_POST['rueentite']));
         $codepostalentite = htmlspecialchars(trim($_POST['codepostalentite']));
         $villeentite      = htmlspecialchars(trim($_POST['villeentite']));
         $vide = "";
-        
+
+        if (htmlspecialchars($_POST["numrue"] < 0) || ($_POST["numrueentite"] < 0))
+        {
+        $numrue = abs($_POST["numerorue"]);
+        $numrueentite = abs($_POST["numrueentite"]);
+        }
+        else{
+        $numrue = ($_POST["numrue"]);
+        $numrueentite = ($_POST["numrueentite"]);
+        }
+       
         if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['rue']) || empty($_POST['ville']) || empty($_POST['codepostal']) || empty($_POST['email']) || empty($_POST['email2']) || empty($_POST['telephone']) || empty($_POST['numrue']))
         {
             //$erreur = "Les champs marqué d'un * sont obligatoire";
-             error("Les champs marqués d'un * sont obligatoire"); 
+             error("Les champs marqué d'un * sont obligatoire"); 
         }
         else
         {
@@ -51,14 +52,6 @@ include('model/fonctionAdd.php');
                 }
                 else
                 {
-
-                    if ($pass_hache != $pass_hache2)
-                    {
-                            //$erreur = 'le mot de passe et le mot de passe de confirmation ne correspondent pas ';
-                        error("le mot de passe et le mot de passe de confirmation ne correspondent pas!"); 
-                    }
-                    else
-                    {
                         if (strlen($verifmdp) < 8)
                         {
                             error("le mot de passe doit contenir au moins 8 caractères!"); 
@@ -88,10 +81,11 @@ include('model/fonctionAdd.php');
                                     {
                                                 
 
-                                        if (is_numeric($numrue) && is_numeric($codepostal))
+                                        if (is_numeric($numrue))
                                         {
                                                         //$erreur = "Saisissez une valeur numérique !";
-                                                           
+                                            if (preg_match('#^[0-9]{5}$#',$codepostal))
+                                            {               
                                                             
                                                             /*if (preg_match("#[^0-9]#", $nom))*/
                                             $pattern = '#[^0-9]#';
@@ -99,32 +93,68 @@ include('model/fonctionAdd.php');
                                             {
                                                                 
                                                 if (empty($entite) && empty($numrueentite) && empty($rueentite) && empty($codepostalentite) && empty($villeentite))
-                                                {
+                                                {   
+                                                    function chaine_aleatoire($nb_car, $chaine = 'azertyuiopqsdfghjklmwxcvbn123456789')
+                                                    {
+                                                        $nb_lettres = strlen($chaine) - 1;
+                                                        $generation = '';
+                                                        for($i=0; $i < $nb_car; $i++)
+                                                        {
+                                                            $pos = mt_rand(0, $nb_lettres);
+                                                            $car = $chaine[$pos];
+                                                            $generation .= $car;
+                                                        }
+                                                        return $generation;
+                                                    }
+                                                    
+
+                                                    $mdpmail = chaine_aleatoire(8);
+                                                    $mdpbdd  = sha1($mdpmail);
 
                                                     addAdresse($bdd, $numrue, $rue, $ville, $codepostal);
                                                     $adrid= $bdd->lastInsertId();
 
                                                                     
                                                                     /*addInternaute($bdd, 1, $nom, $prenom, NULL, $adrid, $pass_hache, $email, $telephone);*/
-                                                    addAdmin($bdd, $nom, $prenom, $adrid, $pass_hache, $email, $telephone);
+                                                    addInternaute($bdd, $nom, $prenom, $adrid, $mdpbdd, $email, $telephone);
                                                                     
                                                                     //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé';
                                                     success("<strong>Félicitation!</strong> le compte a bien été créé."); 
-                                                    
-                                                     $to      = $email;
-                                                     $subject = 'le sujet';
-                                                     $message = 'Bonjour ' . $nom . ' ' . $prenom . ', bienvenue sur la centrifugeuse de projet! ';
-                                                     $headers = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
-                                                     'Reply-To: webmaster@example.com' . "\r\n" .
-                                                     'X-Mailer: PHP/' . phpversion();
-                                                 
-                                                     mail($to, $subject, $message, $headers);
+
+                                                        $to       = $email;
+                                                        $subject  = 'Inscription centrifugeuse';
+                                                        $message  = 'Bonjour ' . $prenom . ' ' . $nom . ', vous etes désormais Administrateur sur la plateforme centrifugeuse de projet! ' . "\r\n";
+                                                        $message .= 'Votre login est: '  . $email . ' et votre mot de passe est: ' .  $mdpmail . "\r\n";
+                                                        $message .= 'Vous pouvez désormais créer des evenements et les administrer.' . "\r\n";
+                                                        $headers  = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
+                                                        'Reply-To: webmaster@example.com' . "\r\n" .
+                                                        'X-Mailer: PHP/' . phpversion();
+                                                        
+                                                        mail($to, $subject, $message, $headers);
                                                     
                                                 }
                                                 else 
                                                 {
                                                     if (is_numeric($numrueentite) && is_numeric($codepostalentite))
                                                     {
+                                                        function chaine_aleatoire($nb_car, $chaine = 'azertyuiopqsdfghjklmwxcvbn123456789')
+                                                        {
+                                                        $nb_lettres = strlen($chaine) - 1;
+                                                        $generation = '';
+                                                        for($i=0; $i < $nb_car; $i++)
+                                                        {
+                                                            $pos = mt_rand(0, $nb_lettres);
+                                                            $car = $chaine[$pos];
+                                                            $generation .= $car;
+                                                        }
+                                                        return $generation;
+                                                        }
+                                                    
+
+                                                        $mdpmail = chaine_aleatoire(8);
+                                                        $mdpbdd  = sha1($mdpmail);
+
+
                                                         addAdresse($bdd, $numrue, $rue, $ville, $codepostal);
                                                         $adrid= $bdd->lastInsertId();
                                                                     
@@ -134,18 +164,24 @@ include('model/fonctionAdd.php');
                                                         addEntite($bdd, $entite, $adride);
                                                         $entiteid= $bdd->lastInsertId();
                                                                     
-                                                        addAdmine($bdd, $nom, $prenom, $entiteid, $adrid, $pass_hache, $email, $telephone);
+                                                        addInternautee($bdd, $nom, $prenom, $entiteid, $adrid, $mdpbdd, $email, $telephone);
                                                                     //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé avec votre entité.';
                                                         success("<strong>Félicitation!</strong> le compte a bien été créé avec votre entité."); 
 
-                                                        $to      = $email;
-                                                        $subject = 'le sujet';
-                                                        $message = 'Bonjour ' . $nom . ' ' . $prenom . ', bienvenue sur la centrifugeuse de projet! ';
-                                                        $headers = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
+                                                        $to       = $email;
+                                                        $subject  = 'Inscription centrifugeuse';
+                                                        $message  = 'Bonjour ' . $prenom . ' ' . $nom . ', vous etes désormais Administrateur sur la plateforme centrifugeuse de projet! ' . "\r\n";
+                                                        $message .= 'Votre login est: '  . $email . ' et votre mot de passe est: ' .  $mdpmail . "\r\n";
+                                                        $message .= 'Vous pouvez désormais créer des evenements et les administrer.' . "\r\n";
+                                                        $headers  = 'From: projetgestab@centrifugeuse.com' . "\r\n" .
                                                         'Reply-To: webmaster@example.com' . "\r\n" .
                                                         'X-Mailer: PHP/' . phpversion();
                                                         
                                                         mail($to, $subject, $message, $headers);
+                                                    
+
+
+
                                                     }
                                                     else
                                                     {
@@ -159,11 +195,15 @@ include('model/fonctionAdd.php');
                                             {
                                                 error("Le nom et/ou prenom et/ou ville doivent etre de type caractères");
                                             }
-                                                                    
+                                            }
+                                            else
+                                            {
+                                                error("Le code postal n'est pas valide !"); 
+                                            }                        
                                         }
                                         else
                                         { 
-                                            error("Le numero de la rue et/ou le code postal doit etre de type numerique !"); 
+                                            error("Le numero de la rue doit etre de type numerique !"); 
                                         }
 
                                     }
@@ -178,7 +218,7 @@ include('model/fonctionAdd.php');
 
                         }
 
-                    }
+                    
 
                 }
 

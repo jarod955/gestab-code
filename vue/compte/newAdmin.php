@@ -112,21 +112,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="retapez" class="col-sm-4 control-label">Retapez votre email*:</label>
+                        <label for="retapez" class="col-sm-4 control-label">Retapez l'email*:</label>
                         <div class="col-sm-4">
                             <input type="mail" class="form-control" id="retapez" name="email2">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="mdp" class="col-sm-4 control-label">Mot de passe*:</label>
-                        <div class="col-sm-4">
-                            <input type="password" class="form-control" id="mdp" name="motdepasse">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="rmdp" class="col-sm-4 control-label">Retapez votre mot de passe*:</label>
-                        <div class="col-sm-4">
-                            <input type="password" class="form-control" id="rmdp" name="motdepasse2">
                         </div>
                     </div>
                 </div>
