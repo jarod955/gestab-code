@@ -86,7 +86,7 @@ if (isset($_SESSION['user']))
       unset($internaute['adresse_adr_id'], $internaute['inter_entite_id']);
       $_SESSION['user'] = $internaute;
 
-      success("<strong>Félicitation!</strong> le compte a bien été modifié les changements seront pris en compte lors de la prochaine connexion.");
+      success("<strong>Félicitation!</strong> le compte a bien été modifié !");
   }
   $nom         = $_SESSION['user']['inter_nom'];
   $interid     = $_SESSION['user']['inter_id'];
@@ -104,7 +104,7 @@ if (isset($_SESSION['user']))
     $interid     = $_SESSION['user']['inter_id'];
     if($_SESSION['user']['inter_stat_id'] == 3)
     {
-      error("Vous ne pouvez pas supprimer un compte superadmin.");
+      error("Vous ne pouvez pas supprimer un compte Superadministrateur.");
     
     }
     else
