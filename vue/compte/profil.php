@@ -48,12 +48,6 @@
               </div>
           </div>
           <div class="form-group">
-              <label for="email" class="col-sm-4 control-label">Adresse email* :</label>
-              <div class="col-sm-8">
-                  <input type="text" name="email" id="email" class="form-control" value="<?= $email ?>" required />
-              </div>
-          </div>
-          <div class="form-group">
               <label for="email" class="col-sm-4 control-label">Mot de passe :</label>
               <div class="col-sm-8">
                   <input type="password" name="mdp" id="mdp" class="form-control" value=""/>

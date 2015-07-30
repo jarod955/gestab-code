@@ -60,16 +60,15 @@ function updateInternautemdp($bdd, $id, $nom, $prenom, $email, $telephone, $mdp)
   $sth->bindValue(':mdp', $mdp, PDO::PARAM_STR);
   $sth->execute();
 }
-function updateInternaute($bdd, $id, $nom, $prenom, $email, $telephone)
+function updateInternaute($bdd, $id, $nom, $prenom, $telephone)
 {
   $query = "UPDATE internaute
-            SET inter_nom = :nom, inter_prenom = :prenom, inter_mail = :email, inter_datmaj = NOW(), inter_telephone = :telephone
+            SET inter_nom = :nom, inter_prenom = :prenom, inter_datmaj = NOW(), inter_telephone = :telephone
             WHERE inter_id = :id";
   $sth = $bdd->prepare($query);
   $sth->bindValue(':id', $id, PDO::PARAM_INT);
   $sth->bindValue(':nom', $nom, PDO::PARAM_STR);
   $sth->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-  $sth->bindValue(':email', $email, PDO::PARAM_STR);
   $sth->bindValue(':telephone', $telephone, PDO::PARAM_INT);
   $sth->execute();
 }

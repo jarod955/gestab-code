@@ -18,7 +18,6 @@ if (isset($_SESSION['user']))
           $idAdresse    = $_SESSION['user']['adresse']['adr_id'];
           $no           = $_POST['nom'];
           $pre          = $_POST['prenom'];
-          $mail         = $_POST['email'];
           $tel          = $_POST['telephone'];
           $numru        = $_POST['numrue'];
           $ru           = $_POST['rue'];
@@ -34,7 +33,7 @@ if (isset($_SESSION['user']))
              else
             {
               //Les modifications dans la bdd
-              updateInternautemdp($bdd, $idInternaute, $no, $pre, $mail, $tel, $mdp);
+              updateInternautemdp($bdd, $idInternaute, $no, $pre, $tel, $mdp);
               updateAdresse($bdd, $idAdresse, $numru, $ru, $vil, $cp);
               success("<strong>Félicitation!</strong> Le mot de passe a bien été changé .");
             }
@@ -45,7 +44,6 @@ if (isset($_SESSION['user']))
           $idAdresse    = $_SESSION['user']['adresse']['adr_id'];
           $no           = $_POST['nom'];
           $pre          = $_POST['prenom'];
-          $mail         = $_POST['email'];
           $tel          = $_POST['telephone'];
           $numru        = $_POST['numrue'];
           $ru           = $_POST['rue'];
@@ -53,7 +51,7 @@ if (isset($_SESSION['user']))
           $cp           = $_POST['codepostal'];
           
           //Les modifications dans la bdd
-          updateInternaute($bdd, $idInternaute, $no, $pre, $mail, $tel);
+          updateInternaute($bdd, $idInternaute, $no, $pre, $tel);
           updateAdresse($bdd, $idAdresse, $numru, $ru, $vil, $cp);
         }
       if ($_SESSION['user']['entite'] != false)
