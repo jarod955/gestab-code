@@ -24,7 +24,7 @@
 
 		  
 			
-			<td><center><a href="index.php?route=suprCode&idcode=<?= $code['code_id']; ?>" type="button" class="btn btn-primary">
+			<td><center><a href="index.php?route=supprCode&idcode=<?= $code['code_id']; ?>" type="button" class="btn btn-primary">
      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
       </a></center>
       </td>
