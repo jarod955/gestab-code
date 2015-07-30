@@ -5,7 +5,6 @@
    <th>Date de l'évenement</th>
    <th>Evenement</th>
    <th>Catégorie</th>
-   <th>Prix</th>
    <th>Date d'achat</th>
    <!-- <th>Code</th> -->
    <th>Telecharger pdf</th>
@@ -19,8 +18,7 @@
     <td><a href="index.php?route=showEvenement&id=<?= $facture['ev_id']; ?>"><?= $facture['ev_libelle']; ?></a></td>
     <td><?= $facture['cat_nom']; ?></td>
     
-    <td><?= $facture['cat_prix']; ?>
-    </td> 
+
     <?php $datetimfacture = new DateTime($facture['fac_datcre']); ?>
    
     <td><?= $datetimfacture->format('d / m / Y') ?> à <?= $datetimfacture->format('H:i') ?></td>
