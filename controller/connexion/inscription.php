@@ -11,22 +11,27 @@
         $pass_hache       = sha1($_POST['motdepasse']);
         $pass_hache2      = sha1($_POST['motdepasse2']);
         
-        
         $email            = htmlspecialchars(trim($_POST['email']));
         $email2           = htmlspecialchars(trim($_POST['email2']));
         $telephone        = htmlspecialchars(trim($_POST['telephone']));
-        $numrue           = htmlspecialchars(trim($_POST['numrue']));
         $rue              = htmlspecialchars(trim($_POST['rue']));
-        $codepostal       = htmlspecialchars(trim($_POST['codepostal']));
         $ville            = htmlspecialchars(trim($_POST['ville']));
-        
+        $codepostal       = htmlspecialchars(trim($_POST['codepostal']));
 
-        
-        $numrueentite     = htmlspecialchars(trim($_POST['numrueentite']));
         $rueentite        = htmlspecialchars(trim($_POST['rueentite']));
         $codepostalentite = htmlspecialchars(trim($_POST['codepostalentite']));
         $villeentite      = htmlspecialchars(trim($_POST['villeentite']));
         $vide = "";
+
+        if (htmlspecialchars($_POST["numrue"] < 0) || ($_POST["numrueentite"] < 0))
+        {
+        $numrue = abs($_POST["numerorue"]);
+        $numrueentite = abs($_POST["numrueentite"]);
+        }
+        else{
+        $numrue = ($_POST["numrue"]);
+        $numrueentite = ($_POST["numrueentite"]);
+        }
        
         if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['rue']) || empty($_POST['ville']) || empty($_POST['codepostal']) || empty($_POST['email']) || empty($_POST['email2']) || empty($_POST['telephone']) || empty($_POST['numrue']))
         {

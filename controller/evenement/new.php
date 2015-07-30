@@ -31,7 +31,7 @@ elseif ($_SESSION['user']['inter_stat_id'] == 2 or 3) {
       }
   }
   
-if (isset($_POST['send']))
+  if (isset($_POST['send']))
   {
 
       $interid    = $_SESSION['user']['inter_id'];
@@ -50,14 +50,9 @@ if (isset($_POST['send']))
       $salle      = htmlspecialchars(trim($_POST["salle"]));
       $date1      = $_POST['annee'].'-'.$_POST['mois'].'-'.$_POST['jour'].'-'.$_POST['heure'].'-'.$_POST['minute'];   
 
-      // Met ici tes requetes SQL
-      // Tu te souviens que ton nom va ressembler par exemple à nom_categorie1 / nom_categorie2... bah ici il suffit de faire pareil quand tu récupère. Tu récupère nom_categorie + la valeur $i de ta boucle
-
-      // $categorie['nom'] = $_POST['cat'][$i]['nom_categorie'];
-      // $categorie['prix'] = $_POST['cat'][$i]['prix'];
-      // $places = $_POST['cat'][$i]['nombre_places'];
-      if(isset($_SESSION['user']))
+      if(!empty($_POST["nom"]) && !empty($_POST["numerorue"]) && !empty($_POST["rue"]) && !empty($_POST["codepostal"]) && !empty($_POST["ville"]) && !empty($_POST["salle"]))
       {
+
             $pattern = '#[^0-9]#';
                                             
             foreach ($_POST['cat'] as $key => $categorie)
@@ -163,7 +158,6 @@ if (isset($_POST['send']))
                             {   
                               addEvcat($bdd, $evid, $cat_id, $cat_nb_place);
                             } 
-                          
                             success("L'événement à bien été enregistré.");
                         }
                         else
@@ -183,20 +177,17 @@ if (isset($_POST['send']))
                 }
                 else
                 {
-                  error("Erreur avec categorie");
+                  error("Merci de verifier champs categorie");
                 }            
             }
             else
             {
-              error("erreur merci de reessayer");
+              error("Merci de renseigner tout les champs");
             }
-      
-      
-       
-            
-  }
-  else
-  {
+    }
+    else
+    {
+
       // Si l'utilisateur n'a pas envoyé le formulaire alors
       // On récupère tes champs envoyés et on les stock en variable de session
       if (isset($_POST['nom']))
