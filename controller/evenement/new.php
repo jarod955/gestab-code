@@ -108,7 +108,7 @@ if (isset($_POST['send']))
             exit;*/
               if($cat == 1)
               {
-                  if(preg_match($pattern, $nom) && preg_match($pattern, $ville) && preg_match($pattern, $salle))
+                  if(preg_match($pattern, $nom) && preg_match($pattern, $ville))
                   {
                     if (is_numeric($numrue))
                     {
