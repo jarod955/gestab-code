@@ -33,15 +33,14 @@ function updateEvenement($bdd, $id, $libelle, $date)
   $sth->bindValue(':dat', $date, PDO::PARAM_STR);
   $sth->execute();
 }
-function suprEvenement($bdd, $id, $datesup)
+function suprEvenement($bdd, $id)
 {
 $query = "UPDATE evenement, codepromo
-SET ev_datsup = :datesup, code_datsup = :datesup
+SET ev_datsup = :datesup, code_datsup = NOW()
 WHERE ev_id = :id
 AND code_ev_id = :id";
 $sth = $bdd->prepare($query);
 $sth->bindValue(':id', $id, PDO::PARAM_INT);
-$sth->bindValue(':datesup', $datesup, PDO::PARAM_STR);
 $sth->execute();
 }
 ?>

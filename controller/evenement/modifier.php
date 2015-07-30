@@ -56,7 +56,6 @@ if (isset($_SESSION['user']))
       $evid = $_POST['evid'];
       $lieuid = $_POST['lieuid'];
       $adrid = $_POST['adrid'];
-      $datesup = $_POST['datesup'];
       $libelle = $_POST['libelle'];
       $nomsalle = $_POST['nom_salle'];
       $numrue = $_POST['adr_num_rue'];
@@ -71,7 +70,7 @@ if (isset($_SESSION['user']))
             if(!empty($libelle) && !empty($nomsalle) && !empty($numrue) && !empty($rue) && !empty($ville) && !empty($codepostal))
             {
             //$erreur = 'le mot de passe et le mot de passe de confirmation ne correspondent pas ';
-            suprEvenement($bdd, $evid, $datesup);
+            suprEvenement($bdd, $evid);
             success("<strong>Félicitation!</strong> l'évenement a bien été supprimé.");
             
             redirection($page = "index.php?route=listadminEvenement");
