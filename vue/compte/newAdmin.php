@@ -117,6 +117,9 @@
                             <input type="mail" class="form-control" id="retapez" name="email2">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="retapez" class="col-sm-8 control-label"><h6>Le mot de passe est généré aléatoirement et envoyé a l'adresse email indiqué.</h6></label>
+                    </div>
                 </div>
             </div>
         </div>
