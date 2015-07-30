@@ -35,9 +35,10 @@ function updateEvenement($bdd, $id, $libelle, $date)
 }
 function suprEvenement($bdd, $id, $datesup)
 {
-$query = "UPDATE evenement
-SET ev_datsup = :datesup
-WHERE ev_id = :id";
+$query = "UPDATE evenement, codepromo
+SET ev_datsup = :datesup, code_datsup = :datesup
+WHERE ev_id = :id
+AND code_ev_id = :id";
 $sth = $bdd->prepare($query);
 $sth->bindValue(':id', $id, PDO::PARAM_INT);
 $sth->bindValue(':datesup', $datesup, PDO::PARAM_STR);

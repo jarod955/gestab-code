@@ -13,6 +13,9 @@
 
   </tr>
     <?php foreach ($codes as $code): ?>
+      <?php
+if($code['code_datsup'] == null)
+{ ?>
       <?php $datetimcode = new DateTime($code['ev_date']); ?>
     <?php 
     if($code['code_datsup'] == null){ ?>
@@ -31,7 +34,11 @@
       <?php
      } ?>
 
-      
+<?php
+}
+else
+{ }
+?>      
 
       
   </tr>

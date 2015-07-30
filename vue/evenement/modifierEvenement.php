@@ -134,7 +134,8 @@
   <input type="hidden" name="lieuid" value="<?= $evenement['lieu_id']?>">
   <input type="hidden" name="adrid" value="<?= $evenement['adr_id']?>">
   <input type="hidden" name="evid" value="<?= $evenement['ev_id']?>">
-
+  <?php $date = date("Y-m-d H:i:s"); ?>
+          <input type="hidden" name="datesup" value="<?= $date ?>">
   <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']['inter_stat_id'] > 1 && $_SESSION['user']['inter_stat_id'] < 4): ?>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
