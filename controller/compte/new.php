@@ -6,7 +6,8 @@ elseif ($_SESSION['user']['inter_stat_id'] == 3) {
  // Mettre ici tout le corps de la page 
  
 include('model/fonctionAdd.php');
-    if(isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['entite']) AND isset($_POST['motdepasse']) AND isset($_POST['motdepasse2']) AND isset($_POST['email']) AND isset($_POST['telephone']) AND isset($_POST['numrue']) AND isset($_POST['rue']) AND(isset($_POST['codepostal']) AND isset($_POST['ville'])))
+
+    if(isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['entite']) AND isset($_POST['telephone']) AND isset($_POST['numrue']) AND isset($_POST['rue']) AND(isset($_POST['codepostal']) AND isset($_POST['ville'])))
     {
         $nom              = htmlspecialchars(trim($_POST['nom']));
         $prenom           = htmlspecialchars(trim($_POST['prenom']));
@@ -52,12 +53,7 @@ include('model/fonctionAdd.php');
                 }
                 else
                 {
-                        if (strlen($verifmdp) < 8)
-                        {
-                            error("le mot de passe doit contenir au moins 8 caractères!"); 
-                        }
-                        else
-                        {
+                        
 
                             if ($email != $email2)
                             {
@@ -216,7 +212,7 @@ include('model/fonctionAdd.php');
                                 }   
                             } 
 
-                        }
+                        
 
                     
 
