@@ -112,7 +112,7 @@ include('model/fonctionAdd.php');
 
                                                                     
                                                                     /*addInternaute($bdd, 1, $nom, $prenom, NULL, $adrid, $pass_hache, $email, $telephone);*/
-                                                    addInternaute($bdd, $nom, $prenom, $adrid, $mdpbdd, $email, $telephone);
+                                                    addAdmin($bdd, $nom, $prenom, $adrid, $mdpbdd, $email, $telephone);
                                                                     
                                                                     //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé';
                                                     success("<strong>Félicitation!</strong> le compte a bien été créé."); 
@@ -160,7 +160,7 @@ include('model/fonctionAdd.php');
                                                         addEntite($bdd, $entite, $adride);
                                                         $entiteid= $bdd->lastInsertId();
                                                                     
-                                                        addInternautee($bdd, $nom, $prenom, $entiteid, $adrid, $mdpbdd, $email, $telephone);
+                                                        addAdmin($bdd, $nom, $prenom, $entiteid, $adrid, $mdpbdd, $email, $telephone);
                                                                     //$succes   = '<strong>Félicitation!</strong> le compte a bien été créé avec votre entité.';
                                                         success("<strong>Félicitation!</strong> le compte a bien été créé avec votre entité."); 
 
