@@ -43,7 +43,7 @@ elseif ($_SESSION['user']['inter_stat_id'] == 3) {
 
 						suppressionUtilisateur($bdd, $interid);
 
-						redirection($page = "index.php?route=gestionUtilisateurs");
+						redirection($page = "index.php?route=deconnexion");
 						}
 				
 	$lead        = "BIENVENUE SUR LA MAQUETTE DE RESERVATION";
